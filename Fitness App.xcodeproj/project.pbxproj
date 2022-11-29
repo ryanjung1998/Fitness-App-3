@@ -16,6 +16,7 @@
 		5F0EA83329341FA9006D8876 /* Fitness_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA83229341FA9006D8876 /* Fitness_AppTests.swift */; };
 		5F0EA83D29341FA9006D8876 /* Fitness_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA83C29341FA9006D8876 /* Fitness_AppUITests.swift */; };
 		5F0EA83F29341FA9006D8876 /* Fitness_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA83E29341FA9006D8876 /* Fitness_AppUITestsLaunchTests.swift */; };
+		BF8757E0293547840052E610 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8757DF293547840052E610 /* DBHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5F0EA83829341FA9006D8876 /* Fitness AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fitness AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0EA83C29341FA9006D8876 /* Fitness_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_AppUITests.swift; sourceTree = "<group>"; };
 		5F0EA83E29341FA9006D8876 /* Fitness_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BF8757DF293547840052E610 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				5F0EA82429341FA8006D8876 /* Assets.xcassets */,
 				5F0EA82629341FA8006D8876 /* LaunchScreen.storyboard */,
 				5F0EA82929341FA8006D8876 /* Info.plist */,
+				BF8757DF293547840052E610 /* DBHelper.swift */,
 			);
 			path = "Fitness App";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				5F0EA82029341F9F006D8876 /* ViewController.swift in Sources */,
 				5F0EA81C29341F9F006D8876 /* AppDelegate.swift in Sources */,
 				5F0EA81E29341F9F006D8876 /* SceneDelegate.swift in Sources */,
+				BF8757E0293547840052E610 /* DBHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
