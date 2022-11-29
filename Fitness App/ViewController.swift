@@ -10,7 +10,8 @@ import UIKit
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
-        //let db = DBHelper() // Testing the creation of a table
+        let db = DBHelper() // Initialize a database
+        db.createDefaults() // Load in deafult tables
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
