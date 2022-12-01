@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A6055102939FC1000F75AB6 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60550F2939FC0F00F75AB6 /* UserClass.swift */; };
 		5F0EA81C29341F9F006D8876 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81B29341F9F006D8876 /* AppDelegate.swift */; };
 		5F0EA81E29341F9F006D8876 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81D29341F9F006D8876 /* SceneDelegate.swift */; };
 		5F0EA82029341F9F006D8876 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81F29341F9F006D8876 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A60550F2939FC0F00F75AB6 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClass.swift; sourceTree = "<group>"; };
 		5F0EA81829341F9F006D8876 /* Fitness App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0EA81B29341F9F006D8876 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F0EA81D29341F9F006D8876 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				5F0EA82629341FA8006D8876 /* LaunchScreen.storyboard */,
 				5F0EA82929341FA8006D8876 /* Info.plist */,
 				BF8757DF293547840052E610 /* DBHelper.swift */,
+				5A60550F2939FC0F00F75AB6 /* UserClass.swift */,
 			);
 			path = "Fitness App";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A6055102939FC1000F75AB6 /* UserClass.swift in Sources */,
 				5F0EA82029341F9F006D8876 /* ViewController.swift in Sources */,
 				5F0EA81C29341F9F006D8876 /* AppDelegate.swift in Sources */,
 				5F0EA81E29341F9F006D8876 /* SceneDelegate.swift in Sources */,
