@@ -10,13 +10,17 @@
 		5A6055102939FC1000F75AB6 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60550F2939FC0F00F75AB6 /* UserClass.swift */; };
 		5F0EA81C29341F9F006D8876 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81B29341F9F006D8876 /* AppDelegate.swift */; };
 		5F0EA81E29341F9F006D8876 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81D29341F9F006D8876 /* SceneDelegate.swift */; };
-		5F0EA82029341F9F006D8876 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81F29341F9F006D8876 /* ViewController.swift */; };
+		5F0EA82029341F9F006D8876 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81F29341F9F006D8876 /* LoginViewController.swift */; };
 		5F0EA82329341F9F006D8876 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0EA82129341F9F006D8876 /* Main.storyboard */; };
 		5F0EA82529341FA8006D8876 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F0EA82429341FA8006D8876 /* Assets.xcassets */; };
 		5F0EA82829341FA8006D8876 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0EA82629341FA8006D8876 /* LaunchScreen.storyboard */; };
 		5F0EA83329341FA9006D8876 /* Fitness_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA83229341FA9006D8876 /* Fitness_AppTests.swift */; };
 		5F0EA83D29341FA9006D8876 /* Fitness_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA83C29341FA9006D8876 /* Fitness_AppUITests.swift */; };
 		5F0EA83F29341FA9006D8876 /* Fitness_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA83E29341FA9006D8876 /* Fitness_AppUITestsLaunchTests.swift */; };
+		5F11ED21293A697800A69D65 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED20293A697800A69D65 /* TableViewCell.swift */; };
+		5F11ED23293A6B4300A69D65 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED22293A6B4300A69D65 /* TableViewController.swift */; };
+		5F11ED25293A852600A69D65 /* ClientMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED24293A852600A69D65 /* ClientMainMenuViewController.swift */; };
+		5F7A45EB293A9C52001190E1 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A45EA293A9C52001190E1 /* ClientProfileViewController.swift */; };
 		BF8757E0293547840052E610 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8757DF293547840052E610 /* DBHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +46,7 @@
 		5F0EA81829341F9F006D8876 /* Fitness App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0EA81B29341F9F006D8876 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F0EA81D29341F9F006D8876 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5F0EA81F29341F9F006D8876 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5F0EA81F29341F9F006D8876 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5F0EA82229341F9F006D8876 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5F0EA82429341FA8006D8876 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F0EA82729341FA8006D8876 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +56,10 @@
 		5F0EA83829341FA9006D8876 /* Fitness AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fitness AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0EA83C29341FA9006D8876 /* Fitness_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_AppUITests.swift; sourceTree = "<group>"; };
 		5F0EA83E29341FA9006D8876 /* Fitness_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5F11ED20293A697800A69D65 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		5F11ED22293A6B4300A69D65 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		5F11ED24293A852600A69D65 /* ClientMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMainMenuViewController.swift; sourceTree = "<group>"; };
+		5F7A45EA293A9C52001190E1 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		BF8757DF293547840052E610 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +113,11 @@
 			children = (
 				5F0EA81B29341F9F006D8876 /* AppDelegate.swift */,
 				5F0EA81D29341F9F006D8876 /* SceneDelegate.swift */,
-				5F0EA81F29341F9F006D8876 /* ViewController.swift */,
+				5F0EA81F29341F9F006D8876 /* LoginViewController.swift */,
+				5F11ED22293A6B4300A69D65 /* TableViewController.swift */,
+				5F11ED24293A852600A69D65 /* ClientMainMenuViewController.swift */,
+				5F7A45EA293A9C52001190E1 /* ClientProfileViewController.swift */,
+				5F11ED20293A697800A69D65 /* TableViewCell.swift */,
 				5F0EA82129341F9F006D8876 /* Main.storyboard */,
 				5F0EA82429341FA8006D8876 /* Assets.xcassets */,
 				5F0EA82629341FA8006D8876 /* LaunchScreen.storyboard */,
@@ -264,9 +276,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A6055102939FC1000F75AB6 /* UserClass.swift in Sources */,
-				5F0EA82029341F9F006D8876 /* ViewController.swift in Sources */,
+				5F11ED25293A852600A69D65 /* ClientMainMenuViewController.swift in Sources */,
+				5F11ED21293A697800A69D65 /* TableViewCell.swift in Sources */,
+				5F11ED23293A6B4300A69D65 /* TableViewController.swift in Sources */,
+				5F0EA82029341F9F006D8876 /* LoginViewController.swift in Sources */,
 				5F0EA81C29341F9F006D8876 /* AppDelegate.swift in Sources */,
+				5F7A45EB293A9C52001190E1 /* ClientProfileViewController.swift in Sources */,
 				5F0EA81E29341F9F006D8876 /* SceneDelegate.swift in Sources */,
 				BF8757E0293547840052E610 /* DBHelper.swift in Sources */,
 			);
