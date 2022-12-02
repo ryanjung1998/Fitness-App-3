@@ -42,7 +42,7 @@ class User{
     
     public func edit(usr:User,change:String) -> Bool{
         //switch cases? to show that an edit has been made and where
-        var S:String = change.lowercased()
+        let S:String = change.lowercased()
         if S == "ethnicity"{
             //do someting
         }
