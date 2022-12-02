@@ -30,7 +30,7 @@ class DBHelper{
     }
     
     func createDefaults(){
-        let createUser = "CREATE TABLE IF NOT EXISTS USER(UserID INT PRIMARY KEY AUTOINCREMENT NOT NULL, Birth_date DATE NOT NULL, Gender VARCHAR(10), CountryOfResidence VARCHAR(10), Ethnicity VARCHAR(10));"
+        let createUser = "CREATE TABLE IF NOT EXISTS USER(UserID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Birth_date DATE NOT NULL, Gender VARCHAR(10), CountryOfResidence VARCHAR(10), Ethnicity VARCHAR(10));"
         var statement : OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.db, createUser, -1, &statement, nil) == SQLITE_OK {
