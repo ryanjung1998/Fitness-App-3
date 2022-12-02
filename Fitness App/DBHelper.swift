@@ -43,7 +43,7 @@ class DBHelper{
             print("Preparation for user table failed") // Remove later
         }
         
-        let createAdmin = "CREATE TABLE IF NOT EXISTS ADMIN(UserID INT PRIMARY KEY NOT NULL, FOREIGN KEY (UserID) REFERENCES USER (UserID));"
+        let createAdmin = "CREATE TABLE IF NOT EXISTS ADMIN(UserID INTEGER PRIMARY KEY NOT NULL, FOREIGN KEY (UserID) REFERENCES USER (UserID));"
         if sqlite3_prepare_v2(self.db, createAdmin, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created admin successfully") // Remove later
