@@ -29,6 +29,33 @@ class DBHelper{
         }
     }
     
+    func insertDefaults(){
+        insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
+    }
+    
+    func insertUser(Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
+        let query = "INSERT INTO USER (Birth_date, Gender, CountryOfResidence, Ethnicity) VALUES (?, ?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            sqlite3_bind_int(statement, 1, 1) // Making date 1 for now until we figure it out [TODO]
+//            sqlite3_bind_null(statement, 1) //
+            sqlite3_bind_text(statement, 2, (Gender as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 3, (CountryOfResidence as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 4, (Ethnicity as NSString).utf8String, -1, nil)
+            
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("User inserted successfully")
+            } else {
+                print("User data unable to be inserted")
+            }
+            
+        } else {
+            print("User query is not as per requirement")
+        }
+        
+    }
+    
     func createDefaults(){
         let createUser = "CREATE TABLE IF NOT EXISTS USER(UserID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Birth_date DATE NOT NULL, Gender VARCHAR(10), CountryOfResidence VARCHAR(10), Ethnicity VARCHAR(10));"
         var statement : OpaquePointer? = nil
