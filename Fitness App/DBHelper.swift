@@ -30,7 +30,9 @@ class DBHelper{
     }
     
     func insertDefaults(){
+        // Just passing in today's date until we find a way to give it a real date
         insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
+        
     }
     
     func insertUser(Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
@@ -38,8 +40,9 @@ class DBHelper{
         var statement : OpaquePointer? = nil
         
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
-            sqlite3_bind_int(statement, 1, 1) // Making date 1 for now until we figure it out [TODO]
-//            sqlite3_bind_null(statement, 1) //
+            let formatter1 = DateFormatter() // Format date as string
+            formatter1.dateStyle = .short    // Formatting
+            sqlite3_bind_text(statement, 1, ((formatter1.string(from: Birth_date)) as NSString).utf8String, -1, nil) // Pass in date as a string
             sqlite3_bind_text(statement, 2, (Gender as NSString).utf8String, -1, nil)
             sqlite3_bind_text(statement, 3, (CountryOfResidence as NSString).utf8String, -1, nil)
             sqlite3_bind_text(statement, 4, (Ethnicity as NSString).utf8String, -1, nil)
@@ -49,11 +52,9 @@ class DBHelper{
             } else {
                 print("User data unable to be inserted")
             }
-            
         } else {
             print("User query is not as per requirement")
         }
-        
     }
     
     func createDefaults(){
