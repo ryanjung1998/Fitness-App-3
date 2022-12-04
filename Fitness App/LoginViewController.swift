@@ -18,6 +18,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var idEntry: UITextField!
     
+    @IBAction func adminLoginTap(_ sender: Any) {
+        self.performSegue(withIdentifier: "adminMenuSegue", sender: self)
+    }
     
     @IBAction func clientLoginTap(_ sender: Any) {
         self.performSegue(withIdentifier: "clientMenuSegue", sender: self)

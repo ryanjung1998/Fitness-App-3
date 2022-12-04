@@ -10,12 +10,28 @@ import UIKit
 
 class ClientMainMenuViewController : UIViewController
 {
+    var userID: Int = 0 //set this to the uses ID of the signed in user
     
     @IBOutlet weak var profileButton: UIButton!
     
     @IBAction func profileTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "profileSegue", sender: self)
     }
+    
+    @IBAction func journalTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "clientJournalSegue", sender: self)
+    }
+    
+    @IBAction func workoutProgramsTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "clientWorkoutProgramsSegue", sender: self)
+    }
+    
+    @IBAction func exercisesTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "listSegue", sender: self)
+    }
+    
+    
+    
     
     @IBOutlet weak var journalButton: UIButton!
     

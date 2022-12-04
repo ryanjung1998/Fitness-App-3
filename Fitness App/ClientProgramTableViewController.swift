@@ -1,16 +1,19 @@
 //
-//  TableViewController.swift
+//  ClientProgramViewController.swift
 //  Fitness App
 //
-//  Created by Ryan Jung on 2022-12-02.
+//  Created by Ryan Jung on 2022-12-03.
 //
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class ClientProgramTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     
     @IBOutlet weak var entryTableView: UITableView!
+    @IBOutlet weak var gtitle: UILabel!
+    var progName : String!
+    var userID : Int!
     
     var entryList = [String]()
     
@@ -19,33 +22,34 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         //db.createDefaults() // Load in deafult tables
         // don't know if need this stuff
         super.viewDidLoad()
+        
         initList()
+        gtitle.text = progName
         // Do any additional setup after loading the view.
     }
     
     func initList()//Have to connect to database here
     {
-        let entry1 = "Entry 1"
-        entryList.append(entry1)
-        
-        let entry2 = "Entry 2"
-        entryList.append(entry2)
-        
-        let entry3 = "Entry 3"
-        entryList.append(entry3)
+        entryList = ["Exercise 1","Exercise 2","Exercise 3","Exercise 4","Exercise 5","Exercise 6",]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(entryList)
         return entryList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "tableViewCellID") as! TableViewCell
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "exInProgTableViewCellID") as! exInProgTableViewCell 
         
         let thisEntry = entryList[indexPath.row]
-        tableViewCell.entryName.text = thisEntry
+        tableViewCell.exName.text = thisEntry
         return tableViewCell
+    
+        
+        
     }
 
 }
+
+    
+
+    
