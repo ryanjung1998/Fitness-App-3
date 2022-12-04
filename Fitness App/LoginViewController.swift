@@ -18,6 +18,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var idEntry: UITextField!
     
+    @IBAction func adminLoginTap(_ sender: Any) {
+        self.performSegue(withIdentifier: "adminMenuSegue", sender: self)
+    }
     
     @IBAction func clientLoginTap(_ sender: Any) {
         self.performSegue(withIdentifier: "clientMenuSegue", sender: self)
@@ -25,6 +28,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         let db = DBHelper() // Initialize a database
         db.createDefaults() // Load in deafult tables
+        db.insertDefaults() // Dummy values
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }

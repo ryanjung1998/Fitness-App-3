@@ -20,6 +20,13 @@
 		5F11ED21293A697800A69D65 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED20293A697800A69D65 /* TableViewCell.swift */; };
 		5F11ED23293A6B4300A69D65 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED22293A6B4300A69D65 /* TableViewController.swift */; };
 		5F11ED25293A852600A69D65 /* ClientMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED24293A852600A69D65 /* ClientMainMenuViewController.swift */; };
+		5F30C24B293BEDD100A22997 /* ClientWorkoutTableProgramsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F30C24A293BEDD100A22997 /* ClientWorkoutTableProgramsViewController.swift */; };
+		5F30C24D293BF58100A22997 /* ClientProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F30C24C293BF58100A22997 /* ClientProgramTableViewController.swift */; };
+		5F30C24F293BF6E300A22997 /* exInProgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F30C24E293BF6E300A22997 /* exInProgTableViewCell.swift */; };
+		5F5F4AC8293BC05F0027C017 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5F4AC7293BC05F0027C017 /* FilterViewController.swift */; };
+		5F5F4ACA293BC4180027C017 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5F4AC9293BC4180027C017 /* ViewController.swift */; };
+		5F5F4ACC293BC7B50027C017 /* ClientJournalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5F4ACB293BC7B50027C017 /* ClientJournalTableViewController.swift */; };
+		5F5F4ACE293BCEB00027C017 /* JournalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5F4ACD293BCEB00027C017 /* JournalEntryViewController.swift */; };
 		5F7A45EB293A9C52001190E1 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A45EA293A9C52001190E1 /* ClientProfileViewController.swift */; };
 		BF8757E0293547840052E610 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8757DF293547840052E610 /* DBHelper.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +66,13 @@
 		5F11ED20293A697800A69D65 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5F11ED22293A6B4300A69D65 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		5F11ED24293A852600A69D65 /* ClientMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMainMenuViewController.swift; sourceTree = "<group>"; };
+		5F30C24A293BEDD100A22997 /* ClientWorkoutTableProgramsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientWorkoutTableProgramsViewController.swift; sourceTree = "<group>"; };
+		5F30C24C293BF58100A22997 /* ClientProgramTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProgramTableViewController.swift; sourceTree = "<group>"; };
+		5F30C24E293BF6E300A22997 /* exInProgTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exInProgTableViewCell.swift; sourceTree = "<group>"; };
+		5F5F4AC7293BC05F0027C017 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		5F5F4AC9293BC4180027C017 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5F5F4ACB293BC7B50027C017 /* ClientJournalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientJournalTableViewController.swift; sourceTree = "<group>"; };
+		5F5F4ACD293BCEB00027C017 /* JournalEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryViewController.swift; sourceTree = "<group>"; };
 		5F7A45EA293A9C52001190E1 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		BF8757DF293547840052E610 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,9 +129,16 @@
 				5F0EA81D29341F9F006D8876 /* SceneDelegate.swift */,
 				5F0EA81F29341F9F006D8876 /* LoginViewController.swift */,
 				5F11ED22293A6B4300A69D65 /* TableViewController.swift */,
+				5F5F4ACB293BC7B50027C017 /* ClientJournalTableViewController.swift */,
 				5F11ED24293A852600A69D65 /* ClientMainMenuViewController.swift */,
 				5F7A45EA293A9C52001190E1 /* ClientProfileViewController.swift */,
+				5F5F4AC9293BC4180027C017 /* ViewController.swift */,
+				5F5F4AC7293BC05F0027C017 /* FilterViewController.swift */,
 				5F11ED20293A697800A69D65 /* TableViewCell.swift */,
+				5F5F4ACD293BCEB00027C017 /* JournalEntryViewController.swift */,
+				5F30C24A293BEDD100A22997 /* ClientWorkoutTableProgramsViewController.swift */,
+				5F30C24C293BF58100A22997 /* ClientProgramTableViewController.swift */,
+				5F30C24E293BF6E300A22997 /* exInProgTableViewCell.swift */,
 				5F0EA82129341F9F006D8876 /* Main.storyboard */,
 				5F0EA82429341FA8006D8876 /* Assets.xcassets */,
 				5F0EA82629341FA8006D8876 /* LaunchScreen.storyboard */,
@@ -278,12 +299,18 @@
 			files = (
 				5F11ED25293A852600A69D65 /* ClientMainMenuViewController.swift in Sources */,
 				5F11ED21293A697800A69D65 /* TableViewCell.swift in Sources */,
+				5F5F4ACE293BCEB00027C017 /* JournalEntryViewController.swift in Sources */,
 				5F11ED23293A6B4300A69D65 /* TableViewController.swift in Sources */,
+				5F5F4AC8293BC05F0027C017 /* FilterViewController.swift in Sources */,
 				5F0EA82029341F9F006D8876 /* LoginViewController.swift in Sources */,
+				5F5F4ACA293BC4180027C017 /* ViewController.swift in Sources */,
 				5F0EA81C29341F9F006D8876 /* AppDelegate.swift in Sources */,
 				5A605513293BD54000F75AB6 /* UserClass.swift in Sources */,
 				5F7A45EB293A9C52001190E1 /* ClientProfileViewController.swift in Sources */,
 				5F0EA81E29341F9F006D8876 /* SceneDelegate.swift in Sources */,
+				5F30C24F293BF6E300A22997 /* exInProgTableViewCell.swift in Sources */,
+				5F5F4ACC293BC7B50027C017 /* ClientJournalTableViewController.swift in Sources */,
+				5F30C24D293BF58100A22997 /* ClientProgramTableViewController.swift in Sources */,
 				BF8757E0293547840052E610 /* DBHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
