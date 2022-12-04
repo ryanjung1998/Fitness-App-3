@@ -39,7 +39,7 @@ class User{
         User.counter += 1 // for now
     }
     
-    public func instert(usr:User) -> Bool{
+    public func insert(usr:User) -> Bool{
         //Implimentation
         /*takes userstuffs and imports it to
          the database
@@ -97,7 +97,7 @@ class Client: User {
     var height : Double
     
     init(listID: Int, protien: Double, carbohydrates: Double, fat: Double, weight: Double, sugar: Double, height: Double) {
-        super.init(Usr: <#T##User#>)
+        super.init(ethnicity: <#T##String#>, countryOfResidence: <#T##String#>, gender: <#T##String#>, birthDay: <#T##Date#>)
         self.listID = listID
         self.protien = protien
         self.carbohydrates = carbohydrates
@@ -107,7 +107,7 @@ class Client: User {
         self.height = height
     }
     
-    public func instert(usr:User) -> Bool{
+    public func insert(cli:Client) -> Bool{
         //Implimentation
         /*takes userstuffs and imports it to
          the database
@@ -115,7 +115,7 @@ class Client: User {
         return true //for now
     }
     
-    public func delete(usr:User)-> Bool{
+    public func delete(cli:Client)-> Bool{
         //Implementation
         /*
          deletes user and all items close to it
@@ -123,16 +123,18 @@ class Client: User {
         return true // for now
     }
     
-    public func Retrive(UserID: Int){ // -> User
+    override public func Retrive(UserID: Int){ // -> User
         //Retrive from database if in the database if not then return error
         //
     }
     
-    public func inDB (UserID: Int ) -> Bool{
-        
+    override public func inDB (UserID: Int ) -> Bool{
+        return true //for now
+        // will check if there is an isntance of it in
+        //db
     }
     
-    public func edit(usr:User,change:String) -> Bool{
+    public func edit(usr:Client, change:String) -> Bool{
         //switch cases? to show that an edit has been made and where
         let S:String = change.lowercased()
         if S == "ethnicity"{
@@ -150,8 +152,11 @@ class Client: User {
         return true
     }
     
-    
-    
-    
+}
+
+class Admin : User{
+    init(){
+        super.init(ethnicity: <#T##String#>, countryOfResidence: <#T##String#>, gender: <#T##String#>, birthDay: <#T##Date#>)
+    }
 }
 
