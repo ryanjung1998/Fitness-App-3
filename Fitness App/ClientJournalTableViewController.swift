@@ -13,7 +13,7 @@ class ClientJournalTableViewController: UIViewController, UITableViewDataSource,
 
     @IBOutlet weak var entryTableView: UITableView!
     
-    
+    var userID: Int!
     var entryList = [String]()
     
     override func viewDidLoad() {
@@ -45,12 +45,14 @@ class ClientJournalTableViewController: UIViewController, UITableViewDataSource,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "journalEntrySegue", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "journalEntrySegue"){
             let indexPath = self.entryTableView.indexPathForSelectedRow!
             
             let tableViewEntry = segue.destination as? JournalEntryViewController
             
+            tableViewEntry!.userID = userID
             tableViewEntry!.ddate = Date()
             tableViewEntry!.wweight = 100
             tableViewEntry!.cals = 3000

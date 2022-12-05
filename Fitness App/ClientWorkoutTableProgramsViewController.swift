@@ -11,7 +11,9 @@ class ClientWorkoutTableViewController: UIViewController, UITableViewDataSource,
     
     @IBOutlet weak var entryTableView: UITableView!
     
+    var userID : Int!
     var entryList = [String]()
+    var creatorIDList = [Int]()
     //list of program objects
     override func viewDidLoad() {
         //let db = DBHelper() // Initialize a database
@@ -25,6 +27,7 @@ class ClientWorkoutTableViewController: UIViewController, UITableViewDataSource,
     func initList()//Have to connect to database here
     {
         entryList = ["Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program"]
+        creatorIDList = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,7 +53,8 @@ class ClientWorkoutTableViewController: UIViewController, UITableViewDataSource,
             let indexPath = self.entryTableView.indexPathForSelectedRow!
             let tableViewProg = segue.destination as? ClientProgramTableViewController
             tableViewProg!.progName = entryList[indexPath.row]
-            tableViewProg!.userID = 1
+            tableViewProg!.creatorID = creatorIDList[indexPath.row]
+            tableViewProg!.userID = userID
             //these values will come from the database
             self.entryTableView.deselectRow(at: indexPath, animated: true)
         }

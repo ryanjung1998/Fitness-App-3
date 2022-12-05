@@ -10,6 +10,7 @@ import UIKit
 
 class JournalEntryViewController : UIViewController
 {
+    var userID : Int!
     var ddate : Date!
     var wweight : Int!
     

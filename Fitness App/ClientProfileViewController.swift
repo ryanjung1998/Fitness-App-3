@@ -10,6 +10,7 @@ import UIKit
 
 class ClientProfileViewController : UIViewController
 {
+    var userID: Int!
     
     @IBOutlet weak var IDnum: UILabel!
     
@@ -25,9 +26,34 @@ class ClientProfileViewController : UIViewController
     
     @IBOutlet weak var bdPicker: UIDatePicker!
     
+    @IBOutlet weak var proteinEntry: UITextField!
+    
+    @IBOutlet weak var carbsEntry: UITextField!
+    
+    @IBOutlet weak var fatEntry: UITextField!
+    
+    @IBOutlet weak var sugarEntry: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        IDnum.text = "default"
+        ethnicityEntry.text = "default"
+        countryEntry.text = "default"
+        genderEntry.text = "default"
+        heightEntry.text = String(150)
+        weightEntry.text = String(150)
+        bdPicker.date = Date()
+        proteinEntry.text = String(10)
+        carbsEntry.text = String(10)
+        fatEntry.text = String(10)
+        sugarEntry.text = String(10)
+        
+        //get these values based on userID
+    }
+    @IBAction func saveChangesTapped(_ sender: Any) {
+        //save entered values to database
     }
 }
 

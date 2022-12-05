@@ -10,7 +10,10 @@ import UIKit
 
 class ClientMainMenuViewController : UIViewController
 {
-    var userID: Int = 0 //set this to the uses ID of the signed in user
+    var userID: Int! //set this to the uses ID of the signed in user
+    
+    
+    @IBOutlet weak var idLabel: UILabel!
     
     @IBOutlet weak var profileButton: UIButton!
     
@@ -30,6 +33,9 @@ class ClientMainMenuViewController : UIViewController
         self.performSegue(withIdentifier: "listSegue", sender: self)
     }
     
+    @IBAction func recipesTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "clientRecipesSegue", sender: self)
+    }
     
     
     
@@ -49,18 +55,32 @@ class ClientMainMenuViewController : UIViewController
     
     @IBOutlet weak var feedbackButton: UIButton!
     
-    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //    if(segue.identifier == "profileSegue"){
-    //        let clientProfileViewController = segue.destination as? ClientProfileViewController
-            
-     //   }
-     //   else if(segue.identifier == "journalSegue"){
-     //       let clientJournalViewController = segue.destination as? TableViewController
-    //    }
-    //}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "profileSegue"){
+            let dest = segue.destination as? ClientProfileViewController
+            dest!.userID = userID
+        }
+        else if(segue.identifier == "journalSegue"){
+            let dest = segue.destination as? ClientJournalTableViewController
+            dest!.userID = userID
+        }
+        else if(segue.identifier == "clientWorkoutProgramsSegue"){
+            let dest = segue.destination as? ClientWorkoutTableViewController
+            dest!.userID = userID
+        }
+        else if(segue.identifier == "clientRecipesSegue"){
+            let dest = segue.destination as? ClientRecipesTableViewController
+            dest!.userID = userID
+        }
+        else if(segue.identifier == "glistSegue"){
+            let dest = segue.destination as? ClientGListTableViewController
+            dest!.userID = userID
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        idLabel.text = "User ID: " + String(userID)
         // Do any additional setup after loading the view.
     }
     
