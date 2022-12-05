@@ -11,6 +11,10 @@
 		5A605553293D31A600F75AB6 /* GroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A605552293D31A600F75AB6 /* GroceryList.swift */; };
 		5A605555293D35A900F75AB6 /* OnList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A605554293D35A900F75AB6 /* OnList.swift */; };
 		5A605557293D3A3B00F75AB6 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A605556293D3A3B00F75AB6 /* Food.swift */; };
+		5A605559293E109500F75AB6 /* IncludedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A605558293E109500F75AB6 /* IncludedIn.swift */; };
+		5A60555B293E114700F75AB6 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60555A293E114700F75AB6 /* MealPlan.swift */; };
+		5A60555D293E11F400F75AB6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60555C293E11F400F75AB6 /* Recipe.swift */; };
+		5A60555F293E13E500F75AB6 /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60555E293E13E500F75AB6 /* feedback.swift */; };
 		5F0EA81C29341F9F006D8876 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81B29341F9F006D8876 /* AppDelegate.swift */; };
 		5F0EA81E29341F9F006D8876 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81D29341F9F006D8876 /* SceneDelegate.swift */; };
 		5F0EA82029341F9F006D8876 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA81F29341F9F006D8876 /* LoginViewController.swift */; };
@@ -55,6 +59,10 @@
 		5A605552293D31A600F75AB6 /* GroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
 		5A605554293D35A900F75AB6 /* OnList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnList.swift; sourceTree = "<group>"; };
 		5A605556293D3A3B00F75AB6 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		5A605558293E109500F75AB6 /* IncludedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludedIn.swift; sourceTree = "<group>"; };
+		5A60555A293E114700F75AB6 /* MealPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
+		5A60555C293E11F400F75AB6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		5A60555E293E13E500F75AB6 /* feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedback.swift; sourceTree = "<group>"; };
 		5F0EA81829341F9F006D8876 /* Fitness App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0EA81B29341F9F006D8876 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F0EA81D29341F9F006D8876 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,9 +158,13 @@
 				5F0EA82929341FA8006D8876 /* Info.plist */,
 				BF8757DF293547840052E610 /* DBHelper.swift */,
 				5A60550F2939FC0F00F75AB6 /* UserClass.swift */,
+				5A60555E293E13E500F75AB6 /* feedback.swift */,
 				5A605552293D31A600F75AB6 /* GroceryList.swift */,
 				5A605554293D35A900F75AB6 /* OnList.swift */,
 				5A605556293D3A3B00F75AB6 /* Food.swift */,
+				5A605558293E109500F75AB6 /* IncludedIn.swift */,
+				5A60555A293E114700F75AB6 /* MealPlan.swift */,
+				5A60555C293E11F400F75AB6 /* Recipe.swift */,
 			);
 			path = "Fitness App";
 			sourceTree = "<group>";
@@ -310,8 +322,12 @@
 				5F5F4ACE293BCEB00027C017 /* JournalEntryViewController.swift in Sources */,
 				5A605553293D31A600F75AB6 /* GroceryList.swift in Sources */,
 				5A605555293D35A900F75AB6 /* OnList.swift in Sources */,
+				5A60555B293E114700F75AB6 /* MealPlan.swift in Sources */,
+				5A60555F293E13E500F75AB6 /* feedback.swift in Sources */,
 				5A605557293D3A3B00F75AB6 /* Food.swift in Sources */,
+				5A605559293E109500F75AB6 /* IncludedIn.swift in Sources */,
 				5F11ED23293A6B4300A69D65 /* TableViewController.swift in Sources */,
+				5A60555D293E11F400F75AB6 /* Recipe.swift in Sources */,
 				5F5F4AC8293BC05F0027C017 /* FilterViewController.swift in Sources */,
 				5F0EA82029341F9F006D8876 /* LoginViewController.swift in Sources */,
 				5F5F4ACA293BC4180027C017 /* ViewController.swift in Sources */,

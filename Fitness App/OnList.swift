@@ -13,7 +13,6 @@ class OnList{
     var foodID: [Int]
     var clientID : Int
     var Quantity : Int = 0
-    var FoodList : [Food]
     
     init(listID: Int,clientID:Client) {
         self.listID = listID
@@ -23,8 +22,13 @@ class OnList{
     public func createList(foodList: [Food]){
         var i:Int = 0
         while(!foodList.isEmpty){
-            self.foodID[i] = foodList[i].food
+            if !self.foodID.contains(foodList[i].foodID){
+                continue
+            }
+            self.foodID[i] = foodList[i].foodID
         }
     }
+    
+    //Instert delete edit functions that we can copy/paste
     
 }
