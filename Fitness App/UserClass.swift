@@ -88,7 +88,7 @@ class User{
 
 class Client: User {
     //Since User ID already in the User class, we don't need to worry about it
-    var listID : Int
+    var listID : Int = 0
     var protien : Double
     var carbohydrates : Double
     var fat: Double
@@ -105,6 +105,10 @@ class Client: User {
         self.weight = weight
         self.sugar = sugar
         self.height = height
+    }
+    
+    public func setList(LID: OnList){
+        // Retrive 
     }
     
     public func insert(cli:Client) -> Bool{
