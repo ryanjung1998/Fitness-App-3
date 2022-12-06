@@ -31,8 +31,8 @@ class DBHelper{
     
     func insertDefaults(){
         // Just passing in today's date until we find a way to give it a real date
-        insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
-        
+        //insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
+        insertClient(UserID: 1, Protein: 2, Carbohydrates: 3, Fat: 4, Weight: 5, Sugar: 6, Height: 7, ListID: 8)
     }
     
     func insertUser(Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
@@ -56,7 +56,186 @@ class DBHelper{
             print("User query is not as per requirement")
         }
     }
+    // [TODO] Make admin promotion function
+    //Protein INT, Carbohydrates INT,Fat INT,Weight INT,Sugar INT,Height INT,ListID INT,
+    func insertClient(UserID :Int, Protein: Int, Carbohydrates: Int, Fat: Int, Weight: Int, Sugar: Int, Height: Int, ListID: Int){
+        let query = "INSERT INTO CLIENT (UserID, Protein, Carbohydrates, Fat, Weight, Sugar, Height, ListID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(UserID)) // Double check
+            sqlite3_bind_int(statement, 2, Int32(Protein))
+            sqlite3_bind_int(statement, 3, Int32(Carbohydrates))
+            sqlite3_bind_int(statement, 4, Int32(Fat))
+            sqlite3_bind_int(statement, 5, Int32(Weight))
+            sqlite3_bind_int(statement, 6, Int32(Sugar))
+            sqlite3_bind_int(statement, 7, Int32(Height))
+            sqlite3_bind_int(statement, 8, Int32(ListID))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Client inserted successfully")
+            } else {
+                print("Client data unable to be inserted")
+            }
+        } else {
+            print("Client query is not as per requirement")
+        }
+    }
     
+    func insertPerformed(UserID: Int, Program_name: String, PerDate: Date){
+        let query = "INSERT INTO PERFORMED (UserID, Program_name, PerDate) VALUES (?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(UserID)) // Double check
+            sqlite3_bind_text(statement, 2, (Program_name as NSString).utf8String, -1, nil)
+            let formatter1 = DateFormatter() // Format date as string
+            formatter1.dateStyle = .short    // Formatting
+            sqlite3_bind_text(statement, 3, ((formatter1.string(from: PerDate)) as NSString).utf8String, -1, nil)
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Performed inserted successfully")
+            } else {
+                print("Performed data unable to be inserted")
+            }
+        } else {
+            print("Performed query is not as per requirement")
+        }
+    }
+    
+    // In SQLite, bools are 0 for false and 1 for true
+    func insertExercise(Name: String, MET: Int, CreatorID: Int, CardioFlag: Bool, StrengthFlag: Bool){
+        let query = "INSERT INTO EXERCISE (Name, MET, CreatorID, CardioFlag, StrengthFlag) VALUES (?, ?, ?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_text(statement, 1, (Name as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(statement, 2, Int32(MET)) // Double check
+            sqlite3_bind_int(statement, 3, Int32(CreatorID))
+            let cardio = CardioFlag ? 1 : 0
+            sqlite3_bind_int(statement, 4, Int32(cardio))
+            let strength = StrengthFlag ? 1 : 0
+            sqlite3_bind_int(statement, 5, Int32(strength))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Exercise inserted successfully")
+            } else {
+                print("Exercise data unable to be inserted")
+            }
+        } else {
+            print("Exercise query is not as per requirement")
+        }
+    }
+    func insertMusclesWorked(Name: String, CreatorID: Int, Muscle: String){
+        let query = "INSERT INTO MUSCLES_WORKED (Name, CreatorID, Muscle) VALUES (?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_text(statement, 1, (Name as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(statement, 2, Int32(CreatorID))
+            sqlite3_bind_text(statement, 3, (Muscle as NSString).utf8String, -1, nil)
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Muscles_Worked inserted successfully")
+            } else {
+                print("Muscles_Worked data unable to be inserted")
+            }
+        } else {
+            print("Muscles_Worked query is not as per requirement")
+        }
+    }
+    func insertExerciseEquipment(Name: String, Equipment_Name: String){
+        let query = "INSERT INTO EXERCISE_EQUIPMENT (Name, Equipment_Name) VALUES (?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_text(statement, 1, (Name as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 2, (Equipment_Name as NSString).utf8String, -1, nil)
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Exercise_Equipment inserted successfully")
+            } else {
+                print("Exercise_Equipment data unable to be inserted")
+            }
+        } else {
+            print("Exercise_Equipment query is not as per requirement")
+        }
+    }
+    func insertWorkoutProgram(UserID: Int, Name: String, Privacy: Bool){
+        let query = "INSERT INTO WORKOUT_PROGRAM (UserID, Name, Privacy) VALUES (?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(UserID)) // Double check
+            sqlite3_bind_text(statement, 2, (Name as NSString).utf8String, -1, nil)
+            let priv = Privacy ? 1 : 0
+            sqlite3_bind_int(statement, 3, Int32(priv))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Workout_Program inserted successfully")
+            } else {
+                print("Workout_Program data unable to be inserted")
+            }
+        } else {
+            print("Workout_Program query is not as per requirement")
+        }
+    }
+    
+    func insertProIncEx(PName: String, EName: String,PersonalRecord: Int, Weight: Int, Repetitions: Int, Sets: Int, Time: Int, Distance: Int, CreatorID: Int){
+        let query = "INSERT INTO PROGRAM_INCLUDES_EXERCISE (PName, EName, PersonalRecord, Weight, Repetitions, Sets, Time, Distance, CreatorID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_text(statement, 1, (PName as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 2, (EName as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(statement, 3, Int32(PersonalRecord)) // Double check
+            sqlite3_bind_int(statement, 4, Int32(Weight)) // Double check
+            sqlite3_bind_int(statement, 5, Int32(Repetitions)) // Double check
+            sqlite3_bind_int(statement, 6, Int32(Sets)) // Double check
+            sqlite3_bind_int(statement, 7, Int32(Time)) // Double check
+            sqlite3_bind_int(statement, 8, Int32(Distance)) // Double check
+            sqlite3_bind_int(statement, 9, Int32(CreatorID)) // Double check
+            
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Program_Includes_Exercise inserted successfully")
+            } else {
+                print("Program_Includes_Exercise data unable to be inserted")
+            }
+        } else {
+            print("Program_Includes_Exercise query is not as per requirement")
+        }
+    }
+    func insertJournal(UserID: Int, JDate: Date, Weight: Int, CaloriesBurned: Int, Quality: String, Hours: Int){
+        let query = "INSERT INTO JOURNAL_ENTRY (UserID, JDate, Weight, CaloriesBurned, Quality, Hours) VALUES (?, ?, ?, ?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(UserID))
+            let formatter1 = DateFormatter() // Format date as string
+            formatter1.dateStyle = .short    // Formatting
+            sqlite3_bind_text(statement, 2, ((formatter1.string(from: JDate)) as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(statement, 3, Int32(Weight))
+            sqlite3_bind_int(statement, 4, Int32(CaloriesBurned))
+            sqlite3_bind_text(statement, 5, (Quality as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(statement, 6, Int32(Hours))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Journal_entry inserted successfully")
+            } else {
+                print("Journal_entry data unable to be inserted")
+            }
+        } else {
+            print("Journal_entry query is not as per requirement")
+        }
+    }
+    
+    
+    
+    
+    
+    
+    // ---------------- CREATING TABLES --------------- //
     func createDefaults(){
         let createUser = "CREATE TABLE IF NOT EXISTS USER(UserID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Birth_date DATE NOT NULL, Gender VARCHAR(10), CountryOfResidence VARCHAR(10), Ethnicity VARCHAR(10));"
         var statement : OpaquePointer? = nil
@@ -93,7 +272,7 @@ class DBHelper{
             print("Preparation for client table failed") // Remove later
         }
         
-        let createPerformed = "CREATE TABLE IF NOT EXISTS PERFORMED (UserID   INT   NOT NULL,Program_Name   VARCHAR(15)   NOT NULL,Date   DATE   NOT NULL,PRIMARY KEY (UserID, Program_Name, Date),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID),FOREIGN KEY (Program_Name) REFERENCES WORKOUT_PROGRAM(Name),FOREIGN KEY (Date) REFERENCES JOURNAL_ENTRY(Date));"
+        let createPerformed = "CREATE TABLE IF NOT EXISTS PERFORMED (UserID   INT   NOT NULL,Program_Name   VARCHAR(15)   NOT NULL,PerDate   DATE   NOT NULL,PRIMARY KEY (UserID, Program_Name, PerDate),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID),FOREIGN KEY (Program_Name) REFERENCES WORKOUT_PROGRAM(Name),FOREIGN KEY (Date) REFERENCES JOURNAL_ENTRY(Date));"
         if sqlite3_prepare_v2(self.db, createPerformed, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created performed successfully") // Remove later
