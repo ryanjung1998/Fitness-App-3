@@ -19,7 +19,7 @@
 		5F0EA83F29341FA9006D8876 /* Fitness_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EA83E29341FA9006D8876 /* Fitness_AppUITestsLaunchTests.swift */; };
 		5F11ED21293A697800A69D65 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED20293A697800A69D65 /* TableViewCell.swift */; };
 		5F11ED23293A6B4300A69D65 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED22293A6B4300A69D65 /* TableViewController.swift */; };
-		5F11ED25293A852600A69D65 /* ClientMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED24293A852600A69D65 /* ClientMainMenuViewController.swift */; };
+		5F11ED25293A852600A69D65 /* ClientMainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED24293A852600A69D65 /* ClientMainMenuView.swift */; };
 		5F30C24D293BF58100A22997 /* ClientProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F30C24C293BF58100A22997 /* ClientProgramTableViewController.swift */; };
 		5F30C24F293BF6E300A22997 /* exInProgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F30C24E293BF6E300A22997 /* exInProgTableViewCell.swift */; };
 		5F5F4AC8293BC05F0027C017 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5F4AC7293BC05F0027C017 /* FilterViewController.swift */; };
@@ -30,6 +30,17 @@
 		5F8705EC293D200B00A0D3E8 /* ClientGListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705EB293D200B00A0D3E8 /* ClientGListTableViewController.swift */; };
 		5F8705EE293D261D00A0D3E8 /* GListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705ED293D261D00A0D3E8 /* GListTableViewCell.swift */; };
 		5F8705F0293D611800A0D3E8 /* ClientRemoveExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705EF293D611800A0D3E8 /* ClientRemoveExerciseViewController.swift */; };
+		5F8705F2293E610200A0D3E8 /* FilterWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705F1293E610200A0D3E8 /* FilterWorkoutsViewController.swift */; };
+		5F8705F4293E664E00A0D3E8 /* ClientExercisesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705F3293E664E00A0D3E8 /* ClientExercisesTableViewController.swift */; };
+		5F8705F6293E6B6400A0D3E8 /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705F5293E6B6400A0D3E8 /* ExerciseDetailsViewController.swift */; };
+		5F8705F8293E9C0A00A0D3E8 /* AddToProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705F7293E9C0A00A0D3E8 /* AddToProgramViewController.swift */; };
+		5F8705FA293EA78C00A0D3E8 /* ExerciseFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705F9293EA78C00A0D3E8 /* ExerciseFilterViewController.swift */; };
+		5F8705FC293EB6AB00A0D3E8 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705FB293EB6AB00A0D3E8 /* RecipeViewController.swift */; };
+		5F8705FE293EC50C00A0D3E8 /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705FD293EC50C00A0D3E8 /* IngredientsViewController.swift */; };
+		5F870600293EC7DE00A0D3E8 /* EditIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8705FF293EC7DE00A0D3E8 /* EditIngredientsViewController.swift */; };
+		5F870602293ED06000A0D3E8 /* AddToPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F870601293ED06000A0D3E8 /* AddToPlanViewController.swift */; };
+		5F99DAF8293F00CE00434178 /* recipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F99DAF7293F00CE00434178 /* recipeTableViewCell.swift */; };
+		5F99DAFA293F082E00434178 /* ClientWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F99DAF9293F082E00434178 /* ClientWorkoutTableViewController.swift */; };
 		BF8757E0293547840052E610 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8757DF293547840052E610 /* DBHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,8 +78,7 @@
 		5F0EA83E29341FA9006D8876 /* Fitness_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5F11ED20293A697800A69D65 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5F11ED22293A6B4300A69D65 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		5F11ED24293A852600A69D65 /* ClientMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMainMenuViewController.swift; sourceTree = "<group>"; };
-		5F30C24A293BEDD100A22997 /* ClientWorkoutTableProgramsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientWorkoutTableProgramsViewController.swift; sourceTree = "<group>"; };
+		5F11ED24293A852600A69D65 /* ClientMainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMainMenuView.swift; sourceTree = "<group>"; };
 		5F30C24C293BF58100A22997 /* ClientProgramTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProgramTableViewController.swift; sourceTree = "<group>"; };
 		5F30C24E293BF6E300A22997 /* exInProgTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exInProgTableViewCell.swift; sourceTree = "<group>"; };
 		5F5F4AC7293BC05F0027C017 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +89,17 @@
 		5F8705EB293D200B00A0D3E8 /* ClientGListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientGListTableViewController.swift; sourceTree = "<group>"; };
 		5F8705ED293D261D00A0D3E8 /* GListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GListTableViewCell.swift; sourceTree = "<group>"; };
 		5F8705EF293D611800A0D3E8 /* ClientRemoveExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRemoveExerciseViewController.swift; sourceTree = "<group>"; };
+		5F8705F1293E610200A0D3E8 /* FilterWorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorkoutsViewController.swift; sourceTree = "<group>"; };
+		5F8705F3293E664E00A0D3E8 /* ClientExercisesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientExercisesTableViewController.swift; sourceTree = "<group>"; };
+		5F8705F5293E6B6400A0D3E8 /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
+		5F8705F7293E9C0A00A0D3E8 /* AddToProgramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToProgramViewController.swift; sourceTree = "<group>"; };
+		5F8705F9293EA78C00A0D3E8 /* ExerciseFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFilterViewController.swift; sourceTree = "<group>"; };
+		5F8705FB293EB6AB00A0D3E8 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		5F8705FD293EC50C00A0D3E8 /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
+		5F8705FF293EC7DE00A0D3E8 /* EditIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIngredientsViewController.swift; sourceTree = "<group>"; };
+		5F870601293ED06000A0D3E8 /* AddToPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlanViewController.swift; sourceTree = "<group>"; };
+		5F99DAF7293F00CE00434178 /* recipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeTableViewCell.swift; sourceTree = "<group>"; };
+		5F99DAF9293F082E00434178 /* ClientWorkoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientWorkoutTableViewController.swift; sourceTree = "<group>"; };
 		BF8757DF293547840052E610 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,20 +153,30 @@
 			children = (
 				5F0EA81B29341F9F006D8876 /* AppDelegate.swift */,
 				5F0EA81D29341F9F006D8876 /* SceneDelegate.swift */,
-				5F0EA81F29341F9F006D8876 /* LoginViewController.swift */,
 				5F11ED22293A6B4300A69D65 /* TableViewController.swift */,
-				5F5F4ACB293BC7B50027C017 /* ClientJournalTableViewController.swift */,
-				5F11ED24293A852600A69D65 /* ClientMainMenuViewController.swift */,
-				5F7A45EA293A9C52001190E1 /* ClientProfileViewController.swift */,
-				5F5F4AC7293BC05F0027C017 /* FilterViewController.swift */,
 				5F11ED20293A697800A69D65 /* TableViewCell.swift */,
+				5F5F4AC7293BC05F0027C017 /* FilterViewController.swift */,
+				5F0EA81F29341F9F006D8876 /* LoginViewController.swift */,
+				5F11ED24293A852600A69D65 /* ClientMainMenuView.swift */,
+				5F7A45EA293A9C52001190E1 /* ClientProfileViewController.swift */,
+				5F5F4ACB293BC7B50027C017 /* ClientJournalTableViewController.swift */,
 				5F5F4ACD293BCEB00027C017 /* JournalEntryViewController.swift */,
-				5F30C24A293BEDD100A22997 /* ClientWorkoutTableProgramsViewController.swift */,
+				5F8705F3293E664E00A0D3E8 /* ClientExercisesTableViewController.swift */,
+				5F8705F5293E6B6400A0D3E8 /* ExerciseDetailsViewController.swift */,
+				5F8705F7293E9C0A00A0D3E8 /* AddToProgramViewController.swift */,
+				5F8705F9293EA78C00A0D3E8 /* ExerciseFilterViewController.swift */,
+				5F99DAF9293F082E00434178 /* ClientWorkoutTableViewController.swift */,
 				5F30C24C293BF58100A22997 /* ClientProgramTableViewController.swift */,
 				5F8705EF293D611800A0D3E8 /* ClientRemoveExerciseViewController.swift */,
+				5F8705F1293E610200A0D3E8 /* FilterWorkoutsViewController.swift */,
 				5F8705E7293C50DE00A0D3E8 /* ClientRecipesTableViewController.swift */,
+				5F8705FB293EB6AB00A0D3E8 /* RecipeViewController.swift */,
+				5F8705FD293EC50C00A0D3E8 /* IngredientsViewController.swift */,
+				5F8705FF293EC7DE00A0D3E8 /* EditIngredientsViewController.swift */,
+				5F870601293ED06000A0D3E8 /* AddToPlanViewController.swift */,
 				5F8705EB293D200B00A0D3E8 /* ClientGListTableViewController.swift */,
 				5F30C24E293BF6E300A22997 /* exInProgTableViewCell.swift */,
+				5F99DAF7293F00CE00434178 /* recipeTableViewCell.swift */,
 				5F8705ED293D261D00A0D3E8 /* GListTableViewCell.swift */,
 				5F0EA82129341F9F006D8876 /* Main.storyboard */,
 				5F0EA82429341FA8006D8876 /* Assets.xcassets */,
@@ -305,20 +336,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F11ED25293A852600A69D65 /* ClientMainMenuViewController.swift in Sources */,
+				5F11ED25293A852600A69D65 /* ClientMainMenuView.swift in Sources */,
 				5F11ED21293A697800A69D65 /* TableViewCell.swift in Sources */,
 				5F5F4ACE293BCEB00027C017 /* JournalEntryViewController.swift in Sources */,
+				5F99DAF8293F00CE00434178 /* recipeTableViewCell.swift in Sources */,
 				5F11ED23293A6B4300A69D65 /* TableViewController.swift in Sources */,
+				5F8705FC293EB6AB00A0D3E8 /* RecipeViewController.swift in Sources */,
+				5F8705F2293E610200A0D3E8 /* FilterWorkoutsViewController.swift in Sources */,
+				5F8705F4293E664E00A0D3E8 /* ClientExercisesTableViewController.swift in Sources */,
+				5F99DAFA293F082E00434178 /* ClientWorkoutTableViewController.swift in Sources */,
 				5F5F4AC8293BC05F0027C017 /* FilterViewController.swift in Sources */,
 				5F8705EC293D200B00A0D3E8 /* ClientGListTableViewController.swift in Sources */,
 				5F0EA82029341F9F006D8876 /* LoginViewController.swift in Sources */,
 				5F0EA81C29341F9F006D8876 /* AppDelegate.swift in Sources */,
 				5A605513293BD54000F75AB6 /* ObjectClasses.swift in Sources */,
+				5F8705FA293EA78C00A0D3E8 /* ExerciseFilterViewController.swift in Sources */,
+				5F8705FE293EC50C00A0D3E8 /* IngredientsViewController.swift in Sources */,
 				5F7A45EB293A9C52001190E1 /* ClientProfileViewController.swift in Sources */,
 				5F0EA81E29341F9F006D8876 /* SceneDelegate.swift in Sources */,
 				5F8705EE293D261D00A0D3E8 /* GListTableViewCell.swift in Sources */,
 				5F30C24F293BF6E300A22997 /* exInProgTableViewCell.swift in Sources */,
+				5F870600293EC7DE00A0D3E8 /* EditIngredientsViewController.swift in Sources */,
+				5F8705F6293E6B6400A0D3E8 /* ExerciseDetailsViewController.swift in Sources */,
+				5F8705F8293E9C0A00A0D3E8 /* AddToProgramViewController.swift in Sources */,
 				5F5F4ACC293BC7B50027C017 /* ClientJournalTableViewController.swift in Sources */,
+				5F870602293ED06000A0D3E8 /* AddToPlanViewController.swift in Sources */,
 				5F30C24D293BF58100A22997 /* ClientProgramTableViewController.swift in Sources */,
 				BF8757E0293547840052E610 /* DBHelper.swift in Sources */,
 				5F8705F0293D611800A0D3E8 /* ClientRemoveExerciseViewController.swift in Sources */,
