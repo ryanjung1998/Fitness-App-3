@@ -28,7 +28,7 @@ class DBHelper{
             return db
         }
     }
-    
+    // ------------ INSERTING FUNCTIONS --------------- //
     func insertDefaults(){
         // Just passing in today's date until we find a way to give it a real date
         //insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
@@ -231,8 +231,11 @@ class DBHelper{
     }
     
     
+    //----- Deleting Functions -------- //
     
+    //-------Editing fucntions ------//
     
+    func editClient()
     
     
     // ---------------- CREATING TABLES --------------- //
