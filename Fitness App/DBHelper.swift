@@ -36,10 +36,21 @@ class DBHelper{
         insertExerciseEquipment(Name: "Bench Press", Equipment_Name: "Bench and Barbell")
         insertWorkoutProgram(UserID: 1, Name: "Chest Day", Privacy: false)
         insertMusclesWorked(Name: "Bench Press", CreatorID: 1, Muscle: "Chest")
-        // [TODO] Just passing in today's date until we find a way to give it a real date
+//         [TODO] Just passing in today's date until we find a way to give it a real date
         insertPerformed(UserID: 1, Program_name: "Chest Day", PerDate: Date())
         insertJournal(UserID: 1, JDate: Date(), Weight: 115, CaloriesBurned: 150, Quality: "Good", Hours: 1)
         insertProIncEx(PName: "Chest Day", EName:"Bench Press", PersonalRecord: 225, Weight: 135, Repetitions: 12, Sets: 3, Time: 60, Distance: 0, CreatorID: 1)
+        print("\nNew functions: \n")
+
+
+        insertFeedback(AdminID: 1, ClientID: 2, Comments: "You are the best")
+        insertGroceryList(ClientID: 1, ListID: 2)
+        insertMealPlan(UserID: 2, Name: "Keto Diet", Privacy: true)
+        insertMealConsistsOf(MealName: "Keto Diet", RecipeName: "Keto Recipe", Servings: 5)
+        insertOnGroceryList(ListId: 2, FoodId: 1, Quantity: 3, ClientID: 2)
+        insertRecipe(CreatorId: 1, RecipeName: "Keto Recipe", Privacy: false, Instructions: "Make any meal and replace rice with quinoa", PrepTime: 5, TotalCalories: 350, TotalProtein: 30, TotalFat: 15, TotalCarbs: 5)
+        insertFood(FoodID: 1, Calories: 8, Price: 1, Fat: 0, Carbohydrates: 5, Protein: 8, Sugar: 2, Name: "Quinoa", CreatorID: 1)
+        insertIncludedIn(RecipeID: "Keto Recipe", CreatorID: 1, FoodID: 1)
     }
     
     // ---------------- INSERTING TUPLES --------------- //
@@ -237,6 +248,9 @@ class DBHelper{
             print("Journal_entry query is not as per requirement")
         }
     }
+    
+    
+    
     func insertFeedback(AdminID: Int, ClientID: Int, Comments: String){
         let query = "INSERT INTO FEEDBACK (AdminID, ClientID, Comments) VALUES (?, ?, ?)"
         var statement : OpaquePointer? = nil
@@ -255,6 +269,7 @@ class DBHelper{
             print("Feedback query is not as per requirement")
         }
     }
+    
     func insertGroceryList(ClientID: Int, ListID: Int){
         let query = "INSERT INTO GROCERY_LIST (ClientID, ListID) VALUES (?, ?)"
         var statement : OpaquePointer? = nil
@@ -272,8 +287,9 @@ class DBHelper{
             print("Grocery_list query is not as per requirement")
         }
     }
+    
     func insertMealPlan(UserID: Int, Name: String, Privacy: Bool){
-        let query = "INSERT INTO MEAL_PLAN (UserID, Name) VALUES (?, ?, ?)"
+        let query = "INSERT INTO MEAL_PLAN (UserID, Name, Privacy) VALUES (?, ?, ?)"
         var statement : OpaquePointer? = nil
         
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
@@ -292,8 +308,113 @@ class DBHelper{
         }
     }
     
+    func insertMealConsistsOf(MealName: String, RecipeName: String, Servings: Int){
+        let query = "INSERT INTO MEAL_CONSISTS_OF (MealName, RecipeName, Servings) VALUES (?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_text(statement, 1, (MealName as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 2, (RecipeName as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(statement, 3, Int32(Servings))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Meal_consists_of inserted successfully")
+            } else {
+                print("Meal_consists_of data unable to be inserted")
+            }
+        } else {
+            print("Meal_consists_of query is not as per requirement")
+        }
+    }
     
+    func insertOnGroceryList(ListId: Int, FoodId: Int, Quantity: Int, ClientID: Int){
+        let query = "INSERT INTO ON_GROCERY_LIST (ListId, FoodId, Quantity, ClientID) VALUES (?, ?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(ListId))
+            sqlite3_bind_int(statement, 2, Int32(FoodId))
+            sqlite3_bind_int(statement, 3, Int32(Quantity))
+            sqlite3_bind_int(statement, 4, Int32(ClientID))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("On_Grocery_List inserted successfully")
+            } else {
+                print("On_Grocery_List data unable to be inserted")
+            }
+        } else {
+            print("On_Grocery_List query is not as per requirement")
+        }
+    }
     
+    func insertRecipe(CreatorId: Int,RecipeName: String,Privacy: Bool,Instructions: String,PrepTime: Int,TotalCalories: Int,TotalProtein: Int,TotalFat: Int, TotalCarbs: Int){
+        let query = "INSERT INTO RECIPE (CreatorId, RecipeName, Privacy, Instructions, PrepTime, TotalCalories, TotalProtein, TotalFat, TotalCarbs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(CreatorId))
+            sqlite3_bind_text(statement, 2, (RecipeName as NSString).utf8String, -1, nil)
+            let priv = Privacy ? 1 : 0
+            sqlite3_bind_int(statement, 3, Int32(priv))
+            sqlite3_bind_text(statement, 4, (Instructions as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(statement, 5, Int32(PrepTime))
+            sqlite3_bind_int(statement, 6, Int32(TotalCalories))
+            sqlite3_bind_int(statement, 7, Int32(TotalProtein))
+            sqlite3_bind_int(statement, 8, Int32(TotalFat))
+            sqlite3_bind_int(statement, 9, Int32(TotalCarbs))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Recipe inserted successfully")
+            } else {
+                print("Recipe data unable to be inserted")
+            }
+        } else {
+            print("Recipe query is not as per requirement")
+        }
+    }
+    
+    func insertFood(FoodID: Int, Calories: Int, Price: Int, Fat: Int,Carbohydrates: Int, Protein: Int, Sugar: Int, Name: String, CreatorID: Int){
+        let query = "INSERT INTO FOOD (FoodID, Calories, Price, Fat, Carbohydrates, Protein, Sugar, Name, CreatorID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(FoodID))
+            sqlite3_bind_int(statement, 2, Int32(Calories))
+            sqlite3_bind_int(statement, 3, Int32(Price))
+            sqlite3_bind_int(statement, 4, Int32(Fat))
+            sqlite3_bind_int(statement, 5, Int32(Carbohydrates))
+            sqlite3_bind_int(statement, 6, Int32(Protein))
+            sqlite3_bind_int(statement, 7, Int32(Sugar))
+            sqlite3_bind_text(statement, 8, (Name as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(statement, 9, Int32(CreatorID))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Food inserted successfully")
+            } else {
+                print("Food data unable to be inserted")
+            }
+        } else {
+            print("Food query is not as per requirement")
+        }
+    }
+    func insertIncludedIn(RecipeID: String, CreatorID: Int, FoodID: Int){
+        let query = "INSERT INTO INCLUDED_IN (RecipeID, CreatorID, FoodID) VALUES (?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_text(statement, 1, (RecipeID as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(statement, 2, Int32(CreatorID))
+            sqlite3_bind_int(statement, 3, Int32(FoodID))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Included_in inserted successfully")
+            } else {
+                print("Included_in data unable to be inserted")
+            }
+        } else {
+            print("Included_in query is not as per requirement")
+        }
+    }
     
     
     
