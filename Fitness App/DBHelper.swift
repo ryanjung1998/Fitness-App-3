@@ -416,6 +416,100 @@ class DBHelper{
         }
     }
     
+    // Edit fucntions
+    
+    func editClientProtein(usrID: Int, Protien:Int){
+        let query:String = "UPDATE CLIENT SET Protein = \(Protien)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Protien has been made")
+            }
+            else{
+                print("The edit to Protien has not been made")
+                
+            }
+        
+        }
+        else{
+            print("Edit not considered")
+        }
+    }
+    func editClientCarbs(usrID: Int, carbs:Int){
+        let query:String = "UPDATE CLIENT SET Carbohydrates = \(carbs)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Carbohydrates has been made")
+            }
+            else{
+                print("The edit to Carbohydrates has not been made")
+                
+            }
+        }
+    }
+    
+    func editClientFat(usrID: Int, Fat:Int){
+        let query:String = "UPDATE CLIENT SET Fat = \(Fat)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Fat has been made")
+            }
+            else{
+                print("The edit to Fat has not been made")
+                
+            }
+        }
+    }
+    
+    func editClientWeight(usrID: Int, val:Int){
+        let query:String = "UPDATE CLIENT SET Weight = \(val)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Weight has been made")
+            }
+            else{
+                print("The edit to Weight has not been made")
+                
+            }
+        }
+    }
+    
+    func editClientSugar(usrID: Int, val:Int){
+        let query:String = "UPDATE CLIENT SET Sugar = \(val)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Weight has been made")
+            }
+            else{
+                print("The edit to Weight has not been made")
+                
+            }
+        }
+    }
+    
+    func editClientHeight(usrID: Int, val:Int){
+        let query:String = "UPDATE CLIENT SET Height = \(val)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Height has been made")
+            }
+            else{
+                print("The edit to Height has not been made")
+                
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
     
     
     // ---------------- CREATING TABLES --------------- //
