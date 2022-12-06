@@ -5,7 +5,6 @@
 //  Created by Ryan Jung on 2022-12-03.
 //
 
-import Foundation
 import UIKit
 
 class JournalEntryViewController : UIViewController

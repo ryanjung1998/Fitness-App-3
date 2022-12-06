@@ -68,6 +68,9 @@ class ClientProgramTableViewController: UIViewController, UITableViewDataSource,
             tableViewProg!.userID = userID
             tableViewProg!.progName = progName
             tableViewProg!.creatorID = creatorID
+            tableViewProg!.reps = repsList[indexPath.row]
+            tableViewProg!.sets = setsList[indexPath.row]
+            tableViewProg!.dur = durList[indexPath.row]
             //these values will come from the database
             self.entryTableView.deselectRow(at: indexPath, animated: true)
         }

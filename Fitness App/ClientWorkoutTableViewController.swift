@@ -1,24 +1,24 @@
 //
-//  ClientWorkoutProgramsViewController.swift
+//  ClientWorkoutTableTest.swift
 //  Fitness App
 //
-//  Created by Ryan Jung on 2022-12-03.
+//  Created by Ryan Jung on 2022-12-05.
 //
 
 import UIKit
 
-class ClientWorkoutTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ClientWorkoutTableTest: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var entryTableView: UITableView!
     
     var userID : Int!
     var entryList = [String]()
     var creatorIDList = [Int]()
+    var filtName : String?
+    var filtID : Int?
     //list of program objects
+    
     override func viewDidLoad() {
-        //let db = DBHelper() // Initialize a database
-        //db.createDefaults() // Load in deafult tables
-        // don't know if need this stuff
         super.viewDidLoad()
         initList()
         // Do any additional setup after loading the view.
@@ -40,11 +40,12 @@ class ClientWorkoutTableViewController: UIViewController, UITableViewDataSource,
         let thisEntry = entryList[indexPath.row]
         tableViewCell.entryName.text = thisEntry
         return tableViewCell
-    
-        
-        
     }
     
+    
+    @IBAction func filterTapped(_ sender: Any) {
+        performSegue(withIdentifier: "filterWorkoutsSegue", sender: self)
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "progSegue", sender: self)
     }
@@ -59,7 +60,6 @@ class ClientWorkoutTableViewController: UIViewController, UITableViewDataSource,
             self.entryTableView.deselectRow(at: indexPath, animated: true)
         }
     }
-
 }
 
     

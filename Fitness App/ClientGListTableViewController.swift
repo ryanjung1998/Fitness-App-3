@@ -16,9 +16,6 @@ class ClientGListTableViewController: UIViewController, UITableViewDataSource, U
     var quantList = [Int]()
     //list of program objects
     override func viewDidLoad() {
-        //let db = DBHelper() // Initialize a database
-        //db.createDefaults() // Load in deafult tables
-        // don't know if need this stuff
         super.viewDidLoad()
         initList()
         // Do any additional setup after loading the view.

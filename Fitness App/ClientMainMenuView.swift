@@ -5,7 +5,6 @@
 //  Created by Ryan Jung on 2022-12-02.
 //
 
-import Foundation
 import UIKit
 
 class ClientMainMenuViewController : UIViewController
@@ -30,14 +29,19 @@ class ClientMainMenuViewController : UIViewController
     }
     
     @IBAction func exercisesTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "listSegue", sender: self)
+        self.performSegue(withIdentifier: "clientExercisesSegue", sender: self)
     }
     
     @IBAction func recipesTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "clientRecipesSegue", sender: self)
     }
     
+    @IBAction func mPlansTapped(_ sender: Any) {
+    }
     
+    @IBAction func gListTapped(_ sender: Any) {
+        performSegue(withIdentifier: "gListSegue", sender: self)
+    }
     
     @IBOutlet weak var journalButton: UIButton!
     
@@ -65,7 +69,7 @@ class ClientMainMenuViewController : UIViewController
             dest!.userID = userID
         }
         else if(segue.identifier == "clientWorkoutProgramsSegue"){
-            let dest = segue.destination as? ClientWorkoutTableViewController
+            let dest = segue.destination as? ClientWorkoutTableTest
             dest!.userID = userID
         }
         else if(segue.identifier == "clientRecipesSegue"){
@@ -74,6 +78,10 @@ class ClientMainMenuViewController : UIViewController
         }
         else if(segue.identifier == "glistSegue"){
             let dest = segue.destination as? ClientGListTableViewController
+            dest!.userID = userID
+        }
+        else if(segue.identifier == "clientExercisesSegue"){
+            let dest = segue.destination as? ClientExercisesTableViewController
             dest!.userID = userID
         }
     }
