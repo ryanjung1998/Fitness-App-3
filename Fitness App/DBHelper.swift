@@ -30,11 +30,19 @@ class DBHelper{
     }
     
     func insertDefaults(){
-        // Just passing in today's date until we find a way to give it a real date
-        //insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
+        insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
         insertClient(UserID: 1, Protein: 2, Carbohydrates: 3, Fat: 4, Weight: 5, Sugar: 6, Height: 7, ListID: 8)
+        insertExercise(Name: "Bench Press", MET: 45, CreatorID: 1, CardioFlag: false, StrengthFlag: true)
+        insertExerciseEquipment(Name: "Bench Press", Equipment_Name: "Bench and Barbell")
+        insertWorkoutProgram(UserID: 1, Name: "Chest Day", Privacy: false)
+        insertMusclesWorked(Name: "Bench Press", CreatorID: 1, Muscle: "Chest")
+        // [TODO] Just passing in today's date until we find a way to give it a real date
+        insertPerformed(UserID: 1, Program_name: "Chest Day", PerDate: Date())
+        insertJournal(UserID: 1, JDate: Date(), Weight: 115, CaloriesBurned: 150, Quality: "Good", Hours: 1)
+        insertProIncEx(PName: "Chest Day", EName:"Bench Press", PersonalRecord: 225, Weight: 135, Repetitions: 12, Sets: 3, Time: 60, Distance: 0, CreatorID: 1)
     }
     
+    // ---------------- INSERTING TUPLES --------------- //
     func insertUser(Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
         let query = "INSERT INTO USER (Birth_date, Gender, CountryOfResidence, Ethnicity) VALUES (?, ?, ?, ?)"
         var statement : OpaquePointer? = nil
@@ -229,6 +237,60 @@ class DBHelper{
             print("Journal_entry query is not as per requirement")
         }
     }
+    func insertFeedback(AdminID: Int, ClientID: Int, Comments: String){
+        let query = "INSERT INTO FEEDBACK (AdminID, ClientID, Comments) VALUES (?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(AdminID))
+            sqlite3_bind_int(statement, 2, Int32(ClientID))
+            sqlite3_bind_text(statement, 3, (Comments as NSString).utf8String, -1, nil)
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Feedback inserted successfully")
+            } else {
+                print("Feedback data unable to be inserted")
+            }
+        } else {
+            print("Feedback query is not as per requirement")
+        }
+    }
+    func insertGroceryList(ClientID: Int, ListID: Int){
+        let query = "INSERT INTO GROCERY_LIST (ClientID, ListID) VALUES (?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(ClientID))
+            sqlite3_bind_int(statement, 2, Int32(ListID))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Grocery_list inserted successfully")
+            } else {
+                print("Grocery_list data unable to be inserted")
+            }
+        } else {
+            print("Grocery_list query is not as per requirement")
+        }
+    }
+    func insertMealPlan(UserID: Int, Name: String, Privacy: Bool){
+        let query = "INSERT INTO MEAL_PLAN (UserID, Name) VALUES (?, ?, ?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            // Insert into SQL table
+            sqlite3_bind_int(statement, 1, Int32(UserID))
+            sqlite3_bind_text(statement, 2, (Name as NSString).utf8String, -1, nil)
+            let priv = Privacy ? 1 : 0
+            sqlite3_bind_int(statement, 3, Int32(priv))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Meal_plan inserted successfully")
+            } else {
+                print("Meal_plan data unable to be inserted")
+            }
+        } else {
+            print("Meal_plan query is not as per requirement")
+        }
+    }
     
     
     
@@ -272,7 +334,7 @@ class DBHelper{
             print("Preparation for client table failed") // Remove later
         }
         
-        let createPerformed = "CREATE TABLE IF NOT EXISTS PERFORMED (UserID   INT   NOT NULL,Program_Name   VARCHAR(15)   NOT NULL,PerDate   DATE   NOT NULL,PRIMARY KEY (UserID, Program_Name, PerDate),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID),FOREIGN KEY (Program_Name) REFERENCES WORKOUT_PROGRAM(Name),FOREIGN KEY (Date) REFERENCES JOURNAL_ENTRY(Date));"
+        let createPerformed = "CREATE TABLE IF NOT EXISTS PERFORMED (UserID   INT   NOT NULL,Program_Name   VARCHAR(15)   NOT NULL,PerDate   DATE   NOT NULL,PRIMARY KEY (UserID, Program_Name, PerDate),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID),FOREIGN KEY (Program_Name) REFERENCES WORKOUT_PROGRAM(Name),FOREIGN KEY (PerDate) REFERENCES JOURNAL_ENTRY(Date));"
         if sqlite3_prepare_v2(self.db, createPerformed, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created performed successfully") // Remove later
@@ -344,7 +406,7 @@ class DBHelper{
         }
         
         
-        let createJournalEntry = "CREATE TABLE IF NOT EXISTS JOURNAL_ENTRY (UserID   INT   NOT NULL,Date   DATE   NOT NULL,Weight   INT,CaloriesBurned   INT,Quality   VARCHAR(5),Hours   INT,PRIMARY KEY (UserID, Date),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID));"
+        let createJournalEntry = "CREATE TABLE IF NOT EXISTS JOURNAL_ENTRY (UserID   INT   NOT NULL,JDate   DATE   NOT NULL,Weight   INT,CaloriesBurned   INT,Quality   VARCHAR(5),Hours   INT,PRIMARY KEY (UserID, JDate),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID));"
         if sqlite3_prepare_v2(self.db, createJournalEntry, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created JOURNAL_ENTRY successfully") // Remove later
