@@ -20,10 +20,13 @@ class ExerciseDetailsViewController : UIViewController
     @IBOutlet weak var cardiolbl: UILabel!
     @IBOutlet weak var metEntry: UILabel!
     
+    @IBOutlet weak var testLabel: UILabel!
     @IBAction func addToTapped(_ sender: Any) {
         performSegue(withIdentifier: "addToProgSegue", sender: self)
-        
     }
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Header.text = name
