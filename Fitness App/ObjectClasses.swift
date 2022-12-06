@@ -164,3 +164,168 @@ class Admin : User{
     }
 }
 
+
+
+class feedback{
+    var adminId: Int
+    var clientID: Int
+    var comments:String
+    
+    init(adminId: Admin, clientID: Client, comments: String) {
+        self.adminId = adminId.userID
+        self.clientID = clientID.userID
+        self.comments = comments
+    }
+    
+    //should show the feedback in UI if time allows
+}
+
+
+class GroceryList{
+    var clientID: Int
+    var listID: Int
+    
+    init(client:Client) {
+        self.clientID = client.userID
+        self.listID = client.listID
+        <#statements#>
+    }
+    
+    public func insert(gL: GroceryList) ->Bool{
+        //inserts into DB
+        return true
+    }
+    
+    public func edit(cliID:Client, change:String) -> Bool{
+        //change the DB
+        
+        return true
+    }
+    
+    public func delete(cliID:Client){
+        
+    }
+    
+}
+
+
+class OnList{
+    var listID: Int
+    var foodID: [Int]
+    var clientID : Int
+    var Quantity : Int = 0
+    
+    init(listID: Int,clientID:Client) {
+        self.listID = listID
+        self.clientID = clientID.userID
+    }
+    
+    public func createList(foodList: [Food]){
+        var i:Int = 0
+        while(!foodList.isEmpty){
+            if !self.foodID.contains(foodList[i].foodID){
+                continue
+            }
+            self.foodID[i] = foodList[i].foodID
+        }
+    }
+    
+    //Instert delete edit functions that we can copy/paste
+    
+}
+
+
+class Food{
+    var foodID : Int
+    var calories:Int
+    var price: Double
+    var carbohydrates:Double
+    var protien: Double
+    var sugar: Double
+    var name: String
+    var CreatorID: Int
+    
+    init(foodID: Int, calories: Int, price: Double, carbohydrates: Double, protien: Double, sugar: Double, name: String, CreatorID: Admin) {
+        self.foodID = foodID
+        self.calories = calories
+        self.price = price
+        self.carbohydrates = carbohydrates
+        self.protien = protien
+        self.sugar = sugar
+        self.name = name
+        self.CreatorID = CreatorID.userID
+    }
+    
+    //Export Delete others for database
+    
+}
+
+
+
+
+class IncludedIn{
+    var recipeID : Int
+    var creatorID : Int
+    var FoodID : Int
+    
+    init(recipeID: Int, creatorID: Client, FoodID: Food) {
+        self.recipeID = recipeID
+        self.creatorID = creatorID.userID
+        self.FoodID = FoodID.foodID
+    }
+    
+    //Insert/Edit/Delete db stuffs
+}
+
+
+
+class MealPlan{
+    var userID: Int
+    var name: String
+    var privacy: Bool = false
+    
+    init(usrID: Client, name: Recipe, privacy: Bool) {
+        self.userID = usrID.userID
+        self.name = name.recipeName
+        self.privacy = privacy
+    }
+    //insert edit, delete like all of them
+}
+
+
+
+class Recipe{
+    var creatorID:Int
+    var recipeName: String
+    var privacy:Bool = false
+    var instructions:String
+    var prepTime: String
+    var totalCal: Int
+    var totalProtien: Int
+    var totalfat: Double
+    var totalCarbs: Double
+    
+    //These threee should be calculated
+    
+    init(creatorID: Client, recipeName: String, instructions: String, prepTime: String, totalCal: Int, totalProtien: Int, totalfat: Double, totalCarbs: Double) {
+        self.creatorID = creatorID.userID
+        self.recipeName = recipeName
+        self.instructions = instructions
+        self.prepTime = prepTime
+        self.totalCal = totalCal
+        self.totalProtien = totalProtien
+        self.totalfat = totalfat
+        self.totalCarbs = totalCarbs
+    }
+    
+    public func setPrivacy(p:Bool){
+        self.privacy = p
+    }
+    
+    //simple edit delete etc
+    
+    
+}
+
+
+
