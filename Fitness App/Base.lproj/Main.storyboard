@@ -1668,8 +1668,8 @@
                                 <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUA-Au-Vc0">
-                                <rect key="frame" x="161" y="73.666666666666671" width="71" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Program" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUA-Au-Vc0">
+                                <rect key="frame" x="142" y="73.666666666666671" width="109.33333333333331" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2679,18 +2679,26 @@
                                     <action selector="addToTapped:" destination="EDW-Aj-wBZ" eventType="touchUpInside" id="uKt-Ar-tNp"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh0-uF-hMO">
+                                <rect key="frame" x="157.66666666666666" y="510.99999999999994" width="78" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="V2w-vF-EHb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IfS-Vy-EFj" firstAttribute="leading" secondItem="V2w-vF-EHb" secondAttribute="leading" constant="20" id="1mb-g0-Zdu"/>
                             <constraint firstItem="reO-xr-sYd" firstAttribute="centerX" secondItem="uPt-rs-08z" secondAttribute="centerX" id="3UT-7U-y3l"/>
+                            <constraint firstItem="Jh0-uF-hMO" firstAttribute="centerY" secondItem="V2w-vF-EHb" secondAttribute="centerY" constant="100" id="668-cg-uwu"/>
                             <constraint firstItem="IfS-Vy-EFj" firstAttribute="top" secondItem="reO-xr-sYd" secondAttribute="bottom" constant="20" id="C4Q-Wl-eup"/>
                             <constraint firstItem="reO-xr-sYd" firstAttribute="top" secondItem="V2w-vF-EHb" secondAttribute="top" id="J2P-8V-uwl"/>
                             <constraint firstItem="wuS-IP-nLH" firstAttribute="leading" secondItem="IfS-Vy-EFj" secondAttribute="trailing" constant="10" id="Ryf-Ir-acg"/>
                             <constraint firstItem="wuS-IP-nLH" firstAttribute="top" secondItem="IfS-Vy-EFj" secondAttribute="top" id="Tb6-w2-sWy"/>
                             <constraint firstItem="fWj-Ch-0HX" firstAttribute="centerX" secondItem="V2w-vF-EHb" secondAttribute="centerX" id="Vd6-oQ-kgR"/>
                             <constraint firstItem="fWj-Ch-0HX" firstAttribute="centerY" secondItem="V2w-vF-EHb" secondAttribute="centerY" id="hhh-OM-Nvz"/>
+                            <constraint firstItem="Jh0-uF-hMO" firstAttribute="centerX" secondItem="V2w-vF-EHb" secondAttribute="centerX" id="s9U-eU-QDM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Cb-PF-8az"/>
@@ -2700,12 +2708,13 @@
                         <outlet property="idEntry" destination="Wvp-o9-cne" id="HGI-dh-xpo"/>
                         <outlet property="metEntry" destination="XLA-CL-M1c" id="Dlc-bf-K9H"/>
                         <outlet property="strengthlbl" destination="c1k-eG-rHV" id="03j-zT-CLw"/>
+                        <outlet property="testLabel" destination="Jh0-uF-hMO" id="0FT-MD-m8q"/>
                         <segue destination="vkh-Sb-jhZ" kind="show" identifier="addToProgSegue" id="9Np-3U-f1F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJ5-Rp-34P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2317" y="204"/>
+            <point key="canvasLocation" x="2316.7938931297708" y="203.52112676056339"/>
         </scene>
         <!--Workout Programs Filter View-->
         <scene sceneID="8xF-WO-iGR">
@@ -2855,10 +2864,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Add"/>
                                 <connections>
-                                    <action selector="addTapped:" destination="vkh-Sb-jhZ" eventType="touchUpInside" id="W5O-hf-VeJ"/>
-                                    <action selector="addTapped:" destination="bc6-RK-gx7" eventType="touchUpInside" id="vHS-wo-YlX"/>
-                                    <action selector="applyTapped:" destination="vkh-Sb-jhZ" eventType="touchUpInside" id="aiq-mT-qFu"/>
-                                    <segue destination="bc6-RK-gx7" kind="unwind" identifier="unwindToExeDet" unwindAction="unwind:" id="d3F-70-oXu"/>
+                                    <action selector="addTapped:" destination="vkh-Sb-jhZ" eventType="touchUpInside" id="KmQ-YU-F4b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2877,19 +2883,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="hfa-RG-1Wd"/>
                     <connections>
-                        <outlet property="applyButton" destination="SIo-OQ-gUo" id="JfD-lb-lhZ"/>
                         <outlet property="tEntry1" destination="Mqt-EG-13b" id="IXb-Je-DVo"/>
                         <outlet property="tEntry2" destination="Cx3-38-hSP" id="Kdh-dv-bxi"/>
                         <outlet property="tEntry3" destination="zWu-W6-OUv" id="WbY-h1-2Br"/>
                         <outlet property="tEntry4" destination="DSL-st-f0V" id="I9Y-DJ-z5H"/>
                         <outlet property="tEntry5" destination="y2O-Dw-AIM" id="uXe-bQ-1W9"/>
                         <outlet property="tEntry6" destination="e4J-zf-iYO" id="sSG-br-th9"/>
+                        <segue destination="bc6-RK-gx7" kind="unwind" identifier="unwindToExeDet" unwindAction="unwind:" id="7Os-dE-Dhx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3eF-bm-6Vw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="bc6-RK-gx7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3039" y="204"/>
+            <point key="canvasLocation" x="3038.9312977099235" y="203.52112676056339"/>
         </scene>
         <!--Exercise Filter View Scene-->
         <scene sceneID="ivZ-4W-WNe">
@@ -2899,8 +2905,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQv-gU-34c">
-                                <rect key="frame" x="157.33333333333334" y="43.666666666666664" width="78.333333333333343" height="35.999999999999993"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQv-gU-34c">
+                                <rect key="frame" x="100.33333333333333" y="43.666666666666664" width="192.66666666666669" height="35.999999999999993"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2989,7 +2995,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Apply"/>
                                 <connections>
                                     <action selector="applyTapped:" destination="RvG-L1-xPC" eventType="touchUpInside" id="Z0c-6J-MVf"/>
-                                    <segue destination="Vnu-ia-d7e" kind="unwind" identifier="unwindToExe" unwindAction="unwind:" id="BAL-UV-bDT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3013,6 +3018,7 @@
                         <outlet property="tEntry2" destination="pgr-bM-yIr" id="RQp-jZ-r6t"/>
                         <outlet property="tEntry3" destination="5L1-dW-NL5" id="FxB-oE-LkQ"/>
                         <outlet property="tEntry4" destination="HAc-Aa-Yy3" id="NFB-5W-7XP"/>
+                        <segue destination="Vnu-ia-d7e" kind="unwind" identifier="unwindToExeTable" unwindAction="unwind:" id="Egq-xF-ked"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5q6-du-bAY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

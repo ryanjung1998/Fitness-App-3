@@ -33,6 +33,9 @@ class ClientExercisesTableViewController: UIViewController, UITableViewDataSourc
         creatorIDList = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     }
     
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entryList.count
     }
