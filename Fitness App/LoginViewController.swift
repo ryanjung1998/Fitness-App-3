@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
+    //testing push
     @IBOutlet weak var clientLoginButton: UIButton!
     
     @IBOutlet weak var adminLoginButton: UIButton!
@@ -30,8 +30,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         let db = DBHelper() // Initialize a database
-        db.createDefaults() // Load in deafult tables
-        db.insertDefaults() // Dummy values
+        db.createDefaults() // Load in default tables
+        db.insertDefaults() // Load in default inserts
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
