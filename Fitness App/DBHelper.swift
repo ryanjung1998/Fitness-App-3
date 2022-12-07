@@ -55,6 +55,9 @@ class DBHelper{
         insertAdmin(UserID: 1)
     }
     
+    
+
+    
     // ---------------- INSERTING TUPLES --------------- //
     func insertUser(Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
         let query = "INSERT INTO USER (Birth_date, Gender, CountryOfResidence, Ethnicity) VALUES (?, ?, ?, ?)"
@@ -593,19 +596,6 @@ class DBHelper{
     
     
     //Edit Dummies. delete after Tests
-    
-    func editTuples(){
-            editClientProtein(usrID: 1, Protien: 13)
-            editClientFat(usrID: 1, Fat: 14)
-            editClientSugar(usrID: 1, val: 15)
-            editClientHeight(usrID: 1, val: 16)
-            editClientWeight(usrID: 1, val: 17)
-            editClientCarbs(usrID: 1, carbs: 18)
-            editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
-            editWorkoutProgramPriv(usrID: 1, name: "Chest Day" , priv: false)
-    }
-    
-    
 
     
     // ---------------- CREATING TABLES --------------- //
