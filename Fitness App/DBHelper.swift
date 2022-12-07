@@ -520,35 +520,40 @@ class DBHelper{
             }
         }
     }
-    //For the performed tabl
-    func editPerformedName(userID: Int, val: String ){
-        let query: String = "UPDATE PERFORMED SET Program_name = \(val)"
-        var statement : OpaquePointer? = nil
-        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
-            if sqlite3_step(statement) == SQLITE_DONE{
-                print("The edit to Program_name has been made")
-            }
-            else{
-                print("The edit to Program_name has not been made")
-                
-            }
-        }
-        
-    }
+    //For the
     
     
     
     
     //Edit Dummies delete after Tests
     
-    func editTuplesClient(){
+    func editTuples(){
             editClientProtein(usrID: 1, Protien: 13)
             editClientFat(usrID: 1, Fat: 14)
             editClientSugar(usrID: 1, val: 15)
             editClientHeight(usrID: 1, val: 16)
             editClientWeight(usrID: 1, val: 17)
             editClientCarbs(usrID: 1, carbs: 18)
+            editExerciseMET(name: , usrID: 1, MET: <#T##Int#>)
     }
+    //"Bench Press", MET: 45, CreatorID: 1
+    
+    func editExerciseMET(name: String, usrID: Int, MET:Int ){
+        let query:String = "UPDATE EXCERCISE SET MET = \(val) WHERE CreatorID = \(usrID) AND Name = \(name)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to MET has been made")
+            }
+            else{
+                print("The edit to MET has not been made")
+                
+            }
+        }
+
+    }
+    
+    
     
     
     
