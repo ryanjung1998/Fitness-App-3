@@ -76,7 +76,21 @@ class DBHelper{
         }
     }
     // [TODO] Make admin promotion function
-    //Protein INT, Carbohydrates INT,Fat INT,Weight INT,Sugar INT,Height INT,ListID INT,
+    func insertAdmin(UserID: Int){
+        let query = "INSERT INTO ADMIN (UserID) VALUES (?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            sqlite3_bind_int(statement, 1, Int32(UserID))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("User inserted successfully")
+            } else {
+                print("User data unable to be inserted")
+            }
+        } else {
+            print("User query is not as per requirement")
+        }
+    }
     func insertClient(UserID :Int, Protein: Int, Carbohydrates: Int, Fat: Int, Weight: Int, Sugar: Int, Height: Int, ListID: Int){
         let query = "INSERT INTO CLIENT (UserID, Protein, Carbohydrates, Fat, Weight, Sugar, Height, ListID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
         var statement : OpaquePointer? = nil
