@@ -1,21 +1,30 @@
 //
-//  ClientWorkoutTableTest.swift
+//  FoodTable
+//  FoodTableViewController.swift
 //  Fitness App
 //
-//  Created by Ryan Jung on 2022-12-05.
+//  Created by Ryan Jung on 2022-12-06.
 //
 
 import UIKit
 
-class ClientWorkoutTableTest: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FoodTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var entryTableView: UITableView!
     
     var userID : Int!
+    var creatorID : Int!
+    var recipeName : String?
+    
     var entryList = [String]()
-    var creatorIDList = [Int]()
+    var foodIDList = [Int]()
     var filtName : String?
     var filtID : Int?
+    var filtCals : Int?
+    var filtFat : Int?
+    var filtProt : Int?
+    var filtCarbs : Int?
+    
     //list of program objects
     
     override func viewDidLoad() {
@@ -25,10 +34,14 @@ class ClientWorkoutTableTest: UIViewController, UITableViewDataSource, UITableVi
     }
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
     }
+    
+    @IBAction func filtTapped(_ sender: Any) {
+        performSegue(withIdentifier: "filtFoodsSegue", sender: self)
+    }
     func initList()//Have to connect to database here
     {
-        entryList = ["Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program"]
-        creatorIDList = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        entryList = ["Food 1","Food 2","Food 3","Food 4","Food 5","Food 6","Food 7"]
+        foodIDList = [1,2,3,4,5,6,7]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,24 +58,21 @@ class ClientWorkoutTableTest: UIViewController, UITableViewDataSource, UITableVi
     
     
     @IBAction func filterTapped(_ sender: Any) {
-        performSegue(withIdentifier: "filterWorkoutsSegue", sender: self)
+        performSegue(withIdentifier: "filterFoodsSegue", sender: self)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "progSegue", sender: self)
+        self.performSegue(withIdentifier: "addFoodSegue", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "progSegue"){
+        if(segue.identifier == "addFoodSegue"){
             let indexPath = self.entryTableView.indexPathForSelectedRow!
-            let tableViewProg = segue.destination as? ClientProgramTableViewController
-            tableViewProg!.progName = entryList[indexPath.row]
-            tableViewProg!.creatorID = creatorIDList[indexPath.row]
+            let tableViewProg = segue.destination as? AddToRecipeViewController
+            tableViewProg!.foodID = foodIDList[indexPath.row]
+            tableViewProg!.creatorID = creatorID
             tableViewProg!.userID = userID
+            tableViewProg!.rName = recipeName
             //these values will come from the database
             self.entryTableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }
-
-    
-
-    

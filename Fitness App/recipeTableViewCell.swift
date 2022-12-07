@@ -10,5 +10,4 @@ class recipeTableViewCell : UITableViewCell
 {
     @IBOutlet weak var rName: UILabel!
     @IBOutlet weak var creatorID: UILabel!
-    
 }

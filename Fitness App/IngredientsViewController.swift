@@ -19,7 +19,12 @@ class IngredientsViewController: UIViewController, UITableViewDataSource, UITabl
     var quantList = [Int]()
     var idList = [Int]()
     
+    @IBAction func addTapped(_ sender: Any) {
+        performSegue(withIdentifier: "addFoodsSegue", sender: self)
+    }
     
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         initList()
@@ -63,6 +68,12 @@ class IngredientsViewController: UIViewController, UITableViewDataSource, UITabl
             dest!.creatorID = creatorID
             //these values will come from the database
             self.entryTableView.deselectRow(at: indexPath, animated: true)
+        }
+        else if(segue.identifier == "addFoodsSegue"){
+            let dest = segue.destination as? FoodTableViewController
+            dest!.userID = userID
+            dest!.recipeName = recipeName
+            dest!.creatorID = creatorID
         }
     }
 

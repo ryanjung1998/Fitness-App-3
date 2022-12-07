@@ -9,12 +9,14 @@ import UIKit
 
 class ClientGListTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+
     @IBOutlet weak var entryTableView: UITableView!
     
     var userID : Int!
     var entryList = [String]()
     var quantList = [Int]()
     //list of program objects
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initList()
@@ -38,23 +40,20 @@ class ClientGListTableViewController: UIViewController, UITableViewDataSource, U
         tableViewCell.fName.text = thisEntry
         tableViewCell.quantity.text = String(quantList[indexPath.row])
         return tableViewCell
-    
-        
-        
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "progSegue", sender: self)
-//    }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if(segue.identifier == "progSegue"){
-//            let indexPath = self.entryTableView.indexPathForSelectedRow!
-//            let tableViewProg = segue.destination as? ClientProgramTableViewController
-//            tableViewProg!.progName = entryList[indexPath.row]
-//            tableViewProg!.userID = userID
-//            //these values will come from the database
-//            self.entryTableView.deselectRow(at: indexPath, animated: true)
-//        }
-//    }
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "editGListSegue", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "editGListSegue"){
+            let indexPath = self.entryTableView.indexPathForSelectedRow!
+            let tableViewProg = segue.destination as? EditGListViewController
+            tableViewProg!.fName = entryList[indexPath.row]
+            tableViewProg!.userID = userID
+            tableViewProg!.quant = quantList[indexPath.row]
+            //these values will come from the database
+            self.entryTableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
 }
