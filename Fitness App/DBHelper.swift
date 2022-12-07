@@ -432,7 +432,9 @@ class DBHelper{
         }
     }
     
-    // ----------------EDIT FUCNTIONS-------------- ///
+    // -----------------------------------EDIT FUCNTIONS------------------------------------- ///
+    
+    /*--------- Client------------*/
     
     func editClientProtein(usrID: Int, Protien:Int){
         let query:String = "UPDATE CLIENT SET Protein = \(Protien) WHERE UserID = \(usrID) "
@@ -539,6 +541,8 @@ class DBHelper{
     //UserID: 1, Name: "Chest Day", Privacy: false
     //"Bench Press", MET: 45, CreatorID: 1
     
+    /*--------Excercise Stuffs---------------*/
+    
     func editExerciseMET(name: String, usrID: Int, MET:Int ){
         let query:String = "UPDATE EXCERCISE SET MET = \(MET) WHERE CreatorID = \(usrID) AND Name = \(name)"
         var statement : OpaquePointer? = nil
@@ -585,6 +589,20 @@ class DBHelper{
         }
     }
     
+
+    func programIncludesExerciseRep(PName :String, EName: String, CreatorID: Int, reps:Int){
+        let query:String = "UPDATE PROGRAM_INCLUDES_EXCERCISE SET Reprtitiions = \(reps) WHERE CreatorID = \(CreatorID) AND PName = \(PName) AND EName = \(EName)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Repetitions in INCLUDES EXCERCISE has been made")
+            }
+            else{
+                print("The edit to Repetitions in INCLUDES EXCERCISE  has not been made")
+                
+            }
+        }
+    }
     
     
     
