@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
         let db = DBHelper() // Initialize a database
 //        db.createDefaults() // Load in default tables
         db.insertDefaults() // Load in default inserts
-        db.editTuplesClient()
+        //db.editTuplesClient()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }

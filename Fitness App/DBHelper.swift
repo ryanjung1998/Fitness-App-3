@@ -519,35 +519,64 @@ class DBHelper{
             }
         }
     }
-    //For the performed tabl
-    func editPerformedName(userID: Int, val: String ){
-        let query: String = "UPDATE PERFORMED SET Program_name = \(val)"
-        var statement : OpaquePointer? = nil
-        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
-            if sqlite3_step(statement) == SQLITE_DONE{
-                print("The edit to Program_name has been made")
-            }
-            else{
-                print("The edit to Program_name has not been made")
-                
-            }
-        }
-        
-    }
     
     
     
     
     //Edit Dummies delete after Tests
     
-    func editTuplesClient(){
+    func editTuples(){
             editClientProtein(usrID: 1, Protien: 13)
             editClientFat(usrID: 1, Fat: 14)
             editClientSugar(usrID: 1, val: 15)
             editClientHeight(usrID: 1, val: 16)
             editClientWeight(usrID: 1, val: 17)
             editClientCarbs(usrID: 1, carbs: 18)
+            editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
+            editWorkoutProgramPriv(usrID: <#T##Int#>, name: <#T##String#>, priv: <#T##Bool#>)
     }
+    //"Bench Press", MET: 45, CreatorID: 1
+    
+    func editExerciseMET(name: String, usrID: Int, MET:Int ){
+        let query:String = "UPDATE EXCERCISE SET MET = \(MET) WHERE CreatorID = \(usrID) AND Name = \(name)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to MET has been made")
+            }
+            else{
+                print("The edit to MET has not been made")
+                
+            }
+        }
+
+    }
+    
+    
+    func editWorkoutProgramPriv(usrID:Int,name:String,priv:Bool){
+        var tableVal = priv ? 1 : 0
+        let query:String = "UPDATE WORKOUT_PROGRAM SET Privacy = \(tableVal) WHERE CreatorID = \(usrID) AND Name = \(name)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to WorkoutProgram's Privacy has been made")
+            }
+            else{
+                print("The edit to Workout Program's Privacy has not been made")
+                
+            }
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
