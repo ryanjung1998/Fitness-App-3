@@ -104,17 +104,17 @@ class Food{
     var calories:Int
     var price: Double
     var carbohydrates:Double
-    var protien: Double
+    var protein: Double
     var sugar: Double
     var name: String
     var CreatorID: Int
     
-    init(foodID: Int, calories: Int, price: Double, carbohydrates: Double, protien: Double, sugar: Double, name: String, CreatorID: Int) {
+    init(foodID: Int, calories: Int, price: Double, carbohydrates: Double, protein: Double, sugar: Double, name: String, CreatorID: Int) {
         self.foodID = foodID
         self.calories = calories
         self.price = price
         self.carbohydrates = carbohydrates
-        self.protien = protien
+        self.protein = protein
         self.sugar = sugar
         self.name = name
         self.CreatorID = CreatorID
