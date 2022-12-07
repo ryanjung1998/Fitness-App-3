@@ -520,7 +520,6 @@ class DBHelper{
             }
         }
     }
-    //For the
     
     
     
@@ -539,7 +538,7 @@ class DBHelper{
     //"Bench Press", MET: 45, CreatorID: 1
     
     func editExerciseMET(name: String, usrID: Int, MET:Int ){
-        let query:String = "UPDATE EXCERCISE SET MET = \(val) WHERE CreatorID = \(usrID) AND Name = \(name)"
+        let query:String = "UPDATE EXCERCISE SET MET = \(MET) WHERE CreatorID = \(usrID) AND Name = \(name)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -547,6 +546,23 @@ class DBHelper{
             }
             else{
                 print("The edit to MET has not been made")
+                
+            }
+        }
+
+    }
+    
+    
+    func editWorkoutProgram(usrID:Int,name:String,priv:Bool){
+        var tableVal = priv ? 1 : 0
+        let query:String = "UPDATE WORKOUT_PROGRAM SET Privacy = \(tableVal) WHERE CreatorID = \(usrID) AND Name = \(name)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to WorkoutProgram's Privacy has been made")
+            }
+            else{
+                print("The edit to Workout Program's Privacy has not been made")
                 
             }
         }
