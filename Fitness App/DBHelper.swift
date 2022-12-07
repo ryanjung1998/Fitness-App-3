@@ -522,7 +522,16 @@ class DBHelper{
     }
     
     
+    //Edit Dummies
     
+    func editTuplesClient(){
+            editClientProtein(usrID: 1, Protien: 13)
+            editClientFat(usrID: 1, Fat: 14)
+            editClientSugar(usrID: 1, val: 15)
+            editClientHeight(usrID: 1, val: 16)
+            editClientWeight(usrID: 1, val: 17)
+            editClientCarbs(usrID: 1, carbs: 18)
+    }
     
     
     
