@@ -29,6 +29,8 @@ class LoginViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!") // Print the database path
+        // Below initializes the database at first. If you want to re-initialize, then you must comment db.createDefaults() and sampleInsert(db:db)
         let db = DBHelper() // Initialize a database path
         db.createDefaults() // Load in default tables
         sampleInsert(db: db) // Load in sample data

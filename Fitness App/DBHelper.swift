@@ -1385,5 +1385,4 @@ class DBHelper{
             }
         }
     }
-    
 } // End of scope
