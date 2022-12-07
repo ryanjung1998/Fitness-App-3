@@ -8,6 +8,7 @@
 import Foundation
 import SQLite3
 
+/* -------------------------------- PEOPLE -------------------------------- */
 
 class User{
     final var userID :Int
@@ -30,6 +31,10 @@ class User{
         self.userID = User.counter
         User.counter += 1 // for now
     }
+    
+    func userInDB(db:DBHelper){
+        db.insertUser(Birth_date: self.birthDay, Gender: self.gender, CountryOfResidence: self.countryOfResidence, Ethnicity: self.ethnicity)
+    }
 }
 
 class Client{
@@ -41,14 +46,14 @@ class Client{
     var birthDay : Date
     static var clientCounter : Int = 0
     var listID : Int
-    var protein : Double
-    var carbohydrates : Double
-    var fat: Double
-    var weight : Double
-    var sugar : Double
-    var height : Double
+    var protein : Int
+    var carbohydrates : Int
+    var fat: Int
+    var weight : Int
+    var sugar : Int
+    var height : Int
     
-    init(userToClient: User, listID: Int, protein: Double, carbohydrates: Double, fat: Double, weight: Double, sugar: Double, height: Double) {
+    init(userToClient: User, listID: Int, protein: Int, carbohydrates: Int, fat: Int, weight: Int, sugar: Int, height: Int) {
         self.clientID = userToClient.userID
         self.ethnicity = userToClient.ethnicity
         self.countryOfResidence = userToClient.countryOfResidence
@@ -62,14 +67,17 @@ class Client{
         self.sugar = sugar
         self.height = height
     }
+    
+    func clientInDB(db:DBHelper){
+        db.insertClient(UserID: self.clientID, Protein: self.protein, Carbohydrates: self.carbohydrates, Fat: self.fat, Weight: self.weight, Sugar: self.sugar, Height: self.height, ListID: self.listID)
+    }
 }
 
 
+// [TODO] Make admin promotion function
 //class Admin : User{
 //    // Leaving empty for now until we figure out functions for it [TODO]
 //}
-
-
 
 class feedback{
     var adminId: Int
@@ -82,17 +90,29 @@ class feedback{
         self.comments = comments
     }
     
+    func feedbackInDB(db:DBHelper){
+        db.insertFeedback(AdminID: self.adminId, ClientID: self.clientID, Comments: self.comments)
+    }
+    
     //should show the feedback in UI if time allows
 }
 
+/* -------------------------------- FOOD -------------------------------- */
 
-class GroceryList{ // Integrate on_grocery_list [TODO]
+class GroceryList{
     var clientID: Int
     var listID: Int
     
     init(clientID: Int, listID: Int) {
         self.clientID = clientID
         self.listID = listID
+    }
+    func groceryListInDB(db:DBHelper){
+        db.insertGroceryList(ClientID: self.clientID, ListID: self.listID)
+    }
+    // When we put stuff in grocery list, we need food num [TODO]
+    func onGroceryListInDB(db:DBHelper, foodNum: Int, quantity: Int){
+        db.insertOnGroceryList(ListId: self.listID, FoodId: foodNum, Quantity: quantity, ClientID: self.clientID)
     }
     
 }
@@ -102,23 +122,30 @@ class GroceryList{ // Integrate on_grocery_list [TODO]
 class Food{
     var foodID : Int
     var calories:Int
-    var price: Double
-    var carbohydrates:Double
-    var protein: Double
-    var sugar: Double
+    var price: Int
+    var fat: Int
+    var carbohydrates:Int
+    var protein: Int
+    var sugar: Int
     var name: String
     var CreatorID: Int
     
-    init(foodID: Int, calories: Int, price: Double, carbohydrates: Double, protein: Double, sugar: Double, name: String, CreatorID: Int) {
+    init(foodID: Int, calories: Int, price: Int, fat:Int, carbohydrates: Int, protein: Int, sugar: Int, name: String, CreatorID: Int) {
         self.foodID = foodID
         self.calories = calories
         self.price = price
+        self.fat = fat
         self.carbohydrates = carbohydrates
         self.protein = protein
         self.sugar = sugar
         self.name = name
         self.CreatorID = CreatorID
     }
+    func foodInDB(db:DBHelper){
+        db.insertFood(FoodID: self.foodID, Calories: self.calories, Price: self.price, Fat: self.fat, Carbohydrates: self.carbohydrates, Protein: self.protein, Sugar: self.sugar, Name: self.name, CreatorID: self.CreatorID)
+    }
+    
+    // Make a food listing query [TODO]
     
     //Export Delete others for database
     
@@ -126,7 +153,7 @@ class Food{
 
 
 
-class MealPlan{ // Integrate meal_consists_of [TODO]
+class MealPlan{
     var userID: Int
     var name: String
     var privacy: Bool = false
@@ -136,25 +163,32 @@ class MealPlan{ // Integrate meal_consists_of [TODO]
         self.name = name
         self.privacy = privacy
     }
-    //insert edit, delete like all of them
+    func mealPlanInDB(db:DBHelper){
+        db.insertMealPlan(UserID: self.userID, Name: self.name, Privacy: self.privacy)
+    }
+    // When we want to add a meal, we also need the recipe [TODO]
+    func mealConsistsOfInDB(db:DBHelper, recipeName: String, servings: Int){
+        db.insertMealConsistsOf(MealName: self.name, RecipeName: recipeName, Servings: servings)
+    }
+    // [TODO] Make a method that will query for the recipes
+    // addToGroceryList(db, MealPlanName, UserID)
 }
 
 
-
-class Recipe{ // Integrate IncludedIn [TODO]
+class Recipe{
     var creatorID:Int
     var recipeName: String
     var privacy:Bool = false
     var instructions:String
-    var prepTime: String
+    var prepTime: Int
     var totalCal: Int
     var totalProtien: Int
-    var totalfat: Double
-    var totalCarbs: Double
+    var totalfat: Int
+    var totalCarbs: Int
     
     //These threee should be calculated
     
-    init(creatorID: Client, recipeName: String, instructions: String, prepTime: String, totalCal: Int, totalProtien: Int, totalfat: Double, totalCarbs: Double) {
+    init(creatorID: Client, recipeName: String, instructions: String, prepTime: Int, totalCal: Int, totalProtien: Int, totalfat: Int, totalCarbs: Int) {
         self.creatorID = creatorID.clientID
         self.recipeName = recipeName
         self.instructions = instructions
@@ -165,12 +199,17 @@ class Recipe{ // Integrate IncludedIn [TODO]
         self.totalCarbs = totalCarbs
     }
     
-    public func setPrivacy(p:Bool){
-        self.privacy = p
+    func recipeInDB(db:DBHelper){
+        db.insertRecipe(CreatorId: self.creatorID, RecipeName: self.recipeName, Privacy: self.privacy, Instructions: self.instructions, PrepTime: self.prepTime, TotalCalories: self.totalCal, TotalProtein: self.totalProtien, TotalFat: self.totalfat, TotalCarbs: self.totalCarbs)
     }
-    
+    // When we want to add food, we need the foodID along with it [TODO]
+    func includedFoodInRecipeInDB(db: DBHelper, foodID: Int){
+        db.insertIncludedIn(RecipeID: self.recipeName, CreatorID: self.creatorID, FoodID: foodID)
+    }
     //simple edit delete etc
     
+    
+    /* -------------------------------- MUSCLES -------------------------------- */
     
 }
 
@@ -188,6 +227,9 @@ class Exercise{
         self.cardioFlag = cardioFlag
         self.strengthFlag = strengthFlag
     }
+    func exerciseInDB(db:DBHelper){
+        db.insertExercise(Name: self.Name, MET: self.met, CreatorID: self.creatorID, CardioFlag: self.cardioFlag, StrengthFlag: self.strengthFlag)
+    }
 }
 
 class Muscles_Worked{
@@ -200,6 +242,9 @@ class Muscles_Worked{
         self.creatorID = creatorID
         self.muscle = muscle
     }
+    func musclesWorkedInDB(db:DBHelper){
+        db.insertMusclesWorked(Name: self.Name, CreatorID: self.creatorID, Muscle: self.muscle)
+    }
 }
 
 class Exercise_Equipment{
@@ -210,9 +255,12 @@ class Exercise_Equipment{
         self.name = name
         self.equipment_name = equipment_name
     }
+    func exerciseEquipmentInDB(db:DBHelper){
+        db.insertExerciseEquipment(Name: self.name, Equipment_Name: self.equipment_name)
+    }
 }
 
-class Workout_program{ // Integrate program_includes_exercise [TODO]
+class Workout_program{
     var userID: Int
     var name: String
     var privacy: Bool
@@ -221,6 +269,14 @@ class Workout_program{ // Integrate program_includes_exercise [TODO]
         self.userID = userID
         self.name = name
         self.privacy = privacy
+    }
+    func workoutProgramInDB(db:DBHelper){
+        db.insertWorkoutProgram(UserID: self.userID, Name: self.name, Privacy: self.privacy)
+    }
+    
+    // This one takes in a lot
+    func exercisesInProgramInDB(db:DBHelper, exercise: String, pr: Int, weight: Int, reps: Int, sets: Int, time: Int, distance: Int, creatorID: Int){
+        db.insertProIncEx(PName: self.name, EName: exercise, PersonalRecord: pr, Weight: weight, Repetitions: reps, Sets: sets, Time: time, Distance: distance, CreatorID: creatorID)
     }
 }
 
@@ -233,6 +289,9 @@ class Performed{
         self.userID = userID
         self.program_Name = program_Name
         self.perDate = perDate
+    }
+    func performedInDB(db:DBHelper){
+        db.insertPerformed(UserID: self.userID, Program_name: self.program_Name, PerDate: self.perDate)
     }
 }
 
@@ -251,5 +310,9 @@ class Journal_Entry{
         self.caloriesBurned = caloriesBurned
         self.quality = quality
         self.hours = hours
+    }
+    
+    func journalInDB(db:DBHelper){
+        db.insertJournal(UserID: self.userID, JDate: self.jDate, Weight: self.weight, CaloriesBurned: self.caloriesBurned, Quality: self.quality, Hours: self.hours)
     }
 }

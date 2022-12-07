@@ -77,7 +77,6 @@ class DBHelper{
             print("User query is not as per requirement")
         }
     }
-    // [TODO] Make admin promotion function
     func insertAdmin(UserID: Int){
         let query = "INSERT INTO ADMIN (UserID) VALUES (?)"
         var statement : OpaquePointer? = nil
