@@ -56,7 +56,7 @@ class DBHelper{
     
     // ------------ DEFAULT FUNCTIONS --------------- //
     func insertDefaults(){
-        insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
+        insertUser(UserID: 1, Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
         insertClient(UserID: 1, Protein: 2, Carbohydrates: 3, Fat: 4, Weight: 5, Sugar: 6, Height: 7, ListID: 8)
         insertExercise(Name: "Bench Press", MET: 45, CreatorID: 1, CardioFlag: false, StrengthFlag: true)
         insertExerciseEquipment(Name: "Bench Press", Equipment_Name: "Bench and Barbell")
@@ -105,20 +105,21 @@ class DBHelper{
     // ---------------- INSERTING TUPLES --------------- //
     
     // Creating an insertion in the database
-    func insertUser(Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
+    func insertUser(UserID: Int, Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
         // Make the query
-        let query = "INSERT INTO USER (Birth_date, Gender, CountryOfResidence, Ethnicity) VALUES (?, ?, ?, ?)"
+        let query = "INSERT INTO USER (UserID, Birth_date, Gender, CountryOfResidence, Ethnicity) VALUES (?,?, ?, ?, ?)"
         // Make an opaquepointer for sqlite
         var statement : OpaquePointer? = nil
         
         // Prepare the statement and see if it passes
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            sqlite3_bind_int(statement, 1, Int32(UserID))
             let formatter1 = DateFormatter() // Format date as string
             formatter1.dateStyle = .short    // Formatting
-            sqlite3_bind_text(statement, 1, ((formatter1.string(from: Birth_date)) as NSString).utf8String, -1, nil) // Pass in date as a string
-            sqlite3_bind_text(statement, 2, (Gender as NSString).utf8String, -1, nil) // Pass in string
-            sqlite3_bind_text(statement, 3, (CountryOfResidence as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(statement, 4, (Ethnicity as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 2, ((formatter1.string(from: Birth_date)) as NSString).utf8String, -1, nil) // Pass in date as a string
+            sqlite3_bind_text(statement, 3, (Gender as NSString).utf8String, -1, nil) // Pass in string
+            sqlite3_bind_text(statement, 4, (CountryOfResidence as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 5, (Ethnicity as NSString).utf8String, -1, nil)
             
             if sqlite3_step(statement) == SQLITE_DONE { // If it can successfully use inputs, then print success
                 print("User inserted successfully")
@@ -779,7 +780,7 @@ class DBHelper{
     // Create the entire database
     func createDefaults(){
         // Give query
-        let createUser = "CREATE TABLE IF NOT EXISTS USER(UserID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Birth_date DATE NOT NULL, Gender VARCHAR(10), CountryOfResidence VARCHAR(10), Ethnicity VARCHAR(10));"
+        let createUser = "CREATE TABLE IF NOT EXISTS USER(UserID INTEGER PRIMARY KEY NOT NULL, Birth_date DATE NOT NULL, Gender VARCHAR(10), CountryOfResidence VARCHAR(10), Ethnicity VARCHAR(10));"
         // Make statement for sqlite
         var statement : OpaquePointer? = nil
         
