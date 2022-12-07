@@ -29,11 +29,9 @@ class LoginViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        let db = DBHelper() // Initialize a database
-        //db.createDefaults() // Load in default tables
-        //db.insertDefaults() // Load in default inserts
-        //db.editTuples() // [TODO] remove
-        //db.deleteDefaults() // [TODO] remove
+        let db = DBHelper() // Initialize a database path
+        db.createDefaults() // Load in default tables
+        sampleInsert(db: db) // Load in sample data
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
