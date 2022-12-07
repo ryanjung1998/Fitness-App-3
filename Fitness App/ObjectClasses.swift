@@ -50,7 +50,6 @@ class Client{
     var countryOfResidence : String
     var gender : String
     var birthDay : Date
-    static var clientCounter : Int = 0
     var listID : Int
     var protein : Int
     var carbohydrates : Int
@@ -126,9 +125,9 @@ class GroceryList{
     var clientID: Int
     var listID: Int
     
-    init(clientID: Int, listID: Int) {
+    init(clientID: Int) {
         self.clientID = clientID
-        self.listID = listID
+        self.listID = clientID // Make it the same as clientID
     }
     func groceryListInDB(db:DBHelper){
         db.insertGroceryList(ClientID: self.clientID, ListID: self.listID)
@@ -158,9 +157,12 @@ class Food{
     var sugar: Int
     var name: String
     var CreatorID: Int
+    static var foodCounter : Int = 0
+
     
-    init(foodID: Int, calories: Int, price: Int, fat:Int, carbohydrates: Int, protein: Int, sugar: Int, name: String, CreatorID: Int) {
-        self.foodID = foodID
+    init(calories: Int, price: Int, fat:Int, carbohydrates: Int, protein: Int, sugar: Int, name: String, CreatorID: Int) {
+        self.foodID = Food.foodCounter
+        Food.foodCounter += 1 // Increment counter
         self.calories = calories
         self.price = price
         self.fat = fat
@@ -169,6 +171,7 @@ class Food{
         self.sugar = sugar
         self.name = name
         self.CreatorID = CreatorID
+        
     }
     func foodInDB(db:DBHelper){
         db.insertFood(FoodID: self.foodID, Calories: self.calories, Price: self.price, Fat: self.fat, Carbohydrates: self.carbohydrates, Protein: self.protein, Sugar: self.sugar, Name: self.name, CreatorID: self.CreatorID)
@@ -226,8 +229,8 @@ class Recipe{
     
     //These threee should be calculated
     
-    init(creatorID: Client, recipeName: String, instructions: String, prepTime: Int, totalCal: Int, totalProtien: Int, totalfat: Int, totalCarbs: Int) {
-        self.creatorID = creatorID.clientID
+    init(creator: Client, recipeName: String, instructions: String, prepTime: Int, totalCal: Int, totalProtien: Int, totalfat: Int, totalCarbs: Int) {
+        self.creatorID = creator.clientID
         self.recipeName = recipeName
         self.instructions = instructions
         self.prepTime = prepTime
@@ -331,8 +334,8 @@ class Workout_program{
     }
     
     // This one takes in a lot
-    func exercisesInProgramInDB(db:DBHelper, exercise: String, pr: Int, weight: Int, reps: Int, sets: Int, time: Int, distance: Int, creatorID: Int){
-        db.insertProIncEx(PName: self.name, EName: exercise, PersonalRecord: pr, Weight: weight, Repetitions: reps, Sets: sets, Time: time, Distance: distance, CreatorID: creatorID)
+    func exercisesInProgramInDB(db:DBHelper, exercise: String, pr: Int, weight: Int, reps: Int, sets: Int, time: Int, distance: Int){
+        db.insertProIncEx(PName: self.name, EName: exercise, PersonalRecord: pr, Weight: weight, Repetitions: reps, Sets: sets, Time: time, Distance: distance, CreatorID: self.userID)
     }
     
     func rmWorkoutProgramInDB(db:DBHelper){
