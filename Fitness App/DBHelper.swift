@@ -534,7 +534,7 @@ class DBHelper{
             editClientHeight(usrID: 1, val: 16)
             editClientWeight(usrID: 1, val: 17)
             editClientCarbs(usrID: 1, carbs: 18)
-            editExerciseMET(name: , usrID: 1, MET: <#T##Int#>)
+            editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
     }
     //"Bench Press", MET: 45, CreatorID: 1
     
@@ -552,6 +552,8 @@ class DBHelper{
         }
 
     }
+    
+    
     
     
     
