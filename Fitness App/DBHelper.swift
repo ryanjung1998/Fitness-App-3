@@ -107,7 +107,8 @@ class DBHelper{
             editRecipeTotalCarbs(creatorID: 1, RName: "Keto Recipe", Totalcarbs: 57)
             editRecipeTotalProtien(creatorID: 1, RName: "Keto Recipe", TotalPro: 58)
             editRecipeInstructions(creatorID: 1, RName: "Keto Recipe", Instructions: "Throw Stuff into a bowl and start Mixing")
-        //CreatorId: 1, RecipeName: "Keto Recipe", Privacy: false, Instructions: "Make any meal and replace rice with quinoa", PrepTime: 5, TotalCalories: 350, TotalProtein: 30, TotalFat: 15, TotalCarbs: 5
+            editFoodPrice(foodID: 1, CreatrID: 1, Price: 17)
+    //FoodID: 1, Calories: 8, Price: 1, Fat: 0, Carbohydrates: 5, Protein: 8, Sugar: 2, Name: "Quinoa", CreatorID: 1
     }
 
 
@@ -930,16 +931,21 @@ class DBHelper{
         }
     }
     
+    func editFoodPrice(foodID:Int, CreatrID:Int, Price:Int){
+        let query:String = "UPDATE FOOD SET Price = \(Price) WHERE CreatorID = \(CreatrID) AND FoodID = \(foodID)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Price in Food has been made")
+            }
+            else{
+                print("The edit to Price in Food  has not been made")
+                
+            }
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    //Absolutley NO REASON to dit anything else in food for now
 
     
     // ---------------- CREATING TABLES --------------- //
