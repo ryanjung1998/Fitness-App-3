@@ -30,139 +30,44 @@ class User{
         self.userID = User.counter
         User.counter += 1 // for now
     }
-    init(Usr : User){
-        self.ethnicity = Usr.ethnicity
-        self.countryOfResidence = Usr.countryOfResidence
-        self.gender = Usr.gender
-        self.birthDay = Usr.birthDay
-        self.userID = User.counter
-        User.counter += 1 // for now
-    }
-    
-    public func insert(usr:User) -> Bool{
-        //Implimentation
-        /*takes userstuffs and imports it to
-         the database
-         */
-        return true //for now
-    }
-    
-    public func delete(usr:User)-> Bool{
-        //Implementation
-        /*
-         deletes user and all items close to it
-         */
-        return true // for now
-    }
-    
-    public func Retrive(UserID: Int){ // -> User
-        //Retrive from database if in the database if not then return error
-        //
-    }
-    
-    public func inDB (UserID: Int ) -> Bool{
-        
-    }
-    
-    public func edit(usr:User,change:String) -> Bool{
-        //switch cases? to show that an edit has been made and where
-        let S:String = change.lowercased()
-        if S == "ethnicity"{
-            //do someting
-        }
-        else if S == "countryofresidence"{
-          //do something
-        }
-        else if S == "gender"{
-            //do something
-        }
-        else if S == "Date"{
-            //do something
-        }
-        return true
-    }
-    
-    
-    
 }
 
-class Client: User {
+class Client{
     //Since User ID already in the User class, we don't need to worry about it
-    var listID : Int = 0
-    var protien : Double
+    var clientID: Int
+    var ethnicity: String
+    var countryOfResidence : String
+    var gender : String
+    var birthDay : Date
+    static var clientCounter : Int = 0
+    var listID : Int
+    var protein : Double
     var carbohydrates : Double
     var fat: Double
     var weight : Double
     var sugar : Double
     var height : Double
     
-    init(listID: Int, protien: Double, carbohydrates: Double, fat: Double, weight: Double, sugar: Double, height: Double) {
-        super.init(ethnicity: <#T##String#>, countryOfResidence: <#T##String#>, gender: <#T##String#>, birthDay: <#T##Date#>)
+    init(userToClient: User, listID: Int, protein: Double, carbohydrates: Double, fat: Double, weight: Double, sugar: Double, height: Double) {
+        self.clientID = userToClient.userID
+        self.ethnicity = userToClient.ethnicity
+        self.countryOfResidence = userToClient.countryOfResidence
+        self.gender = userToClient.gender
+        self.birthDay = userToClient.birthDay
         self.listID = listID
-        self.protien = protien
+        self.protein = protein
         self.carbohydrates = carbohydrates
         self.fat = fat
         self.weight = weight
         self.sugar = sugar
         self.height = height
     }
-    
-    public func setList(LID: OnList){
-        // Retrive 
-    }
-    
-    public func insert(cli:Client) -> Bool{
-        //Implimentation
-        /*takes userstuffs and imports it to
-         the database
-         */
-        return true //for now
-    }
-    
-    public func delete(cli:Client)-> Bool{
-        //Implementation
-        /*
-         deletes user and all items close to it
-         */
-        return true // for now
-    }
-    
-    override public func Retrive(UserID: Int){ // -> User
-        //Retrive from database if in the database if not then return error
-        //
-    }
-    
-    override public func inDB (UserID: Int ) -> Bool{
-        return true //for now
-        // will check if there is an isntance of it in
-        //db
-    }
-    
-    public func edit(usr:Client, change:String) -> Bool{
-        //switch cases? to show that an edit has been made and where
-        let S:String = change.lowercased()
-        if S == "ethnicity"{
-            //do someting
-        }
-        else if S == "countryofresidence"{
-          //do something
-        }
-        else if S == "gender"{
-            //do something
-        }
-        else if S == "Date"{
-            //do something
-        }
-        return true
-    }
-    
 }
 
-class Admin : User{
-    init(){
-        super.init(ethnicity: <#T##String#>, countryOfResidence: <#T##String#>, gender: <#T##String#>, birthDay: <#T##Date#>)
-    }
-}
+
+//class Admin : User{
+//    // Leaving empty for now until we figure out functions for it [TODO]
+//}
 
 
 
@@ -171,9 +76,9 @@ class feedback{
     var clientID: Int
     var comments:String
     
-    init(adminId: Admin, clientID: Client, comments: String) {
-        self.adminId = adminId.userID
-        self.clientID = clientID.userID
+    init(adminId: Int, clientID: Int, comments: String) {
+        self.adminId = adminId
+        self.clientID = clientID
         self.comments = comments
     }
     
@@ -181,58 +86,17 @@ class feedback{
 }
 
 
-class GroceryList{
+class GroceryList{ // Integrate on_grocery_list [TODO]
     var clientID: Int
     var listID: Int
     
-    init(client:Client) {
-        self.clientID = client.userID
-        self.listID = client.listID
-        <#statements#>
-    }
-    
-    public func insert(gL: GroceryList) ->Bool{
-        //inserts into DB
-        return true
-    }
-    
-    public func edit(cliID:Client, change:String) -> Bool{
-        //change the DB
-        
-        return true
-    }
-    
-    public func delete(cliID:Client){
-        
-    }
-    
-}
-
-
-class OnList{
-    var listID: Int
-    var foodID: [Int]
-    var clientID : Int
-    var Quantity : Int = 0
-    
-    init(listID: Int,clientID:Client) {
+    init(clientID: Int, listID: Int) {
+        self.clientID = clientID
         self.listID = listID
-        self.clientID = clientID.userID
     }
-    
-    public func createList(foodList: [Food]){
-        var i:Int = 0
-        while(!foodList.isEmpty){
-            if !self.foodID.contains(foodList[i].foodID){
-                continue
-            }
-            self.foodID[i] = foodList[i].foodID
-        }
-    }
-    
-    //Instert delete edit functions that we can copy/paste
     
 }
+
 
 
 class Food{
@@ -240,20 +104,20 @@ class Food{
     var calories:Int
     var price: Double
     var carbohydrates:Double
-    var protien: Double
+    var protein: Double
     var sugar: Double
     var name: String
     var CreatorID: Int
     
-    init(foodID: Int, calories: Int, price: Double, carbohydrates: Double, protien: Double, sugar: Double, name: String, CreatorID: Admin) {
+    init(foodID: Int, calories: Int, price: Double, carbohydrates: Double, protein: Double, sugar: Double, name: String, CreatorID: Int) {
         self.foodID = foodID
         self.calories = calories
         self.price = price
         self.carbohydrates = carbohydrates
-        self.protien = protien
+        self.protein = protein
         self.sugar = sugar
         self.name = name
-        self.CreatorID = CreatorID.userID
+        self.CreatorID = CreatorID
     }
     
     //Export Delete others for database
@@ -262,30 +126,14 @@ class Food{
 
 
 
-
-class IncludedIn{
-    var recipeID : Int
-    var creatorID : Int
-    var FoodID : Int
-    
-    init(recipeID: Int, creatorID: Client, FoodID: Food) {
-        self.recipeID = recipeID
-        self.creatorID = creatorID.userID
-        self.FoodID = FoodID.foodID
-    }
-    //Insert/Edit/Delete db stuffs
-}
-
-
-
-class MealPlan{
+class MealPlan{ // Integrate meal_consists_of [TODO]
     var userID: Int
     var name: String
     var privacy: Bool = false
     
-    init(usrID: Client, name: Recipe, privacy: Bool) {
-        self.userID = usrID.userID
-        self.name = name.recipeName
+    init(userID: Int, name: String, privacy: Bool) {
+        self.userID = userID
+        self.name = name
         self.privacy = privacy
     }
     //insert edit, delete like all of them
@@ -293,7 +141,7 @@ class MealPlan{
 
 
 
-class Recipe{
+class Recipe{ // Integrate IncludedIn [TODO]
     var creatorID:Int
     var recipeName: String
     var privacy:Bool = false
@@ -307,7 +155,7 @@ class Recipe{
     //These threee should be calculated
     
     init(creatorID: Client, recipeName: String, instructions: String, prepTime: String, totalCal: Int, totalProtien: Int, totalfat: Double, totalCarbs: Double) {
-        self.creatorID = creatorID.userID
+        self.creatorID = creatorID.clientID
         self.recipeName = recipeName
         self.instructions = instructions
         self.prepTime = prepTime
@@ -324,4 +172,84 @@ class Recipe{
     //simple edit delete etc
     
     
+}
+
+class Exercise{
+    var Name: String
+    var met: Int
+    var creatorID: Int
+    var cardioFlag: Bool
+    var strengthFlag: Bool
+    
+    init(Name: String, met: Int, creatorID: Int, cardioFlag: Bool, strengthFlag: Bool) {
+        self.Name = Name
+        self.met = met
+        self.creatorID = creatorID
+        self.cardioFlag = cardioFlag
+        self.strengthFlag = strengthFlag
+    }
+}
+
+class Muscles_Worked{
+    var Name: String
+    var creatorID: Int
+    var muscle: String
+    
+    init(Name: String, creatorID: Int, muscle: String) {
+        self.Name = Name
+        self.creatorID = creatorID
+        self.muscle = muscle
+    }
+}
+
+class Exercise_Equipment{
+    var name: String
+    var equipment_name: String
+    
+    init(name: String, equipment_name: String) {
+        self.name = name
+        self.equipment_name = equipment_name
+    }
+}
+
+class Workout_program{ // Integrate program_includes_exercise [TODO]
+    var userID: Int
+    var name: String
+    var privacy: Bool
+    
+    init(userID: Int, name: String, privacy: Bool) {
+        self.userID = userID
+        self.name = name
+        self.privacy = privacy
+    }
+}
+
+class Performed{
+    var userID: Int
+    var program_Name: String
+    var perDate: Date
+    
+    init(userID: Int, program_Name: String, perDate: Date) {
+        self.userID = userID
+        self.program_Name = program_Name
+        self.perDate = perDate
+    }
+}
+
+class Journal_Entry{
+    var userID: Int
+    var jDate: Date
+    var weight: Int
+    var caloriesBurned: Int
+    var quality: String
+    var hours: Int
+    
+    init(userID: Int, jDate: Date, weight: Int, caloriesBurned: Int, quality: String, hours: Int) {
+        self.userID = userID
+        self.jDate = jDate
+        self.weight = weight
+        self.caloriesBurned = caloriesBurned
+        self.quality = quality
+        self.hours = hours
+    }
 }
