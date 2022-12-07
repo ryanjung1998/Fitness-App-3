@@ -99,11 +99,19 @@ class DBHelper{
             editJournalEntWeight(UsrID: 1, JDate: Date(), val: 25)
             editJournalEntQuality(UsrID: 1, JDate: Date(), val: "Shit")
             editJournalEntCalBurned(UsrID: 1, JDate: Date(), val: 15)
+            editConsistsOf(mealName: "Keto Diet", reicpeName: "Keto Recipe", Servings: 7)
+            editMealPlanPriv(UserId: 2, name: "Keto Diet 2", priv: false)
+            editOnGroceryList(listID: 2, ClientID: 2, foodID: 1, quantity: 8)
+            editRecipePriv(creatorID: 1, RName: "Keto Recipe", Priv: true)
+            editRecipePrepTime(creatorID: 1, RName: "Keto Recipe", PT: 10)
+            editRecipeTotalFat(creatorID: 1, RName: "Keto Recipe", Totalfat: 55)
+            editRecipeTotalCals(creatorID: 1, RName: "Keto Recipe", Totalcal: 56)
+            editRecipeTotalCarbs(creatorID: 1, RName: "Keto Recipe", Totalcarbs: 57)
+            editRecipeTotalProtien(creatorID: 1, RName: "Keto Recipe", TotalPro: 58)
+            editRecipeInstructions(creatorID: 1, RName: "Keto Recipe", Instructions: "Throw Stuff into a bowl and start Mixing")
+        //CreatorId: 1, RecipeName: "Keto Recipe", Privacy: false, Instructions: "Make any meal and replace rice with quinoa", PrepTime: 5, TotalCalories: 350, TotalProtein: 30, TotalFat: 15, TotalCarbs: 5
     }
-    //UserID: 1, JDate: Date(), Weight: 115, CaloriesBurned: 150, Quality: "Good", Hours: 1
-    
 
-    
 
     
     // ---------------- INSERTING TUPLES --------------- //
@@ -774,6 +782,157 @@ class DBHelper{
         }
         
     }
+    
+    // ------------- FOODSTUFFS EDIT ------------- //
+    
+    func editConsistsOf(mealName:String, reicpeName:String, Servings: Int){
+        let query:String = "UPDATE MEAL_CONSISTS_OF SET Servings = \(Servings) WHERE MealName = '\(mealName)' AND RecipeName = '\(reicpeName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Servings in MEAL_CONSISTS_OF has been made")
+            }
+            else{
+                print("The edit to Servings in MEAL_CONSISTS_OF  has not been made")
+                
+            }
+        }
+    }
+    
+    func editMealPlanPriv(UserId:Int,name:String, priv:Bool){
+        let tableVal = priv ? 1 : 0
+        let query:String = "UPDATE MEAL_PLAN SET Privacy = \(tableVal) WHERE UserID = \(UserId) AND Name = '\(name)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Privacy in MealPan has been made")
+            }
+            else{
+                print("The edit to Privacy in MealPlan  has not been made")
+                
+            }
+        }
+        else{print("Syntax error probs LMAO")}
+        
+    }
+    
+    
+
+    func editOnGroceryList(listID:Int,ClientID:Int,foodID:Int,quantity:Int){
+        let query:String = "UPDATE ON_GROCERY_LIST SET Quantity = \(quantity) WHERE ListID = \(listID) AND ClientID = \(ClientID) AND FoodID = \(foodID)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to quantity on ON_GROCERY_LIST has been made")
+            }
+            else{
+                print("The edit to quantity on ON_GROCERY_LIST  has not been made")
+                
+            }
+        }
+    }
+    
+    func editRecipePriv(creatorID:Int,RName:String,Priv:Bool){
+        let tableVal = Priv ? 1 : 0
+        let query:String = "UPDATE RECIPE SET Privacy = \(tableVal) WHERE CreatorID = \(creatorID) AND RecipeName = '\(RName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Privacy on Recipe has been made")
+            }
+            else{
+                print("The edit to Privacy on Recipe  has not been made")
+                
+            }
+        }
+    }
+    
+    func editRecipeInstructions(creatorID:Int,RName:String,Instructions:String){
+        let query:String = "UPDATE RECIPE SET Instructions = '\(Instructions)' WHERE CreatorID = \(creatorID) AND RecipeName = '\(RName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Instructions on Recipe has been made")
+            }
+            else{
+                print("The edit to Instructions on Recipe  has not been made")
+                
+            }
+        }
+    }
+    
+    func editRecipePrepTime(creatorID:Int,RName:String,PT:Int){
+        let query:String = "UPDATE RECIPE SET PrepTime = \(PT) WHERE CreatorID = \(creatorID) AND RecipeName = '\(RName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to PrepTime on Recipe has been made")
+            }
+            else{
+                print("The edit to PrepTime on Recipe  has not been made")
+                
+            }
+        }
+    }
+    
+    func editRecipeTotalCals(creatorID:Int,RName:String,Totalcal:Int){
+        let query:String = "UPDATE RECIPE SET TotalCalories = \(Totalcal) WHERE CreatorID = \(creatorID) AND RecipeName = '\(RName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to TotalCalories on Recipe has been made")
+            }
+            else{
+                print("The edit to TotalCalories on Recipe  has not been made")
+                
+            }
+        }
+    }
+    
+    func editRecipeTotalProtien(creatorID:Int,RName:String,TotalPro:Int){
+        let query:String = "UPDATE RECIPE SET TotalProtein = \(TotalPro) WHERE CreatorID = \(creatorID) AND RecipeName = '\(RName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to TotalProtein on Recipe has been made")
+            }
+            else{
+                print("The edit to TotalProtein on Recipe  has not been made")
+                
+            }
+        }
+    }
+    
+    func editRecipeTotalFat(creatorID:Int,RName:String,Totalfat:Int){
+        let query:String = "UPDATE RECIPE SET TotalFat = \(Totalfat) WHERE CreatorID = \(creatorID) AND RecipeName = '\(RName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to TotalFat on Recipe has been made")
+            }
+            else{
+                print("The edit to TotalFat on Recipe  has not been made")
+                
+            }
+        }
+    }
+    
+    func editRecipeTotalCarbs(creatorID:Int,RName:String,Totalcarbs:Int){
+        let query:String = "UPDATE RECIPE SET TotalCarbs = \(Totalcarbs) WHERE CreatorID = \(creatorID) AND RecipeName = '\(RName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to TotalCarbs on Recipe has been made")
+            }
+            else{
+                print("The edit to TotalCarbs on Recipe  has not been made")
+                
+            }
+        }
+    }
+    
+    
+    
     
     
     
