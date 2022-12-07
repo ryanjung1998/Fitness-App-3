@@ -40,9 +40,6 @@ class DBHelper{
         insertPerformed(UserID: 1, Program_name: "Chest Day", PerDate: Date())
         insertJournal(UserID: 1, JDate: Date(), Weight: 115, CaloriesBurned: 150, Quality: "Good", Hours: 1)
         insertProIncEx(PName: "Chest Day", EName:"Bench Press", PersonalRecord: 225, Weight: 135, Repetitions: 12, Sets: 3, Time: 60, Distance: 0, CreatorID: 1)
-        
-
-
         insertFeedback(AdminID: 1, ClientID: 2, Comments: "You are the best")
         insertGroceryList(ClientID: 1, ListID: 2)
         insertMealPlan(UserID: 2, Name: "Keto Diet", Privacy: true)
@@ -64,11 +61,11 @@ class DBHelper{
             editClientCarbs(usrID: 1, carbs: 18)
             editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
             editWorkoutProgramPriv(usrID: 1, name: "Chest Day" , priv: false)
-            editprogramIncludesExerciseRep(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, reps: <#T##Int#>)
-            editprogramIncludesExercisePR(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, val: <#T##Int#>)
-            editprogramIncludesExerciseSets(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, val: <#T##Int#>)
-            editprogramIncludesExerciseWeight(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, val: <#T##Int#>)
-            editprogramIncludesExerciseDistance(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, val: <#T##Int#>)
+            editprogramIncludesExerciseRep(PName: "Chest Day", EName: "Bench Press", CreatorID: 1, reps: 6)
+            editprogramIncludesExercisePR(PName: "Chest Day", EName: "Bench Press", CreatorID: 1, val: 300)
+            editprogramIncludesExerciseSets(PName: "Chest Day", EName: "Bench Press", CreatorID: 1, val: 7)
+            editprogramIncludesExerciseWeight(PName: "Chest Day", EName: "Bench Press", CreatorID: 1, val: 136)
+            editprogramIncludesExerciseDistance(PName: "Chest Day", EName: "Bench Press", CreatorID: 1, val: 1)
     }
     
     
