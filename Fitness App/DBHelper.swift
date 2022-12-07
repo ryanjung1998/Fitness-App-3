@@ -416,7 +416,7 @@ class DBHelper{
         }
     }
     
-    // Edit fucntions
+    // ----------------EDIT FUCNTIONS-------------- ///
     
     func editClientProtein(usrID: Int, Protien:Int){
         let query:String = "UPDATE CLIENT SET Protein = \(Protien)"
@@ -504,9 +504,14 @@ class DBHelper{
             }
         }
     }
+    //For the performed tabl
+    func editPerformedName(userID: Int, ){
+        
+    }
     
     
-    //Edit Dummies
+    
+    //Edit Dummies delete after Tests
     
     func editTuplesClient(){
             editClientProtein(usrID: 1, Protien: 13)
