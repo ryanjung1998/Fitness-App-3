@@ -22,6 +22,9 @@ class MealPlanTableViewController: UIViewController, UITableViewDataSource, UITa
         performSegue(withIdentifier: "filterMealPlansSegue", sender: self)
     }
     
+    @IBAction func addTapped(_ sender: Any) {
+        performSegue(withIdentifier: "newMealPlanSegue", sender: self)
+    }
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
     }
@@ -63,8 +66,12 @@ class MealPlanTableViewController: UIViewController, UITableViewDataSource, UITa
             //these values will come from the database
             self.entryTableView.deselectRow(at: indexPath, animated: true)
         }
-        if(segue.identifier == "filterMealPlansSegue"){
+        else if(segue.identifier == "filterMealPlansSegue"){
             let dest = segue.destination as? MealPlanFilterViewController
+            dest!.userID = userID
+        }
+        else if(segue.identifier == "newMealPlanSegue"){
+            let dest = segue.destination as? NewMealPlanViewController
             dest!.userID = userID
         }
     }

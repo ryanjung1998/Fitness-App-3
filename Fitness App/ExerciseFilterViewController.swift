@@ -18,9 +18,42 @@ class ExerciseFilterViewController : UIViewController
     @IBOutlet weak var applyButton: UIButton!
     
     @IBAction func applyTapped(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToExe", sender: self)
+        if(checkInt(input: tEntry1.text) && checkString(input: tEntry2.text) && checkString(input: tEntry3.text) && checkString(input: tEntry4.text)){
+            //other verification
+            performSegue(withIdentifier: "unwindToExe", sender: self)
+        }
+    }
+    func checkInt(input : String?)->Bool{
+        if let inputReal = input {
+            if (Int(inputReal) ?? -1) == -1{
+                print("not an integer input")
+                return false}
+            else{return true}
+        }
+        else{return true}
     }
     
+    func checkString(input : String?)->Bool{
+        if let inputReal = input {
+            if (inputReal.contains("\\") || inputReal.contains("\"") || inputReal.contains("\'")){
+                print("not a valid input" + inputReal)
+                return false}
+            else{
+                return true}
+        }
+        else{
+            return true}
+    }
+    
+    func checkDouble(input : String?)->Bool{
+        if let inputReal = input {
+            if (Double(inputReal) ?? -1) == -1{
+                print("not a valid double input")
+                return false}
+            else{return true}
+        }
+        else{return true}
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "unwindToExe"){
             let dest = segue.destination as? ClientExercisesTableViewController

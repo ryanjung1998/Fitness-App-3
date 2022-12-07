@@ -19,15 +19,54 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var idEntry: UITextField!
     
+    @IBOutlet weak var errorLbl: UILabel!
+    
     @IBAction func adminLoginTap(_ sender: Any) {
-        self.performSegue(withIdentifier: "adminMenuSegue", sender: self)
+        if (checkInt(input: idEntry.text)){
+            //other verification
+            performSegue(withIdentifier: "adminMenuSegue", sender: self)
+        }
+        else{errorLbl.text = "Invalid ID"}
     }
     
     @IBAction func clientLoginTap(_ sender: Any) {
-        self.performSegue(withIdentifier: "clientMenuSegue", sender: self)
+        if (checkInt(input: idEntry.text)){
+            //other verification
+            performSegue(withIdentifier: "clientMenuSegue", sender: self)
+        }
+        else{errorLbl.text = "Invalid ID"}
     }
     
+    @IBAction func newClientTapped(_ sender: Any) {
+        performSegue(withIdentifier: "newClientSegue", sender: self)
+    }
     
+    @IBAction func newAdminTapped(_ sender: Any) {
+        performSegue(withIdentifier: "newAdminSegue", sender: self)
+    }
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+    }
+    func checkInt(input : String?)->Bool{
+        if let inputReal = input {
+            if (Int(inputReal) ?? -1) == -1{
+                print("not an integer input")
+                return false}
+            else{return true}
+        }
+        else{return true}
+    }
+    
+    func checkString(input : String?)->Bool{
+        if let inputReal = input {
+            if (inputReal.contains("\\") || inputReal.contains("\"") || inputReal.contains("\'")){
+                print("not a valid input" + inputReal)
+                return false}
+            else{
+                return true}
+        }
+        else{
+            return true}
+    }
     override func viewDidLoad() {
         print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!") // Print the database path
         // Below initializes the database at first. If you want to re-initialize, then you must comment db.createDefaults() and sampleInsert(db:db)
@@ -43,9 +82,18 @@ class LoginViewController: UIViewController {
             let menu = segue.destination as? ClientMainMenuViewController
             menu!.userID = Int(idEntry.text!) ?? 0
         }
-        
+        else if (segue.identifier == "newClientSegue"){
+            let dest = segue.destination as? NewClientViewController
+            dest!.userID = 0
+        }
+        else if (segue.identifier == "adminMenuSegue") {
+            let menu = segue.destination as? AdminTerminalViewController
+            menu!.userID = Int(idEntry.text!) ?? 0
+        }
+        else if (segue.identifier == "newAdminSegue") {
+            let dest = segue.destination as? NewAdminViewController
+            dest!.userID = 0
+        }
     }
-
-
 }
 

@@ -1,30 +1,37 @@
 //
-//  AddToRecipeViewController.swift
+//  NewJournalViewController.swift
 //  Fitness App
 //
-//  Created by Ryan Jung on 2022-12-06.
+//  Created by Ryan Jung on 2022-12-07.
 //
 
 import UIKit
-class AddToRecipeViewController : UIViewController
+
+class NewJournalViewController : UIViewController
 {
-    
     var userID : Int!
-    var creatorID : Int!
-    var rName : String!
-    var foodID : Int!
     
+    @IBOutlet weak var tEntry1: UITextField!
+    @IBOutlet weak var tEntry5: UITextField!
+    @IBOutlet weak var tEntry2: UITextField!
+    @IBOutlet weak var tEntry4: UITextField!
+    @IBOutlet weak var tEntry3: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var quantEntry: UITextField!
+    @IBOutlet weak var errorLbl: UILabel!
     
-    @IBOutlet weak var fNamelbl: UILabel!
     
     @IBAction func addTapped(_ sender: Any) {
-        if(checkInt(input: quantEntry.text)){
-            //code for saving changes to db
-            performSegue(withIdentifier: "unwindToRecipe", sender: self)
+        if(checkString(input: tEntry1.text) && checkInt(input: tEntry2.text) && checkInt(input: tEntry3.text) && checkString(input: tEntry4.text) && checkInt(input: tEntry5.text)){
+            //other verification
+            //adding to db code
+            performSegue(withIdentifier: "unwindToJournal", sender: self)
+        }
+        else{
+            errorLbl.text = "Invalid Input"
         }
     }
+    
     func checkInt(input : String?)->Bool{
         if let inputReal = input {
             if (Int(inputReal) ?? -1) == -1{
@@ -56,16 +63,16 @@ class AddToRecipeViewController : UIViewController
         }
         else{return true}
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "unwindToRecipe"){
-//            let tableViewProg = segue.destination as? RecipeViewController
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        fNamelbl.text = rName
+        datePicker.date = Date()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "unwindToJournal"){
+            let dest = segue.destination as? ClientJournalTableViewController
+            
+        }
     }
     
 }

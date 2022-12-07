@@ -20,6 +20,7 @@
 		5F11ED21293A697800A69D65 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED20293A697800A69D65 /* TableViewCell.swift */; };
 		5F11ED23293A6B4300A69D65 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED22293A6B4300A69D65 /* TableViewController.swift */; };
 		5F11ED25293A852600A69D65 /* ClientMainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F11ED24293A852600A69D65 /* ClientMainMenuView.swift */; };
+		5F2D39412941536F00D1FF62 /* NewAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D39402941536F00D1FF62 /* NewAdminViewController.swift */; };
 		5F30C24D293BF58100A22997 /* ClientProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F30C24C293BF58100A22997 /* ClientProgramTableViewController.swift */; };
 		5F30C24F293BF6E300A22997 /* exInProgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F30C24E293BF6E300A22997 /* exInProgTableViewCell.swift */; };
 		5F3C24A029401BFE007FD851 /* AddToRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3C249F29401BFE007FD851 /* AddToRecipeViewController.swift */; };
@@ -49,6 +50,12 @@
 		5F8ED5EC2940306400BE5674 /* MealPlanFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8ED5EB2940306400BE5674 /* MealPlanFilterViewController.swift */; };
 		5F8ED5EE29403BFC00BE5674 /* EditGListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8ED5ED29403BFC00BE5674 /* EditGListViewController.swift */; };
 		5F8ED5F02940408B00BE5674 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8ED5EF2940408B00BE5674 /* FeedbackViewController.swift */; };
+		5F8ED5F2294111AA00BE5674 /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8ED5F1294111AA00BE5674 /* NewJournalViewController.swift */; };
+		5F8ED5F429411C8D00BE5674 /* NewWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8ED5F329411C8D00BE5674 /* NewWorkoutViewController.swift */; };
+		5F8ED5F6294120CE00BE5674 /* NewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8ED5F5294120CE00BE5674 /* NewRecipeViewController.swift */; };
+		5F8ED5F8294123A700BE5674 /* NewMealPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8ED5F7294123A700BE5674 /* NewMealPlanViewController.swift */; };
+		5F8ED5FA2941258500BE5674 /* NewClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8ED5F92941258500BE5674 /* NewClientViewController.swift */; };
+		5F8ED5FC29412DA700BE5674 /* AdminTerminalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8ED5FB29412DA700BE5674 /* AdminTerminalViewController.swift */; };
 		5F99DAF8293F00CE00434178 /* recipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F99DAF7293F00CE00434178 /* recipeTableViewCell.swift */; };
 		5F99DAFA293F082E00434178 /* ClientWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F99DAF9293F082E00434178 /* ClientWorkoutTableViewController.swift */; };
 		BF8757E0293547840052E610 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8757DF293547840052E610 /* DBHelper.swift */; };
@@ -91,6 +98,7 @@
 		5F11ED20293A697800A69D65 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5F11ED22293A6B4300A69D65 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		5F11ED24293A852600A69D65 /* ClientMainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMainMenuView.swift; sourceTree = "<group>"; };
+		5F2D39402941536F00D1FF62 /* NewAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdminViewController.swift; sourceTree = "<group>"; };
 		5F30C24C293BF58100A22997 /* ClientProgramTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProgramTableViewController.swift; sourceTree = "<group>"; };
 		5F30C24E293BF6E300A22997 /* exInProgTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exInProgTableViewCell.swift; sourceTree = "<group>"; };
 		5F3C249F29401BFE007FD851 /* AddToRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToRecipeViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +128,12 @@
 		5F8ED5EB2940306400BE5674 /* MealPlanFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanFilterViewController.swift; sourceTree = "<group>"; };
 		5F8ED5ED29403BFC00BE5674 /* EditGListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGListViewController.swift; sourceTree = "<group>"; };
 		5F8ED5EF2940408B00BE5674 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		5F8ED5F1294111AA00BE5674 /* NewJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
+		5F8ED5F329411C8D00BE5674 /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
+		5F8ED5F5294120CE00BE5674 /* NewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeViewController.swift; sourceTree = "<group>"; };
+		5F8ED5F7294123A700BE5674 /* NewMealPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMealPlanViewController.swift; sourceTree = "<group>"; };
+		5F8ED5F92941258500BE5674 /* NewClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClientViewController.swift; sourceTree = "<group>"; };
+		5F8ED5FB29412DA700BE5674 /* AdminTerminalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTerminalViewController.swift; sourceTree = "<group>"; };
 		5F99DAF7293F00CE00434178 /* recipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeTableViewCell.swift; sourceTree = "<group>"; };
 		5F99DAF9293F082E00434178 /* ClientWorkoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientWorkoutTableViewController.swift; sourceTree = "<group>"; };
 		BF8757DF293547840052E610 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
@@ -181,11 +195,15 @@
 				5F11ED22293A6B4300A69D65 /* TableViewController.swift */,
 				5F11ED20293A697800A69D65 /* TableViewCell.swift */,
 				5F5F4AC7293BC05F0027C017 /* FilterViewController.swift */,
+				5F8ED5FB29412DA700BE5674 /* AdminTerminalViewController.swift */,
+				5F8ED5F92941258500BE5674 /* NewClientViewController.swift */,
+				5F2D39402941536F00D1FF62 /* NewAdminViewController.swift */,
 				5F0EA81F29341F9F006D8876 /* LoginViewController.swift */,
 				5F11ED24293A852600A69D65 /* ClientMainMenuView.swift */,
 				5F7A45EA293A9C52001190E1 /* ClientProfileViewController.swift */,
 				5F5F4ACB293BC7B50027C017 /* ClientJournalTableViewController.swift */,
 				5F5F4ACD293BCEB00027C017 /* JournalEntryViewController.swift */,
+				5F8ED5F1294111AA00BE5674 /* NewJournalViewController.swift */,
 				5F8705F3293E664E00A0D3E8 /* ClientExercisesTableViewController.swift */,
 				5F8705F5293E6B6400A0D3E8 /* ExerciseDetailsViewController.swift */,
 				5F8705F7293E9C0A00A0D3E8 /* AddToProgramViewController.swift */,
@@ -194,6 +212,7 @@
 				5F30C24C293BF58100A22997 /* ClientProgramTableViewController.swift */,
 				5F8705EF293D611800A0D3E8 /* ClientRemoveExerciseViewController.swift */,
 				5F8705F1293E610200A0D3E8 /* FilterWorkoutsViewController.swift */,
+				5F8ED5F329411C8D00BE5674 /* NewWorkoutViewController.swift */,
 				5F8705E7293C50DE00A0D3E8 /* ClientRecipesTableViewController.swift */,
 				5F8705FB293EB6AB00A0D3E8 /* RecipeViewController.swift */,
 				5F8705FD293EC50C00A0D3E8 /* IngredientsViewController.swift */,
@@ -203,10 +222,12 @@
 				5F3C249F29401BFE007FD851 /* AddToRecipeViewController.swift */,
 				5F3C24A129401D52007FD851 /* FoodFilterViewController.swift */,
 				5F3C24A3294021E1007FD851 /* RecipeFilterViewController.swift */,
+				5F8ED5F5294120CE00BE5674 /* NewRecipeViewController.swift */,
 				5F3C24A529402518007FD851 /* MealPlanTableViewController.swift */,
 				5F3C24A729402B47007FD851 /* MealPlanDetailViewController.swift */,
 				5F3C24A929402D7A007FD851 /* EditMealPlanViewController.swift */,
 				5F8ED5EB2940306400BE5674 /* MealPlanFilterViewController.swift */,
+				5F8ED5F7294123A700BE5674 /* NewMealPlanViewController.swift */,
 				5F8705EB293D200B00A0D3E8 /* ClientGListTableViewController.swift */,
 				5F8ED5ED29403BFC00BE5674 /* EditGListViewController.swift */,
 				5F8ED5EF2940408B00BE5674 /* FeedbackViewController.swift */,
@@ -389,11 +410,14 @@
 				5F99DAFA293F082E00434178 /* ClientWorkoutTableViewController.swift in Sources */,
 				5F3C24AA29402D7A007FD851 /* EditMealPlanViewController.swift in Sources */,
 				5F5F4AC8293BC05F0027C017 /* FilterViewController.swift in Sources */,
+				5F8ED5F429411C8D00BE5674 /* NewWorkoutViewController.swift in Sources */,
 				5F8705EC293D200B00A0D3E8 /* ClientGListTableViewController.swift in Sources */,
 				5F8ED5EE29403BFC00BE5674 /* EditGListViewController.swift in Sources */,
 				5F0EA82029341F9F006D8876 /* LoginViewController.swift in Sources */,
+				5F8ED5FC29412DA700BE5674 /* AdminTerminalViewController.swift in Sources */,
 				5F0EA81C29341F9F006D8876 /* AppDelegate.swift in Sources */,
 				5A605513293BD54000F75AB6 /* ObjectClasses.swift in Sources */,
+				5F8ED5F2294111AA00BE5674 /* NewJournalViewController.swift in Sources */,
 				5F8705FA293EA78C00A0D3E8 /* ExerciseFilterViewController.swift in Sources */,
 				5F8705FE293EC50C00A0D3E8 /* IngredientsViewController.swift in Sources */,
 				5F8B7FAC294017A600C63663 /* FoodTableViewController.swift in Sources */,
@@ -404,13 +428,17 @@
 				5F870600293EC7DE00A0D3E8 /* EditIngredientsViewController.swift in Sources */,
 				BF95ACDD294139BF00692B9D /* UI-Helper.swift in Sources */,
 				5F8705F6293E6B6400A0D3E8 /* ExerciseDetailsViewController.swift in Sources */,
+				5F8ED5FA2941258500BE5674 /* NewClientViewController.swift in Sources */,
 				5F8705F8293E9C0A00A0D3E8 /* AddToProgramViewController.swift in Sources */,
 				5F3C24A029401BFE007FD851 /* AddToRecipeViewController.swift in Sources */,
 				5F5F4ACC293BC7B50027C017 /* ClientJournalTableViewController.swift in Sources */,
+				5F8ED5F6294120CE00BE5674 /* NewRecipeViewController.swift in Sources */,
 				5F870602293ED06000A0D3E8 /* AddToPlanViewController.swift in Sources */,
 				5F3C24A629402518007FD851 /* MealPlanTableViewController.swift in Sources */,
 				5F30C24D293BF58100A22997 /* ClientProgramTableViewController.swift in Sources */,
 				BF8757E0293547840052E610 /* DBHelper.swift in Sources */,
+				5F8ED5F8294123A700BE5674 /* NewMealPlanViewController.swift in Sources */,
+				5F2D39412941536F00D1FF62 /* NewAdminViewController.swift in Sources */,
 				5F8705F0293D611800A0D3E8 /* ClientRemoveExerciseViewController.swift in Sources */,
 				5F8705E8293C50DE00A0D3E8 /* ClientRecipesTableViewController.swift in Sources */,
 			);

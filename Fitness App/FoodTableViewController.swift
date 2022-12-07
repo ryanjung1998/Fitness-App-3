@@ -14,7 +14,7 @@ class FoodTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     var userID : Int!
     var creatorID : Int!
-    var recipeName : String?
+    var recipeName : String!
     
     var entryList = [String]()
     var foodIDList = [Int]()
@@ -36,7 +36,7 @@ class FoodTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     @IBAction func filtTapped(_ sender: Any) {
-        performSegue(withIdentifier: "filtFoodsSegue", sender: self)
+        performSegue(withIdentifier: "filterFoodsSegue", sender: self)
     }
     func initList()//Have to connect to database here
     {
@@ -73,6 +73,10 @@ class FoodTableViewController: UIViewController, UITableViewDataSource, UITableV
             tableViewProg!.rName = recipeName
             //these values will come from the database
             self.entryTableView.deselectRow(at: indexPath, animated: true)
+        }
+        else if(segue.identifier == "filterFoodsSegue"){
+            let dest = segue.destination as? FoodFilterViewController
+            dest!.userID = userID
         }
     }
 }
