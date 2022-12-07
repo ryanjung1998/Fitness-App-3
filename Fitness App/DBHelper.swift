@@ -28,14 +28,14 @@ class DBHelper{
             return db
         }
     }
-    func deleteDefaults(){
+    func deleteDefaults(){ // Code for deleting
         delFood(foodID: 1, creatorID: 1)
         delRecipe(creatorID: 1, recipeName: "Keto Recipe")
         delMealConsistsOf(mealName: "Keto Diet", recipeName: "Keto Recipe")
         delMealPlan(id: 2, name: "Keto Diet 2")
         delFeedback(adminID: 1, clientID: 2)
         delUser(id: 1)
-//        delAdmin(id: 1) [TODO] Test admin
+//        delAdmin(id: 1)
         delClient(id: 1)
 
         delExercise(exName: "Bench Press", creatorId: 1)
@@ -51,11 +51,11 @@ class DBHelper{
         formatter1.dateStyle = .short    // Formatting
         delJournal(userID: 1, jdate: formatter1.date(from: jdstring)!)
         delPerformed(id: 1, programName: "Chest Day", perdate: formatter1.date(from: jdstring)!)
-
     }
     
     // ------------ DEFAULT FUNCTIONS --------------- //
     func insertDefaults(){
+        insertAdmin(UserID: 0)
         insertUser(UserID: 1, Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
         insertClient(UserID: 1, Protein: 2, Carbohydrates: 3, Fat: 4, Weight: 5, Sugar: 6, Height: 7, ListID: 8)
         insertExercise(Name: "Bench Press", MET: 45, CreatorID: 1, CardioFlag: false, StrengthFlag: true)
@@ -77,8 +77,6 @@ class DBHelper{
         insertRecipe(CreatorId: 1, RecipeName: "Keto Recipe", Privacy: false, Instructions: "Make any meal and replace rice with quinoa", PrepTime: 5, TotalCalories: 350, TotalProtein: 30, TotalFat: 15, TotalCarbs: 5)
         insertFood(FoodID: 1, Calories: 8, Price: 1, Fat: 0, Carbohydrates: 5, Protein: 8, Sugar: 2, Name: "Quinoa", CreatorID: 1)
         insertIncludedIn(RecipeID: "Keto Recipe", CreatorID: 1, FoodID: 1)
-        //print("\nNew functions: \n")
-        insertAdmin(UserID: 1)
     }
     
     func editTuples(){

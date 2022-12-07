@@ -59,13 +59,13 @@ class Client{
     var sugar : Int
     var height : Int
     
-    init(userToClient: User, listID: Int, protein: Int, carbohydrates: Int, fat: Int, weight: Int, sugar: Int, height: Int) {
+    init(userToClient: User, protein: Int, carbohydrates: Int, fat: Int, weight: Int, sugar: Int, height: Int) {
         self.clientID = userToClient.userID
         self.ethnicity = userToClient.ethnicity
         self.countryOfResidence = userToClient.countryOfResidence
         self.gender = userToClient.gender
         self.birthDay = userToClient.birthDay
-        self.listID = listID
+        self.listID = userToClient.userID
         self.protein = protein
         self.carbohydrates = carbohydrates
         self.fat = fat

@@ -52,6 +52,7 @@
 		5F99DAF8293F00CE00434178 /* recipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F99DAF7293F00CE00434178 /* recipeTableViewCell.swift */; };
 		5F99DAFA293F082E00434178 /* ClientWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F99DAF9293F082E00434178 /* ClientWorkoutTableViewController.swift */; };
 		BF8757E0293547840052E610 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8757DF293547840052E610 /* DBHelper.swift */; };
+		BF95ACDD294139BF00692B9D /* UI-Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF95ACDC294139BF00692B9D /* UI-Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		5F99DAF7293F00CE00434178 /* recipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeTableViewCell.swift; sourceTree = "<group>"; };
 		5F99DAF9293F082E00434178 /* ClientWorkoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientWorkoutTableViewController.swift; sourceTree = "<group>"; };
 		BF8757DF293547840052E610 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		BF95ACDC294139BF00692B9D /* UI-Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI-Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				5F0EA82929341FA8006D8876 /* Info.plist */,
 				BF8757DF293547840052E610 /* DBHelper.swift */,
 				5A60550F2939FC0F00F75AB6 /* ObjectClasses.swift */,
+				BF95ACDC294139BF00692B9D /* UI-Helper.swift */,
 			);
 			path = "Fitness App";
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				5F8705EE293D261D00A0D3E8 /* GListTableViewCell.swift in Sources */,
 				5F30C24F293BF6E300A22997 /* exInProgTableViewCell.swift in Sources */,
 				5F870600293EC7DE00A0D3E8 /* EditIngredientsViewController.swift in Sources */,
+				BF95ACDD294139BF00692B9D /* UI-Helper.swift in Sources */,
 				5F8705F6293E6B6400A0D3E8 /* ExerciseDetailsViewController.swift in Sources */,
 				5F8705F8293E9C0A00A0D3E8 /* AddToProgramViewController.swift in Sources */,
 				5F3C24A029401BFE007FD851 /* AddToRecipeViewController.swift in Sources */,
