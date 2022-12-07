@@ -40,7 +40,7 @@ class DBHelper{
         insertPerformed(UserID: 1, Program_name: "Chest Day", PerDate: Date())
         insertJournal(UserID: 1, JDate: Date(), Weight: 115, CaloriesBurned: 150, Quality: "Good", Hours: 1)
         insertProIncEx(PName: "Chest Day", EName:"Bench Press", PersonalRecord: 225, Weight: 135, Repetitions: 12, Sets: 3, Time: 60, Distance: 0, CreatorID: 1)
-        print("\nNew functions: \n")
+        
 
 
         insertFeedback(AdminID: 1, ClientID: 2, Comments: "You are the best")
@@ -51,6 +51,8 @@ class DBHelper{
         insertRecipe(CreatorId: 1, RecipeName: "Keto Recipe", Privacy: false, Instructions: "Make any meal and replace rice with quinoa", PrepTime: 5, TotalCalories: 350, TotalProtein: 30, TotalFat: 15, TotalCarbs: 5)
         insertFood(FoodID: 1, Calories: 8, Price: 1, Fat: 0, Carbohydrates: 5, Protein: 8, Sugar: 2, Name: "Quinoa", CreatorID: 1)
         insertIncludedIn(RecipeID: "Keto Recipe", CreatorID: 1, FoodID: 1)
+        print("\nNew functions: \n")
+        insertAdmin(UserID: 1)
     }
     
     // ---------------- INSERTING TUPLES --------------- //
@@ -76,7 +78,21 @@ class DBHelper{
         }
     }
     // [TODO] Make admin promotion function
-    //Protein INT, Carbohydrates INT,Fat INT,Weight INT,Sugar INT,Height INT,ListID INT,
+    func insertAdmin(UserID: Int){
+        let query = "INSERT INTO ADMIN (UserID) VALUES (?)"
+        var statement : OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            sqlite3_bind_int(statement, 1, Int32(UserID))
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Admin inserted successfully")
+            } else {
+                print("Admin data unable to be inserted")
+            }
+        } else {
+            print("Admin query is not as per requirement")
+        }
+    }
     func insertClient(UserID :Int, Protein: Int, Carbohydrates: Int, Fat: Int, Weight: Int, Sugar: Int, Height: Int, ListID: Int){
         let query = "INSERT INTO CLIENT (UserID, Protein, Carbohydrates, Fat, Weight, Sugar, Height, ListID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
         var statement : OpaquePointer? = nil
