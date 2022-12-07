@@ -435,7 +435,7 @@ class DBHelper{
     // ----------------EDIT FUCNTIONS-------------- ///
     
     func editClientProtein(usrID: Int, Protien:Int){
-        let query:String = "UPDATE CLIENT SET Protein = \(Protien)"
+        let query:String = "UPDATE CLIENT SET Protein = \(Protien) WHERE UserID = \(usrID) "
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -452,7 +452,7 @@ class DBHelper{
         }
     }
     func editClientCarbs(usrID: Int, carbs:Int){
-        let query:String = "UPDATE CLIENT SET Carbohydrates = \(carbs)"
+        let query:String = "UPDATE CLIENT SET Carbohydrates = \(carbs) WHERE UserID = \(usrID)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -466,7 +466,7 @@ class DBHelper{
     }
     
     func editClientFat(usrID: Int, Fat:Int){
-        let query:String = "UPDATE CLIENT SET Fat = \(Fat)"
+        let query:String = "UPDATE CLIENT SET Fat = \(Fat) WHERE UserID = \(usrID)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -480,7 +480,7 @@ class DBHelper{
     }
     
     func editClientWeight(usrID: Int, val:Int){
-        let query:String = "UPDATE CLIENT SET Weight = \(val)"
+        let query:String = "UPDATE CLIENT SET Weight = \(val) WHERE UserID = \(usrID)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -494,7 +494,7 @@ class DBHelper{
     }
     
     func editClientSugar(usrID: Int, val:Int){
-        let query:String = "UPDATE CLIENT SET Sugar = \(val)"
+        let query:String = "UPDATE CLIENT SET Sugar = \(val) WHERE UserID = \(usrID)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -508,7 +508,7 @@ class DBHelper{
     }
     
     func editClientHeight(usrID: Int, val:Int){
-        let query:String = "UPDATE CLIENT SET Height = \(val)"
+        let query:String = "UPDATE CLIENT SET Height = \(val) WHERE UserID = \(usrID)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -521,9 +521,21 @@ class DBHelper{
         }
     }
     //For the performed tabl
-    func editPerformedName(userID: Int, ){
+    func editPerformedName(userID: Int, val: String ){
+        let query: String = "UPDATE PERFORMED SET Program_name = \(val)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Program_name has been made")
+            }
+            else{
+                print("The edit to Program_name has not been made")
+                
+            }
+        }
         
     }
+    
     
     
     
