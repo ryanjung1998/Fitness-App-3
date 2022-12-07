@@ -28,7 +28,28 @@ class DBHelper{
             return db
         }
     }
-    // ------------ INSERTING FUNCTIONS --------------- //
+//    func deleteDefault(){
+//        delFood
+//        delRecipe
+//        delMealConsistsOf
+//        delMealPlan
+//        delFeedback
+//        delJournal
+//        delUser
+//        delAdmin
+//        delClient
+//        delPerformed
+//        delExercise
+//        delMusclesWorked
+//        delExerciseEquipment
+//        delWorkoutProgram
+//        delProgramIncludesExercise
+//        delGroceryList
+//        delOnGroceryList
+//        delIncludedIn
+//    }
+    
+    // ------------ DEFAULT FUNCTIONS --------------- //
     func insertDefaults(){
         insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
         insertClient(UserID: 1, Protein: 2, Carbohydrates: 3, Fat: 4, Weight: 5, Sugar: 6, Height: 7, ListID: 8)
@@ -36,13 +57,13 @@ class DBHelper{
         insertExerciseEquipment(Name: "Bench Press", Equipment_Name: "Bench and Barbell")
         insertWorkoutProgram(UserID: 1, Name: "Chest Day", Privacy: false)
         insertMusclesWorked(Name: "Bench Press", CreatorID: 1, Muscle: "Chest")
-//         [TODO] Just passing in today's date until we find a way to give it a real date
+        //         [TODO] Just passing in today's date until we find a way to give it a real date
         insertPerformed(UserID: 1, Program_name: "Chest Day", PerDate: Date())
         insertJournal(UserID: 1, JDate: Date(), Weight: 115, CaloriesBurned: 150, Quality: "Good", Hours: 1)
         insertProIncEx(PName: "Chest Day", EName:"Bench Press", PersonalRecord: 225, Weight: 135, Repetitions: 12, Sets: 3, Time: 60, Distance: 0, CreatorID: 1)
         
-
-
+        
+        
         insertFeedback(AdminID: 1, ClientID: 2, Comments: "You are the best")
         insertGroceryList(ClientID: 1, ListID: 2)
         insertMealPlan(UserID: 2, Name: "Keto Diet", Privacy: true)
@@ -51,24 +72,29 @@ class DBHelper{
         insertRecipe(CreatorId: 1, RecipeName: "Keto Recipe", Privacy: false, Instructions: "Make any meal and replace rice with quinoa", PrepTime: 5, TotalCalories: 350, TotalProtein: 30, TotalFat: 15, TotalCarbs: 5)
         insertFood(FoodID: 1, Calories: 8, Price: 1, Fat: 0, Carbohydrates: 5, Protein: 8, Sugar: 2, Name: "Quinoa", CreatorID: 1)
         insertIncludedIn(RecipeID: "Keto Recipe", CreatorID: 1, FoodID: 1)
-        print("\nNew functions: \n")
+        //print("\nNew functions: \n")
         insertAdmin(UserID: 1)
     }
     
     // ---------------- INSERTING TUPLES --------------- //
+    
+    // Creating an insertion in the database
     func insertUser(Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
+        // Make the query
         let query = "INSERT INTO USER (Birth_date, Gender, CountryOfResidence, Ethnicity) VALUES (?, ?, ?, ?)"
+        // Make an opaquepointer for sqlite
         var statement : OpaquePointer? = nil
         
+        // Prepare the statement and see if it passes
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             let formatter1 = DateFormatter() // Format date as string
             formatter1.dateStyle = .short    // Formatting
             sqlite3_bind_text(statement, 1, ((formatter1.string(from: Birth_date)) as NSString).utf8String, -1, nil) // Pass in date as a string
-            sqlite3_bind_text(statement, 2, (Gender as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 2, (Gender as NSString).utf8String, -1, nil) // Pass in string
             sqlite3_bind_text(statement, 3, (CountryOfResidence as NSString).utf8String, -1, nil)
             sqlite3_bind_text(statement, 4, (Ethnicity as NSString).utf8String, -1, nil)
             
-            if sqlite3_step(statement) == SQLITE_DONE {
+            if sqlite3_step(statement) == SQLITE_DONE { // If it can successfully use inputs, then print success
                 print("User inserted successfully")
             } else {
                 print("User data unable to be inserted")
@@ -444,7 +470,7 @@ class DBHelper{
                 print("The edit to Protien has not been made")
                 
             }
-        
+            
         }
         else{
             print("Edit not considered")
@@ -526,14 +552,14 @@ class DBHelper{
     //Edit Dummies delete after Tests
     
     func editTuples(){
-            editClientProtein(usrID: 1, Protien: 13)
-            editClientFat(usrID: 1, Fat: 14)
-            editClientSugar(usrID: 1, val: 15)
-            editClientHeight(usrID: 1, val: 16)
-            editClientWeight(usrID: 1, val: 17)
-            editClientCarbs(usrID: 1, carbs: 18)
-            editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
-            editWorkoutProgramPriv(usrID: <#T##Int#>, name: <#T##String#>, priv: <#T##Bool#>)
+        editClientProtein(usrID: 1, Protien: 13)
+        editClientFat(usrID: 1, Fat: 14)
+        editClientSugar(usrID: 1, val: 15)
+        editClientHeight(usrID: 1, val: 16)
+        editClientWeight(usrID: 1, val: 17)
+        editClientCarbs(usrID: 1, carbs: 18)
+        editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
+        editWorkoutProgramPriv(usrID: <#T##Int#>, name: <#T##String#>, priv: <#T##Bool#>)
     }
     //"Bench Press", MET: 45, CreatorID: 1
     
@@ -549,7 +575,7 @@ class DBHelper{
                 
             }
         }
-
+        
     }
     
     
@@ -566,7 +592,7 @@ class DBHelper{
                 
             }
         }
-
+        
     }
     
     
@@ -583,12 +609,16 @@ class DBHelper{
     
     
     // ---------------- CREATING TABLES --------------- //
+    // Create the entire database
     func createDefaults(){
+        // Give query
         let createUser = "CREATE TABLE IF NOT EXISTS USER(UserID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Birth_date DATE NOT NULL, Gender VARCHAR(10), CountryOfResidence VARCHAR(10), Ethnicity VARCHAR(10));"
+        // Make statement for sqlite
         var statement : OpaquePointer? = nil
         
+        // prepare the statement
         if sqlite3_prepare_v2(self.db, createUser, -1, &statement, nil) == SQLITE_OK {
-            if sqlite3_step(statement) == SQLITE_DONE{
+            if sqlite3_step(statement) == SQLITE_DONE{ // if it goes through, print success
                 print("Created user successfully") // Remove later
             } else {
                 print("User table creation failed") // Remove later
@@ -619,7 +649,7 @@ class DBHelper{
             print("Preparation for client table failed") // Remove later
         }
         
-        let createPerformed = "CREATE TABLE IF NOT EXISTS PERFORMED (UserID   INT   NOT NULL,Program_Name   VARCHAR(15)   NOT NULL,PerDate   DATE   NOT NULL,PRIMARY KEY (UserID, Program_Name, PerDate),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID),FOREIGN KEY (Program_Name) REFERENCES WORKOUT_PROGRAM(Name),FOREIGN KEY (PerDate) REFERENCES JOURNAL_ENTRY(Date));"
+        let createPerformed = "CREATE TABLE IF NOT EXISTS PERFORMED (UserID   INT   NOT NULL,Program_Name   VARCHAR(15)   NOT NULL,PerDate   DATE   NOT NULL,PRIMARY KEY (UserID, Program_Name, PerDate),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID) ON DELETE CASCADE, FOREIGN KEY (Program_Name) REFERENCES WORKOUT_PROGRAM(Name) ON DELETE CASCADE,FOREIGN KEY (PerDate) REFERENCES JOURNAL_ENTRY(Date));"
         if sqlite3_prepare_v2(self.db, createPerformed, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created performed successfully") // Remove later
@@ -691,7 +721,7 @@ class DBHelper{
         }
         
         
-        let createJournalEntry = "CREATE TABLE IF NOT EXISTS JOURNAL_ENTRY (UserID   INT   NOT NULL,JDate   DATE   NOT NULL,Weight   INT,CaloriesBurned   INT,Quality   VARCHAR(5),Hours   INT,PRIMARY KEY (UserID, JDate),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID));"
+        let createJournalEntry = "CREATE TABLE IF NOT EXISTS JOURNAL_ENTRY (UserID   INT   NOT NULL,JDate   DATE   NOT NULL,Weight   INT,CaloriesBurned   INT,Quality   VARCHAR(5),Hours   INT,PRIMARY KEY (UserID, JDate),FOREIGN KEY (UserID) REFERENCES CLIENT(UserID) ON DELETE CASCADE);"
         if sqlite3_prepare_v2(self.db, createJournalEntry, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created JOURNAL_ENTRY successfully") // Remove later
@@ -715,7 +745,7 @@ class DBHelper{
         }
         
         
-        let createGroceryList = "CREATE TABLE IF NOT EXISTS GROCERY_LIST (ClientID   INT   NOT NULL,ListID   INT   NOT NULL,PRIMARY KEY (ClientID, ListID),FOREIGN KEY  (ClientID) REFERENCES CLIENT(UserID),FOREIGN KEY (ListID) REFERENCES CLIENT(ListID) );"
+        let createGroceryList = "CREATE TABLE IF NOT EXISTS GROCERY_LIST (ClientID   INT   NOT NULL,ListID   INT   NOT NULL,PRIMARY KEY (ClientID, ListID),FOREIGN KEY  (ClientID) REFERENCES CLIENT(UserID) ON DELETE CASCADE,FOREIGN KEY (ListID) REFERENCES CLIENT(ListID) ON DELETE CASCADE);"
         if sqlite3_prepare_v2(self.db, createGroceryList, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created GROCERY_LIST successfully") // Remove later
@@ -727,7 +757,7 @@ class DBHelper{
         }
         
         
-        let createMealPlan = "CREATE TABLE IF NOT EXISTS MEAL_PLAN (UserID   INT   NOT NULL,Name   VARCHAR(15),Privacy   BOOLEAN,PRIMARY KEY (UserID, Name),FOREIGN KEY (UserID) REFERENCES USER(UserID) );"
+        let createMealPlan = "CREATE TABLE IF NOT EXISTS MEAL_PLAN (UserID   INT   NOT NULL,Name   VARCHAR(15),Privacy   BOOLEAN,PRIMARY KEY (UserID, Name),FOREIGN KEY (UserID) REFERENCES USER(UserID) ON DELETE CASCADE);"
         if sqlite3_prepare_v2(self.db, createMealPlan, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created MEAL_PLAN successfully") // Remove later
@@ -739,7 +769,7 @@ class DBHelper{
         }
         
         
-        let createMealConsistsOf = "CREATE TABLE IF NOT EXISTS MEAL_CONSISTS_OF (MealName   VARCHAR(15)   NOT NULL,RecipeName   VARCHAR(15)   NOT NULL,Servings   INT   NOT NULL,PRIMARY KEY (MealName, RecipeName),FOREIGN KEY (MealName) REFERENCES MEAL_PLAN(Name),FOREIGN KEY (RecipeName) REFERENCES RECIPE(RecipeName) );"
+        let createMealConsistsOf = "CREATE TABLE IF NOT EXISTS MEAL_CONSISTS_OF (MealName   VARCHAR(15)   NOT NULL,RecipeName   VARCHAR(15)   NOT NULL,Servings   INT   NOT NULL,PRIMARY KEY (MealName, RecipeName),FOREIGN KEY (MealName) REFERENCES MEAL_PLAN(Name) ON DELETE CASCADE,FOREIGN KEY (RecipeName) REFERENCES RECIPE(RecipeName) );"
         if sqlite3_prepare_v2(self.db, createMealConsistsOf, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created MEAL_CONSISTS_OF successfully") // Remove later
@@ -751,7 +781,7 @@ class DBHelper{
         }
         
         
-        let createOnGroceryList = "CREATE TABLE IF NOT EXISTS ON_GROCERY_LIST (ListId   INT   NOT NULL,FoodId   INT   NOT NULL,Quantity   INT   NOT  NULL,ClientID   INT   NOT NULL,PRIMARY KEY (ListID, FoodID, ClientID),FOREIGN KEY (ListID) REFERENCES GROCERY_LIST(ListID),FOREIGN KEY (FoodID) REFERENCES FOOD(FoodID),FOREIGN KEY (ClientID) REFERENCES GROCERY_LIST(ClientID) );"
+        let createOnGroceryList = "CREATE TABLE IF NOT EXISTS ON_GROCERY_LIST (ListId   INT   NOT NULL,FoodId   INT   NOT NULL,Quantity   INT   NOT  NULL,ClientID   INT   NOT NULL,PRIMARY KEY (ListID, FoodID, ClientID),FOREIGN KEY (ListID) REFERENCES GROCERY_LIST(ListID) ON DELETE CASCADE,FOREIGN KEY (FoodID) REFERENCES FOOD(FoodID) ON DELETE CASCADE,FOREIGN KEY (ClientID) REFERENCES GROCERY_LIST(ClientID) ON DELETE CASCADE);"
         if sqlite3_prepare_v2(self.db, createOnGroceryList, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created ON_GROCERY_LIST successfully") // Remove later
@@ -773,7 +803,7 @@ class DBHelper{
         } else {
             print("Preparation for RECIPE table failed") // Remove later
         }
-
+        
         
         let createFood = "CREATE TABLE IF NOT EXISTS FOOD (FoodID   INT   NOT NULL,Calories   INT,Price   INT,Fat   INT,Carbohydrates   INT,Protein   INT,Sugar   INT,Name   VARCHAR(15)   NOT NULL,CreatorID   INT   NOT NULL,PRIMARY KEY (FoodID, CreatorID),UNIQUE (Name),FOREIGN KEY (CreatorID) REFERENCES ADMIN(UserID) );"
         if sqlite3_prepare_v2(self.db, createFood, -1, &statement, nil) == SQLITE_OK {
@@ -787,7 +817,7 @@ class DBHelper{
         }
         
         
-        let createIncludedIn = "CREATE TABLE IF NOT EXISTS INCLUDED_IN (RecipeID   VARCHAR(15)   NOT NULL,CreatorID   INT   NOT NULL,FoodID   INT   NOT NULL,PRIMARY KEY (RecipeID, CreatorID, FoodID),FOREIGN KEY (RecipeID) REFERENCES RECIPE(RecipeName),FOREIGN KEY (CreatorID) REFERENCES RECIPE(CreatorID),FOREIGN KEY (FoodID) REFERENCES FOOD(FoodID) );"
+        let createIncludedIn = "CREATE TABLE IF NOT EXISTS INCLUDED_IN (RecipeID   VARCHAR(15)   NOT NULL,CreatorID   INT   NOT NULL,FoodID   INT   NOT NULL,PRIMARY KEY (RecipeID, CreatorID, FoodID),FOREIGN KEY (RecipeID) REFERENCES RECIPE(RecipeName) ON DELETE CASCADE,FOREIGN KEY (CreatorID) REFERENCES RECIPE(CreatorID) ON DELETE CASCADE,FOREIGN KEY (FoodID) REFERENCES FOOD(FoodID) ON DELETE CASCADE);"
         if sqlite3_prepare_v2(self.db, createIncludedIn, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
                 print("Created INCLUDED_IN successfully") // Remove later
@@ -798,4 +828,226 @@ class DBHelper{
             print("Preparation for INCLUDED_IN table failed") // Remove later
         }
     }
-}
+    
+    
+    
+    // ---------------- REMOVING TUPLES --------------- //
+        
+    func delUser(id: Int){
+        let query = "DELETE from USER where UserID = \(id)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("User \(id) deletion success")
+            } else {
+                print("Could not delete \(id)")
+            }
+        }
+    }
+    
+    func delAdmin(id: Int){
+        let query = "DELETE FROM ADMIN WHERE UserID = \(id)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Admin \(id) deletion success")
+            } else {
+                print("Could not delete admin \(id)")
+            }
+        }
+    }
+
+    func delClient(id: Int){
+        let query = "DELETE FROM CLIENT WHERE UserID = \(id)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Client \(id) deletion success")
+            } else {
+                print("Could not delete client \(id)")
+            }
+        }
+    }
+    
+    
+    func delPerformed(id: Int, programName: String, perdate: Date){
+        let query = "DELETE FROM PERFORMED WHERE UserID = \(id) AND Program_Name = '\(programName)' AND PerDate = \(perdate)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Performed \(programName) deletion success")
+            } else {
+                print("Could not delete performed \(programName)")
+            }
+        }
+    }
+    
+    func delExercise(exName: String, creatorId: Int){
+        let query = "DELETE FROM EXERCISE WHERE Name = '\(exName)' AND CreatorID = \(creatorId)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("\(exName) deletion success")
+            } else {
+                print("Could not delete \(exName)")
+            }
+        }
+    }
+    
+    func delMusclesWorked(exName: String, creatorId: Int, muscle: String){
+        let query = "DELETE FROM MUSCLES_WORKED WHERE Name = \(exName) AND CreatorID = \(creatorId) AND Muscle = '\(muscle)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("\(muscle) deletion success")
+            } else {
+                print("Could not delete \(muscle)")
+            }
+        }
+    }
+    
+    func delExerciseEquipment(exName: String, eqName: String){
+        let query = "DELETE FROM EXERCISE_EQUIPMENT WHERE Name = '\(exName)' AND Equipment_Name = '\(eqName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("\(exName) with \(eqName) deletion success")
+            } else {
+                print("Could not delete \(exName) with \(eqName)")
+            }
+        }
+    }
+
+    func delWorkoutProgram(userID: Int, programName: String){
+        let query = "DELETE FROM WORKOUT_PROGRAM WHERE UserID = \(userID) AND Name = '\(programName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("\(programName) deletion success")
+            } else {
+                print("Could not delete \(programName)")
+            }
+        }
+    }
+    
+    func delProgramIncludesExercise(pname: String, ename: String, id: Int){
+        let query = " DELETE FROM PROGRAM_INCLUDES_EXERCISE WHERE PName = '\(pname)' AND EName = '\(ename)' AND CreatorID = \(id);"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("\(ename) in \(pname) deletion success")
+            } else {
+                print("Could not delete \(ename) in \(pname)")
+            }
+        }
+    }
+    
+    func delJournal(userID: Int, jdate: Date){
+        let query = "DELETE FROM JOURNAL_ENTRY WHERE UserID = \(userID) AND JDate = \(jdate)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Journal deletion success")
+            } else {
+                print("Could not delete journal")
+            }
+        }
+    }
+    
+    func delFeedback(adminID: Int, clientID: Int){
+        let query = "DELETE FROM FEEDBACK WHERE AdminID = \(adminID) AND ClientID = INT;"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Feedback deletion success")
+            } else {
+                print("Could not delete feedback")
+            }
+        }
+    }
+
+    func delGroceryList(clientID: Int, listID: Int){
+        let query = "DELETE FROM GROCERY_LIST WHERE ClientID = \(clientID) and ListID = \(listID)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Grocery list deletion success")
+            } else {
+                print("Could not delete grocery list")
+            }
+        }
+    }
+    
+    func delMealPlan(id: Int, name: String){
+        let query = "DELETE FROM MEAL_PLAN WHERE UserID = \(id) AND Name = '\(name)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("\(name) deletion success")
+            } else {
+                print("Could not delete \(name)")
+            }
+        }
+    }
+    
+    func delMealConsistsOf(mealName: String, recipeName: String){
+        let query = "DELETE FROM MEAL_CONSISTS_OF WHERE MealName = '\(mealName)' AND RecipeName = '\(recipeName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("\(mealName) from \(recipeName) deletion success")
+            } else {
+                print("Could not delete \(mealName) from \(recipeName)")
+            }
+        }
+    }
+
+    func delOnGroceryList(listID: Int, foodID: Int, clientID: Int){
+        let query = "DELETE FROM ON_GROCERY_LIST WHERE ListID = \(listID) AND FoodID = \(foodID) AND ClientID = \(clientID)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Food on grocery list deletion success")
+            } else {
+                print("Could not delete food from grocery list")
+            }
+        }
+    }
+    
+    func delRecipe(creatorID: Int, recipeName: String){
+        let query = "DELETE FROM RECIPE WHERE CreatorID = \(creatorID) AND RecipeName = '\(recipeName)'"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("\(recipeName) deletion success")
+            } else {
+                print("Could not delete \(recipeName)")
+            }
+        }
+    }
+    
+    func delFood(foodID: Int, creatorID: Int){
+        let query = "DELETE FROM FOOD WHERE FoodID = \(foodID) AND CreatorID = \(creatorID)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Food deletion success")
+            } else {
+                print("Could not delete food")
+            }
+        }
+    }
+
+    func delIncludedIn(recipeID: String, creatorID: Int, foodID: Int){
+        let query = "DELETE FROM INCLUDED_IN WHERE RecipeID = '\(recipeID)' AND CreatorID = \(creatorID) AND FoodID = \(foodID)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Food in \(recipeID) deletion success")
+            } else {
+                print("Could not delete food in \(recipeID)")
+            }
+        }
+    }
+    
+} // End of scope

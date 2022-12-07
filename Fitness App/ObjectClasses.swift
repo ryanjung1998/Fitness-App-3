@@ -11,6 +11,7 @@ import SQLite3
 /* -------------------------------- PEOPLE -------------------------------- */
 
 class User{
+    // Variables for the object
     final var userID :Int
     var ethnicity : String
     var countryOfResidence : String
@@ -18,6 +19,7 @@ class User{
     var birthDay : Date
     static var counter : Int = 0
     
+    // Initialize variables for the instance
     init(ethnicity: String, countryOfResidence: String, gender: String, birthDay: Date) {
         //self.user = user
         /*
@@ -29,9 +31,9 @@ class User{
         self.gender = gender
         self.birthDay = birthDay
         self.userID = User.counter
-        User.counter += 1 // for now
+        User.counter += 1 // Increment counter
     }
-    
+    // Insert a user into the database
     func userInDB(db:DBHelper){
         db.insertUser(Birth_date: self.birthDay, Gender: self.gender, CountryOfResidence: self.countryOfResidence, Ethnicity: self.ethnicity)
     }
