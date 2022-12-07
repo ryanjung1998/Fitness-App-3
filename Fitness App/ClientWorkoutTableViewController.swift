@@ -18,6 +18,12 @@ class ClientWorkoutTableTest: UIViewController, UITableViewDataSource, UITableVi
     var filtID : Int?
     //list of program objects
     
+    
+    @IBAction func addTapped(_ sender: Any) {
+        performSegue(withIdentifier: "newWorkoutSegue", sender: self)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initList()
@@ -59,6 +65,14 @@ class ClientWorkoutTableTest: UIViewController, UITableViewDataSource, UITableVi
             tableViewProg!.userID = userID
             //these values will come from the database
             self.entryTableView.deselectRow(at: indexPath, animated: true)
+        }
+        else if (segue.identifier == "filterWorkoutSegue"){
+            let tableViewProg = segue.destination as? FilterWorkoutsViewController
+            tableViewProg!.userID = userID
+        }
+        else if (segue.identifier == "newWorkoutSegue"){
+            let tableViewProg = segue.destination as? NewWorkoutViewController
+            tableViewProg!.userID = userID
         }
     }
 }

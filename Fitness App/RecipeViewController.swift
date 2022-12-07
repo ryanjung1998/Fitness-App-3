@@ -52,6 +52,14 @@ class RecipeViewController: UIViewController {
             dest!.creatorID = creatorID
             //these values will come from the database
         }
+        else if (segue.identifier == "ingredientsSegue"){
+            let dest = segue.destination as? IngredientsViewController
+            dest!.recipeName = recipeName
+            dest!.userID = userID
+            dest!.creatorID = creatorID
+            
+        }
     }
+    
 
 }

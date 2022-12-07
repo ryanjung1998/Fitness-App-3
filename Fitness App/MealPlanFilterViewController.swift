@@ -17,9 +17,41 @@ class MealPlanFilterViewController : UIViewController
     @IBOutlet weak var applyButton: UIButton!
     
     @IBAction func applyTapped(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToMealPlan", sender: self)
+        if(checkString(input: tEntry1.text) && checkInt(input: tEntry2.text)){
+            performSegue(withIdentifier: "unwindToMealPlan", sender: self)
+        }
+    }
+    func checkInt(input : String?)->Bool{
+        if let inputReal = input {
+            if (Int(inputReal) ?? -1) == -1{
+                print("not an integer input")
+                return false}
+            else{return true}
+        }
+        else{return true}
     }
     
+    func checkString(input : String?)->Bool{
+        if let inputReal = input {
+            if (inputReal.contains("\\") || inputReal.contains("\"") || inputReal.contains("\'")){
+                print("not a valid input" + inputReal)
+                return false}
+            else{
+                return true}
+        }
+        else{
+            return true}
+    }
+    
+    func checkDouble(input : String?)->Bool{
+        if let inputReal = input {
+            if (Double(inputReal) ?? -1) == -1{
+                print("not a valid double input")
+                return false}
+            else{return true}
+        }
+        else{return true}
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "unwindToMealPlan"){
             let tableViewProg = segue.destination as? MealPlanTableViewController

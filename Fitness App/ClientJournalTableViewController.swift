@@ -16,6 +16,11 @@ class ClientJournalTableViewController: UIViewController, UITableViewDataSource,
     var userID: Int!
     var entryList = [String]()
     
+    
+    @IBAction func addTapped(_ sender: Any) {
+        performSegue(withIdentifier: "newEntrySegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         //let db = DBHelper() // Initialize a database
         //db.createDefaults() // Load in deafult tables
@@ -61,6 +66,10 @@ class ClientJournalTableViewController: UIViewController, UITableViewDataSource,
             //these values will come from the database
             
             self.entryTableView.deselectRow(at: indexPath, animated: true)
+        }
+        else if(segue.identifier == "newEntrySegue"){
+            let tableViewEntry = segue.destination as? NewJournalViewController
+            tableViewEntry!.userID = userID
         }
     }
 }

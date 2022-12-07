@@ -42,10 +42,43 @@ class ClientRemoveExerciseViewController : UIViewController
     }
     
     @IBAction func saveTapped(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToProgram", sender: self)
-        //code for saving changes
+        if(checkInt(input: repsEntry.text) && checkInt(input: setsEntry.text) && checkInt(input: recEntry.text) && checkInt(input: weightEntry.text) && checkDouble(input: distEntry.text) && checkInt(input: durEntry.text)){
+            performSegue(withIdentifier: "unwindToProgram", sender: self)
+            //code for saving changes
+        }
     }
     
+    func checkInt(input : String?)->Bool{
+        if let inputReal = input {
+            if (Int(inputReal) ?? -1) == -1{
+                print("not an integer input")
+                return false}
+            else{return true}
+        }
+        else{return true}
+    }
+    
+    func checkString(input : String?)->Bool{
+        if let inputReal = input {
+            if (inputReal.contains("\\") || inputReal.contains("\"") || inputReal.contains("\'")){
+                print("not a valid input" + inputReal)
+                return false}
+            else{
+                return true}
+        }
+        else{
+            return true}
+    }
+    
+    func checkDouble(input : String?)->Bool{
+        if let inputReal = input {
+            if (Double(inputReal) ?? -1) == -1{
+                print("not a valid double input")
+                return false}
+            else{return true}
+        }
+        else{return true}
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "unwindToProgram"){
 //            let tableViewProg = segue.destination as? ClientProgramTableViewController

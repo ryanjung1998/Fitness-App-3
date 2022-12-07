@@ -17,23 +17,23 @@ class ClientMainMenuViewController : UIViewController
     @IBOutlet weak var profileButton: UIButton!
     
     @IBAction func profileTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "profileSegue", sender: self)
+        performSegue(withIdentifier: "profileSegue", sender: self)
     }
     
     @IBAction func journalTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "clientJournalSegue", sender: self)
+        performSegue(withIdentifier: "clientJournalSegue", sender: self)
     }
     
     @IBAction func workoutProgramsTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "clientWorkoutProgramsSegue", sender: self)
+        performSegue(withIdentifier: "clientWorkoutProgramsSegue", sender: self)
     }
     
     @IBAction func exercisesTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "clientExercisesSegue", sender: self)
+        performSegue(withIdentifier: "clientExercisesSegue", sender: self)
     }
     
     @IBAction func recipesTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "clientRecipesSegue", sender: self)
+        performSegue(withIdentifier: "clientRecipesSegue", sender: self)
     }
     
     @IBAction func mPlansTapped(_ sender: Any) {
@@ -46,6 +46,10 @@ class ClientMainMenuViewController : UIViewController
     
     @IBAction func feedbackTapped(_ sender: Any) {
         performSegue(withIdentifier: "feedbackSegue", sender: self)
+    }
+    
+    @IBAction func logoutTapped(_ sender: Any) {
+        performSegue(withIdentifier: "logoutSegue", sender: self)
     }
     @IBOutlet weak var journalButton: UIButton!
     
@@ -62,7 +66,8 @@ class ClientMainMenuViewController : UIViewController
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBOutlet weak var feedbackButton: UIButton!
-    
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "profileSegue"){
             let dest = segue.destination as? ClientProfileViewController
@@ -95,6 +100,9 @@ class ClientMainMenuViewController : UIViewController
         else if(segue.identifier == "feedbackSegue"){
             let dest = segue.destination as? FeedbackViewController
             dest!.userID = userID
+        }
+        else if(segue.identifier == "logoutSegue"){
+//            let dest = segue.destination as? LoginViewController
         }
     }
     override func viewDidLoad(){

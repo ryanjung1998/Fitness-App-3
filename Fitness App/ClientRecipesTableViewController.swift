@@ -25,6 +25,9 @@ class ClientRecipesTableViewController: UIViewController, UITableViewDataSource,
         performSegue(withIdentifier: "filterRecipesSegue", sender: self)
     }
     
+    @IBAction func addTapped(_ sender: Any) {
+        performSegue(withIdentifier: "newRecipeSegue", sender: self)
+    }
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
     }
@@ -68,6 +71,10 @@ class ClientRecipesTableViewController: UIViewController, UITableViewDataSource,
         }
         if(segue.identifier == "filterRecipesSegue"){
             let dest = segue.destination as? RecipeFilterViewController
+            dest!.userID = userID
+        }
+        if(segue.identifier == "newRecipeSegue"){
+            let dest = segue.destination as? NewRecipeViewController
             dest!.userID = userID
         }
     }

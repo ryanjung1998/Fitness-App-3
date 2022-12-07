@@ -22,7 +22,8 @@ class ClientGListTableViewController: UIViewController, UITableViewDataSource, U
         initList()
         // Do any additional setup after loading the view.
     }
-    
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+    }
     func initList()//Have to connect to database here
     {
         entryList = ["Food1","Food2","Food3","Food4","Food5","Food6","Food7","Food8","Food9","Food10"]
