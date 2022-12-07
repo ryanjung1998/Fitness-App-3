@@ -28,26 +28,31 @@ class DBHelper{
             return db
         }
     }
-//    func deleteDefault(){
-//        delFood
-//        delRecipe
-//        delMealConsistsOf
-//        delMealPlan
-//        delFeedback
-//        delJournal
-//        delUser
-//        delAdmin
-//        delClient
-//        delPerformed
-//        delExercise
-//        delMusclesWorked
-//        delExerciseEquipment
-//        delWorkoutProgram
-//        delProgramIncludesExercise
-//        delGroceryList
-//        delOnGroceryList
-//        delIncludedIn
-//    }
+    func deleteDefaults(){
+        delFood(foodID: 1, creatorID: 1)
+        delRecipe(creatorID: 1, recipeName: "Keto Recipe")
+        delMealConsistsOf(mealName: "Keto Diet", recipeName: "Keto Recipe")
+        delMealPlan(id: 2, name: "Keto Diet 2")
+        delFeedback(adminID: 1, clientID: 2)
+        delUser(id: 1)
+//        delAdmin(id: 1) [TODO] Test admin
+        delClient(id: 1)
+
+        delExercise(exName: "Bench Press", creatorId: 1)
+        delMusclesWorked(exName: "Bench Press", creatorId: 1, muscle: "Chest")
+        delExerciseEquipment(exName: "Bench Press", eqName: "Bench and Barbell")
+        delWorkoutProgram(userID: 1, programName: "Chest Day")
+        delProgramIncludesExercise(pname: "Chest Day", ename: "Bench Press", id: 1)
+        delGroceryList(clientID: 1, listID: 2)
+        delOnGroceryList(listID: 2, foodID: 1, clientID: 2)
+        delIncludedIn(recipeID: "Keto Recipe", creatorID: 1, foodID: 1)
+        let jdstring = "12/6/22" // Set to a date in the database
+        let formatter1 = DateFormatter() // Format date as string
+        formatter1.dateStyle = .short    // Formatting
+        delJournal(userID: 1, jdate: formatter1.date(from: jdstring)!)
+        delPerformed(id: 1, programName: "Chest Day", perdate: formatter1.date(from: jdstring)!)
+
+    }
     
     // ------------ DEFAULT FUNCTIONS --------------- //
     func insertDefaults(){
@@ -968,7 +973,8 @@ class DBHelper{
     
     
     func delPerformed(id: Int, programName: String, perdate: Date){
-        let query = "DELETE FROM PERFORMED WHERE UserID = \(id) AND Program_Name = '\(programName)' AND PerDate = \(perdate)"
+        let stringDate = perdate.formatted(date: .numeric, time: .omitted) // Trim date
+        let query = "DELETE FROM PERFORMED WHERE UserID = \(id) AND Program_Name = '\(programName)' AND PerDate = '\(stringDate)'"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
             if sqlite3_step(statement) == SQLITE_DONE {
@@ -992,7 +998,7 @@ class DBHelper{
     }
     
     func delMusclesWorked(exName: String, creatorId: Int, muscle: String){
-        let query = "DELETE FROM MUSCLES_WORKED WHERE Name = \(exName) AND CreatorID = \(creatorId) AND Muscle = '\(muscle)'"
+        let query = "DELETE FROM MUSCLES_WORKED WHERE Name = '\(exName)' AND CreatorID = \(creatorId) AND Muscle = '\(muscle)'"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
             if sqlite3_step(statement) == SQLITE_DONE {
@@ -1040,7 +1046,8 @@ class DBHelper{
     }
     
     func delJournal(userID: Int, jdate: Date){
-        let query = "DELETE FROM JOURNAL_ENTRY WHERE UserID = \(userID) AND JDate = \(jdate)"
+        let stringDate = jdate.formatted(date: .numeric, time: .omitted)
+        let query = "DELETE FROM JOURNAL_ENTRY WHERE UserID = \(userID) AND JDate = '\(stringDate)'"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
             if sqlite3_step(statement) == SQLITE_DONE {
@@ -1052,7 +1059,7 @@ class DBHelper{
     }
     
     func delFeedback(adminID: Int, clientID: Int){
-        let query = "DELETE FROM FEEDBACK WHERE AdminID = \(adminID) AND ClientID = INT;"
+        let query = "DELETE FROM FEEDBACK WHERE AdminID = \(adminID) AND ClientID = \(clientID);"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
             if sqlite3_step(statement) == SQLITE_DONE {
