@@ -706,6 +706,71 @@ class DBHelper{
         
     }
     
+    func editJournalEntWeight(UsrID:Int, JDate:Date, val:Int){
+        let query:String = "UPDATE JOURNAL_ENTRY SET Weight = \(val) WHERE UserID = \(UsrID) AND JDate = \(JDate)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Weight in Journal Entry has been made")
+            }
+            else{
+                print("The edit to Weight in Journal Entry  has not been made")
+                
+            }
+        }
+        
+    }
+    
+    func editJournalEntCalBurned(UsrID:Int, JDate:Date, val:Int){
+        let query:String = "UPDATE JOURNAL_ENTRY SET CaloriesBurned = \(val) WHERE UserID = \(UsrID) AND JDate = \(JDate)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to CaloriesBurned in Journal Entry has been made")
+            }
+            else{
+                print("The edit to Clories in Journal Entry  has not been made")
+                
+            }
+        }
+        
+    }
+    
+    func editJournalEntQuality(UsrID:Int, JDate:Date, val:String){
+        let query:String = "UPDATE JOURNAL_ENTRY SET Quality = '\(val)' WHERE UserID = \(UsrID) AND JDate = \(JDate)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Quality in Journal Entry has been made")
+            }
+            else{
+                print("The edit to Quality in Journal Entry  has not been made")
+                
+            }
+        }
+        
+    }
+    
+    
+    func editJournalEntHours(UsrID:Int, JDate:Date, val:Int){
+        let query:String = "UPDATE JOURNAL_ENTRY SET Hours = \(val) WHERE UserID = \(UsrID) AND JDate = \(JDate)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Hours in Journal Entry has been made")
+            }
+            else{
+                print("The edit to Hours in Journal Entry  has not been made")
+                
+            }
+        }
+        
+    }
+    
+    
+    
+    
+    
     
     
 
