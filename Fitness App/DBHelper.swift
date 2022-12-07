@@ -534,6 +534,7 @@ class DBHelper{
             editClientWeight(usrID: 1, val: 17)
             editClientCarbs(usrID: 1, carbs: 18)
             editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
+            editWorkoutProgramPriv(usrID: <#T##Int#>, name: <#T##String#>, priv: <#T##Bool#>)
     }
     //"Bench Press", MET: 45, CreatorID: 1
     
@@ -553,7 +554,7 @@ class DBHelper{
     }
     
     
-    func editWorkoutProgram(usrID:Int,name:String,priv:Bool){
+    func editWorkoutProgramPriv(usrID:Int,name:String,priv:Bool){
         var tableVal = priv ? 1 : 0
         let query:String = "UPDATE WORKOUT_PROGRAM SET Privacy = \(tableVal) WHERE CreatorID = \(usrID) AND Name = \(name)"
         var statement : OpaquePointer? = nil
@@ -568,6 +569,11 @@ class DBHelper{
         }
 
     }
+    
+    
+    
+    
+    
     
     
     
