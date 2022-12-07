@@ -35,7 +35,7 @@ class User{
     }
     // Insert a user into the database
     func userInDB(db:DBHelper){
-        db.insertUser(Birth_date: self.birthDay, Gender: self.gender, CountryOfResidence: self.countryOfResidence, Ethnicity: self.ethnicity)
+        db.insertUser(UserID: self.userID, Birth_date: self.birthDay, Gender: self.gender, CountryOfResidence: self.countryOfResidence, Ethnicity: self.ethnicity)
     }
     
     func rmUserDB(db:DBHelper){
@@ -59,13 +59,13 @@ class Client{
     var sugar : Int
     var height : Int
     
-    init(userToClient: User, listID: Int, protein: Int, carbohydrates: Int, fat: Int, weight: Int, sugar: Int, height: Int) {
+    init(userToClient: User, protein: Int, carbohydrates: Int, fat: Int, weight: Int, sugar: Int, height: Int) {
         self.clientID = userToClient.userID
         self.ethnicity = userToClient.ethnicity
         self.countryOfResidence = userToClient.countryOfResidence
         self.gender = userToClient.gender
         self.birthDay = userToClient.birthDay
-        self.listID = listID
+        self.listID = userToClient.userID
         self.protein = protein
         self.carbohydrates = carbohydrates
         self.fat = fat
@@ -85,10 +85,18 @@ class Client{
 }
 
 
-// [TODO] Make admin promotion function
-//class Admin : User{
-//    // Leaving empty for now until we figure out functions for it [TODO]
-//}
+class Admin{
+    var adminId: Int
+    init(userToAdmin: User) {
+        self.adminId = userToAdmin.userID
+    }
+    func adminInDB(db:DBHelper, adminToPromo:Int){ // Use this function to appoint a user to an admin
+        db.insertAdmin(UserID: adminToPromo)
+    }
+    func rmAdminInDB(db:DBHelper, adminToRm:Int){ // Use this function to delete another admin from the Admin table
+        db.delAdmin(id: adminToRm)
+    }
+}
 
 class feedback{
     var adminId: Int

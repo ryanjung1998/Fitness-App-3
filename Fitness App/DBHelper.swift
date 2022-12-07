@@ -28,14 +28,14 @@ class DBHelper{
             return db
         }
     }
-    func deleteDefaults(){
+    func deleteDefaults(){ // Code for deleting
         delFood(foodID: 1, creatorID: 1)
         delRecipe(creatorID: 1, recipeName: "Keto Recipe")
         delMealConsistsOf(mealName: "Keto Diet", recipeName: "Keto Recipe")
         delMealPlan(id: 2, name: "Keto Diet 2")
         delFeedback(adminID: 1, clientID: 2)
         delUser(id: 1)
-//        delAdmin(id: 1) [TODO] Test admin
+//        delAdmin(id: 1)
         delClient(id: 1)
 
         delExercise(exName: "Bench Press", creatorId: 1)
@@ -51,12 +51,12 @@ class DBHelper{
         formatter1.dateStyle = .short    // Formatting
         delJournal(userID: 1, jdate: formatter1.date(from: jdstring)!)
         delPerformed(id: 1, programName: "Chest Day", perdate: formatter1.date(from: jdstring)!)
-
     }
     
     // ------------ DEFAULT FUNCTIONS --------------- //
     func insertDefaults(){
-        insertUser(Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
+        insertAdmin(UserID: 0)
+        insertUser(UserID: 1, Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
         insertClient(UserID: 1, Protein: 2, Carbohydrates: 3, Fat: 4, Weight: 5, Sugar: 6, Height: 7, ListID: 8)
         insertExercise(Name: "Bench Press", MET: 45, CreatorID: 1, CardioFlag: false, StrengthFlag: true)
         insertExerciseEquipment(Name: "Bench Press", Equipment_Name: "Bench and Barbell")
@@ -77,8 +77,6 @@ class DBHelper{
         insertRecipe(CreatorId: 1, RecipeName: "Keto Recipe", Privacy: false, Instructions: "Make any meal and replace rice with quinoa", PrepTime: 5, TotalCalories: 350, TotalProtein: 30, TotalFat: 15, TotalCarbs: 5)
         insertFood(FoodID: 1, Calories: 8, Price: 1, Fat: 0, Carbohydrates: 5, Protein: 8, Sugar: 2, Name: "Quinoa", CreatorID: 1)
         insertIncludedIn(RecipeID: "Keto Recipe", CreatorID: 1, FoodID: 1)
-        //print("\nNew functions: \n")
-        insertAdmin(UserID: 1)
     }
     
     func editTuples(){
@@ -117,20 +115,21 @@ class DBHelper{
     // ---------------- INSERTING TUPLES --------------- //
     
     // Creating an insertion in the database
-    func insertUser(Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
+    func insertUser(UserID: Int, Birth_date: Date, Gender: String, CountryOfResidence: String, Ethnicity: String){
         // Make the query
-        let query = "INSERT INTO USER (Birth_date, Gender, CountryOfResidence, Ethnicity) VALUES (?, ?, ?, ?)"
+        let query = "INSERT INTO USER (UserID, Birth_date, Gender, CountryOfResidence, Ethnicity) VALUES (?,?, ?, ?, ?)"
         // Make an opaquepointer for sqlite
         var statement : OpaquePointer? = nil
         
         // Prepare the statement and see if it passes
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            sqlite3_bind_int(statement, 1, Int32(UserID))
             let formatter1 = DateFormatter() // Format date as string
             formatter1.dateStyle = .short    // Formatting
-            sqlite3_bind_text(statement, 1, ((formatter1.string(from: Birth_date)) as NSString).utf8String, -1, nil) // Pass in date as a string
-            sqlite3_bind_text(statement, 2, (Gender as NSString).utf8String, -1, nil) // Pass in string
-            sqlite3_bind_text(statement, 3, (CountryOfResidence as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(statement, 4, (Ethnicity as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 2, ((formatter1.string(from: Birth_date)) as NSString).utf8String, -1, nil) // Pass in date as a string
+            sqlite3_bind_text(statement, 3, (Gender as NSString).utf8String, -1, nil) // Pass in string
+            sqlite3_bind_text(statement, 4, (CountryOfResidence as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(statement, 5, (Ethnicity as NSString).utf8String, -1, nil)
             
             if sqlite3_step(statement) == SQLITE_DONE { // If it can successfully use inputs, then print success
                 print("User inserted successfully")
@@ -947,7 +946,7 @@ class DBHelper{
     // Create the entire database
     func createDefaults(){
         // Give query
-        let createUser = "CREATE TABLE IF NOT EXISTS USER(UserID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Birth_date DATE NOT NULL, Gender VARCHAR(10), CountryOfResidence VARCHAR(10), Ethnicity VARCHAR(10));"
+        let createUser = "CREATE TABLE IF NOT EXISTS USER(UserID INTEGER PRIMARY KEY NOT NULL, Birth_date DATE NOT NULL, Gender VARCHAR(10), CountryOfResidence VARCHAR(10), Ethnicity VARCHAR(10));"
         // Make statement for sqlite
         var statement : OpaquePointer? = nil
         
