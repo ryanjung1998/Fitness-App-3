@@ -95,8 +95,12 @@ class DBHelper{
             editprogramIncludesExerciseSets(PName: "Chest Day", EName: "Bench Press", CreatorID: 1, val: 7)
             editprogramIncludesExerciseWeight(PName: "Chest Day", EName: "Bench Press", CreatorID: 1, val: 136)
             editprogramIncludesExerciseDistance(PName: "Chest Day", EName: "Bench Press", CreatorID: 1, val: 1)
+            editJournalEntHours(UsrID: 1, JDate: Date(), val: 2)
+            editJournalEntWeight(UsrID: 1, JDate: Date(), val: 25)
+            editJournalEntQuality(UsrID: 1, JDate: Date(), val: "Shit")
+            editJournalEntCalBurned(UsrID: 1, JDate: Date(), val: 15)
     }
-    
+    //UserID: 1, JDate: Date(), Weight: 115, CaloriesBurned: 150, Quality: "Good", Hours: 1
     
 
     
@@ -707,7 +711,8 @@ class DBHelper{
     }
     
     func editJournalEntWeight(UsrID:Int, JDate:Date, val:Int){
-        let query:String = "UPDATE JOURNAL_ENTRY SET Weight = \(val) WHERE UserID = \(UsrID) AND JDate = \(JDate)"
+        let stringDate = JDate.formatted(date: .numeric, time: .omitted)
+        let query:String = "UPDATE JOURNAL_ENTRY SET Weight = \(val) WHERE UserID = \(UsrID) AND JDate = \(stringDate)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -722,7 +727,8 @@ class DBHelper{
     }
     
     func editJournalEntCalBurned(UsrID:Int, JDate:Date, val:Int){
-        let query:String = "UPDATE JOURNAL_ENTRY SET CaloriesBurned = \(val) WHERE UserID = \(UsrID) AND JDate = \(JDate)"
+        let stringDate = JDate.formatted(date: .numeric, time: .omitted)
+        let query:String = "UPDATE JOURNAL_ENTRY SET CaloriesBurned = \(val) WHERE UserID = \(UsrID) AND JDate = \(stringDate)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -737,7 +743,8 @@ class DBHelper{
     }
     
     func editJournalEntQuality(UsrID:Int, JDate:Date, val:String){
-        let query:String = "UPDATE JOURNAL_ENTRY SET Quality = '\(val)' WHERE UserID = \(UsrID) AND JDate = \(JDate)"
+        let stringDate = JDate.formatted(date: .numeric, time: .omitted)
+        let query:String = "UPDATE JOURNAL_ENTRY SET Quality = '\(val)' WHERE UserID = \(UsrID) AND JDate = \(stringDate)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -753,7 +760,8 @@ class DBHelper{
     
     
     func editJournalEntHours(UsrID:Int, JDate:Date, val:Int){
-        let query:String = "UPDATE JOURNAL_ENTRY SET Hours = \(val) WHERE UserID = \(UsrID) AND JDate = \(JDate)"
+        let stringDate = JDate.formatted(date: .numeric, time: .omitted)
+        let query:String = "UPDATE JOURNAL_ENTRY SET Hours = \(val) WHERE UserID = \(UsrID) AND JDate = \(stringDate)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
@@ -766,6 +774,7 @@ class DBHelper{
         }
         
     }
+    
     
     
     
