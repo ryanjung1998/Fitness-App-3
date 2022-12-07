@@ -523,20 +523,7 @@ class DBHelper{
     }
     
     
-    
-    
-    //Edit Dummies. delete after Tests
-    
-    func editTuples(){
-            editClientProtein(usrID: 1, Protien: 13)
-            editClientFat(usrID: 1, Fat: 14)
-            editClientSugar(usrID: 1, val: 15)
-            editClientHeight(usrID: 1, val: 16)
-            editClientWeight(usrID: 1, val: 17)
-            editClientCarbs(usrID: 1, carbs: 18)
-            editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
-            editWorkoutProgramPriv(usrID: 1, name: "Chest Day" , priv: false)
-    }
+
     //UserID: 1, Name: "Chest Day", Privacy: false
     //"Bench Press", MET: 45, CreatorID: 1
     
@@ -573,7 +560,7 @@ class DBHelper{
         }
 
     }
-    
+    /*---ProgramInclEx Edits-----------*/
     func programIncludesExerciseRep(PName :String, EName: String, CreatorID: Int, reps:Int){
         let query:String = "UPDATE PROGRAM_INCLUDES_EXCERCISE SET Reprtitiions = \(reps) WHERE CreatorID = \(CreatorID) AND PName = \(PName) AND EName = \(EName)"
         var statement : OpaquePointer? = nil
@@ -605,15 +592,21 @@ class DBHelper{
     
     
     
+    //Edit Dummies. delete after Tests
+    
+    func editTuples(){
+            editClientProtein(usrID: 1, Protien: 13)
+            editClientFat(usrID: 1, Fat: 14)
+            editClientSugar(usrID: 1, val: 15)
+            editClientHeight(usrID: 1, val: 16)
+            editClientWeight(usrID: 1, val: 17)
+            editClientCarbs(usrID: 1, carbs: 18)
+            editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
+            editWorkoutProgramPriv(usrID: 1, name: "Chest Day" , priv: false)
+    }
     
     
-    
-    
-    
-    
-    
-    
-    
+
     
     // ---------------- CREATING TABLES --------------- //
     func createDefaults(){
