@@ -37,12 +37,16 @@ class ClientMainMenuViewController : UIViewController
     }
     
     @IBAction func mPlansTapped(_ sender: Any) {
+        performSegue(withIdentifier: "mPlansSegue", sender: self)
     }
     
     @IBAction func gListTapped(_ sender: Any) {
         performSegue(withIdentifier: "gListSegue", sender: self)
     }
     
+    @IBAction func feedbackTapped(_ sender: Any) {
+        performSegue(withIdentifier: "feedbackSegue", sender: self)
+    }
     @IBOutlet weak var journalButton: UIButton!
     
     @IBOutlet weak var exercisesButton: UIButton!
@@ -84,12 +88,19 @@ class ClientMainMenuViewController : UIViewController
             let dest = segue.destination as? ClientExercisesTableViewController
             dest!.userID = userID
         }
+        else if(segue.identifier == "mPlansSegue"){
+            let dest = segue.destination as? MealPlanTableViewController
+            dest!.userID = userID
+        }
+        else if(segue.identifier == "feedbackSegue"){
+            let dest = segue.destination as? FeedbackViewController
+            dest!.userID = userID
+        }
     }
-    
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
         idLabel.text = "User ID: " + String(userID)
         // Do any additional setup after loading the view.
     }
-    
 }
+

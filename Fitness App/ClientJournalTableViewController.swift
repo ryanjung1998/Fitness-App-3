@@ -24,14 +24,14 @@ class ClientJournalTableViewController: UIViewController, UITableViewDataSource,
         initList()
         // Do any additional setup after loading the view.
     }
-    
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+    }
     func initList()//Have to connect to database here
     {
         entryList = ["Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry"]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(entryList)
         return entryList.count
     }
     
