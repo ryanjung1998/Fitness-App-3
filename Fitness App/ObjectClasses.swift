@@ -34,6 +34,7 @@ class User{
 
 class Client{
     //Since User ID already in the User class, we don't need to worry about it
+    var clientID: Int
     var ethnicity: String
     var countryOfResidence : String
     var gender : String
@@ -48,6 +49,7 @@ class Client{
     var height : Double
     
     init(userToClient: User, listID: Int, protein: Double, carbohydrates: Double, fat: Double, weight: Double, sugar: Double, height: Double) {
+        self.clientID = userToClient.userID
         self.ethnicity = userToClient.ethnicity
         self.countryOfResidence = userToClient.countryOfResidence
         self.gender = userToClient.gender
@@ -88,24 +90,9 @@ class GroceryList{ // Integrate on_grocery_list [TODO]
     var clientID: Int
     var listID: Int
     
-    init(client:Client) {
-        self.clientID = client.userID
-        self.listID = client.listID
-    }
-    
-    public func insert(gL: GroceryList) ->Bool{
-        //inserts into DB
-        return true
-    }
-    
-    public func edit(cliID:Client, change:String) -> Bool{
-        //change the DB
-        
-        return true
-    }
-    
-    public func delete(cliID:Client){
-        
+    init(clientID: Int, listID: Int) {
+        self.clientID = clientID
+        self.listID = listID
     }
     
 }
@@ -144,9 +131,9 @@ class MealPlan{ // Integrate meal_consists_of [TODO]
     var name: String
     var privacy: Bool = false
     
-    init(usrID: Client, name: Recipe, privacy: Bool) {
-        self.userID = usrID.userID
-        self.name = name.recipeName
+    init(userID: Int, name: String, privacy: Bool) {
+        self.userID = userID
+        self.name = name
         self.privacy = privacy
     }
     //insert edit, delete like all of them
@@ -168,7 +155,7 @@ class Recipe{ // Integrate IncludedIn [TODO]
     //These threee should be calculated
     
     init(creatorID: Client, recipeName: String, instructions: String, prepTime: String, totalCal: Int, totalProtien: Int, totalfat: Double, totalCarbs: Double) {
-        self.creatorID = creatorID.userID
+        self.creatorID = creatorID.clientID
         self.recipeName = recipeName
         self.instructions = instructions
         self.prepTime = prepTime
