@@ -37,6 +37,10 @@ class User{
     func userInDB(db:DBHelper){
         db.insertUser(Birth_date: self.birthDay, Gender: self.gender, CountryOfResidence: self.countryOfResidence, Ethnicity: self.ethnicity)
     }
+    
+    func rmUserDB(db:DBHelper){
+        db.delUser(id: self.userID)
+    }
 }
 
 class Client{
@@ -73,6 +77,11 @@ class Client{
     func clientInDB(db:DBHelper){
         db.insertClient(UserID: self.clientID, Protein: self.protein, Carbohydrates: self.carbohydrates, Fat: self.fat, Weight: self.weight, Sugar: self.sugar, Height: self.height, ListID: self.listID)
     }
+    
+    func rmClientDB(db:DBHelper){
+        db.delClient(id: self.clientID)
+    }
+    
 }
 
 
@@ -96,6 +105,10 @@ class feedback{
         db.insertFeedback(AdminID: self.adminId, ClientID: self.clientID, Comments: self.comments)
     }
     
+    func rmClientDB(db:DBHelper){
+        db.delFeedback(adminID: self.adminId, clientID: self.clientID)
+    }
+    
     //should show the feedback in UI if time allows
 }
 
@@ -115,6 +128,12 @@ class GroceryList{
     // When we put stuff in grocery list, we need food num [TODO]
     func onGroceryListInDB(db:DBHelper, foodNum: Int, quantity: Int){
         db.insertOnGroceryList(ListId: self.listID, FoodId: foodNum, Quantity: quantity, ClientID: self.clientID)
+    }
+    func rmGroceryListInDB(db:DBHelper){
+        db.delGroceryList(clientID: self.clientID, listID: self.listID)
+    }
+    func rmOnGroceryListInDB(db:DBHelper, foodNum: Int){
+        db.delOnGroceryList(listID: self.listID, foodID: foodNum, clientID: self.clientID)
     }
     
 }
@@ -147,6 +166,9 @@ class Food{
         db.insertFood(FoodID: self.foodID, Calories: self.calories, Price: self.price, Fat: self.fat, Carbohydrates: self.carbohydrates, Protein: self.protein, Sugar: self.sugar, Name: self.name, CreatorID: self.CreatorID)
     }
     
+    func rmFoodInDB(db:DBHelper){
+        db.delFood(foodID: self.foodID, creatorID: self.CreatorID)
+    }
     // Make a food listing query [TODO]
     
     //Export Delete others for database
@@ -171,6 +193,12 @@ class MealPlan{
     // When we want to add a meal, we also need the recipe [TODO]
     func mealConsistsOfInDB(db:DBHelper, recipeName: String, servings: Int){
         db.insertMealConsistsOf(MealName: self.name, RecipeName: recipeName, Servings: servings)
+    }
+    func rmMealPlanInDB(db:DBHelper){
+        db.delMealPlan(id: self.userID, name: self.name)
+    }
+    func rmMealConsistsOfInDB(db:DBHelper, recipe:String){
+        db.delMealConsistsOf(mealName: self.name, recipeName: recipe)
     }
     // [TODO] Make a method that will query for the recipes
     // addToGroceryList(db, MealPlanName, UserID)
@@ -208,6 +236,14 @@ class Recipe{
     func includedFoodInRecipeInDB(db: DBHelper, foodID: Int){
         db.insertIncludedIn(RecipeID: self.recipeName, CreatorID: self.creatorID, FoodID: foodID)
     }
+    
+    func rmRecipeInDB(db:DBHelper){
+        db.delRecipe(creatorID: self.creatorID, recipeName: self.recipeName)
+    }
+    
+    func rmIncludedFoodInRecipeInDB(db:DBHelper, food: Int){
+        db.delIncludedIn(recipeID: self.recipeName, creatorID: self.creatorID, foodID: food)
+    }
     //simple edit delete etc
     
     
@@ -232,10 +268,14 @@ class Exercise{
     func exerciseInDB(db:DBHelper){
         db.insertExercise(Name: self.Name, MET: self.met, CreatorID: self.creatorID, CardioFlag: self.cardioFlag, StrengthFlag: self.strengthFlag)
     }
+    
+    func rmExerciseInDB(db:DBHelper){
+        db.delExercise(exName: self.Name, creatorId: self.creatorID)
+    }
 }
 
 class Muscles_Worked{
-    var Name: String
+    var Name: String // References exercise name
     var creatorID: Int
     var muscle: String
     
@@ -246,6 +286,9 @@ class Muscles_Worked{
     }
     func musclesWorkedInDB(db:DBHelper){
         db.insertMusclesWorked(Name: self.Name, CreatorID: self.creatorID, Muscle: self.muscle)
+    }
+    func rmMusclesWorkedInDB(db:DBHelper){
+        db.delMusclesWorked(exName: self.Name, creatorId: self.creatorID, muscle: self.muscle)
     }
 }
 
@@ -259,6 +302,9 @@ class Exercise_Equipment{
     }
     func exerciseEquipmentInDB(db:DBHelper){
         db.insertExerciseEquipment(Name: self.name, Equipment_Name: self.equipment_name)
+    }
+    func rmExerciseEquipmentInDB(db:DBHelper){
+        db.delExerciseEquipment(exName: self.name, eqName: self.equipment_name)
     }
 }
 
@@ -280,6 +326,14 @@ class Workout_program{
     func exercisesInProgramInDB(db:DBHelper, exercise: String, pr: Int, weight: Int, reps: Int, sets: Int, time: Int, distance: Int, creatorID: Int){
         db.insertProIncEx(PName: self.name, EName: exercise, PersonalRecord: pr, Weight: weight, Repetitions: reps, Sets: sets, Time: time, Distance: distance, CreatorID: creatorID)
     }
+    
+    func rmWorkoutProgramInDB(db:DBHelper){
+        db.delWorkoutProgram(userID: self.userID, programName: self.name)
+    }
+    
+    func rmExercisesInProgramInDB(db:DBHelper, exercise: String){
+        db.delProgramIncludesExercise(pname: self.name, ename: exercise, id: self.userID)
+    }
 }
 
 class Performed{
@@ -294,6 +348,10 @@ class Performed{
     }
     func performedInDB(db:DBHelper){
         db.insertPerformed(UserID: self.userID, Program_name: self.program_Name, PerDate: self.perDate)
+    }
+    
+    func rmPerformedInDB(db:DBHelper){
+        db.delPerformed(id: self.userID, programName: self.program_Name, perdate: self.perDate)
     }
 }
 
@@ -316,5 +374,9 @@ class Journal_Entry{
     
     func journalInDB(db:DBHelper){
         db.insertJournal(UserID: self.userID, JDate: self.jDate, Weight: self.weight, CaloriesBurned: self.caloriesBurned, Quality: self.quality, Hours: self.hours)
+    }
+    
+    func rmJournalInDB(db:DBHelper){
+        db.delJournal(userID: self.userID, jdate: self.jDate)
     }
 }
