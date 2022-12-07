@@ -64,6 +64,11 @@ class DBHelper{
             editClientCarbs(usrID: 1, carbs: 18)
             editExerciseMET(name: "Bench Press" , usrID: 1, MET: 41)
             editWorkoutProgramPriv(usrID: 1, name: "Chest Day" , priv: false)
+            editprogramIncludesExerciseRep(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, reps: <#T##Int#>)
+            editprogramIncludesExercisePR(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, val: <#T##Int#>)
+            editprogramIncludesExerciseSets(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, val: <#T##Int#>)
+            editprogramIncludesExerciseWeight(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, val: <#T##Int#>)
+            editprogramIncludesExerciseDistance(PName: <#T##String#>, EName: <#T##String#>, CreatorID: <#T##Int#>, val: <#T##Int#>)
     }
     
     
@@ -577,7 +582,7 @@ class DBHelper{
 
     }
     /*---ProgramInclEx Edits-----------*/
-    func programIncludesExerciseRep(PName :String, EName: String, CreatorID: Int, reps:Int){
+    func editprogramIncludesExerciseRep(PName :String, EName: String, CreatorID: Int, reps:Int){
         let query:String = "UPDATE PROGRAM_INCLUDES_EXCERCISE SET Reprtitiions = \(reps) WHERE CreatorID = \(CreatorID) AND PName = \(PName) AND EName = \(EName)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
@@ -592,19 +597,85 @@ class DBHelper{
     }
     
 
-    func programIncludesExerciseRep(PName :String, EName: String, CreatorID: Int, reps:Int){
-        let query:String = "UPDATE PROGRAM_INCLUDES_EXCERCISE SET Reprtitiions = \(reps) WHERE CreatorID = \(CreatorID) AND PName = \(PName) AND EName = \(EName)"
+    
+    func editprogramIncludesExercisePR(PName :String, EName: String, CreatorID: Int, val:Int){
+        let query:String = "UPDATE PROGRAM_INCLUDES_EXCERCISE SET PersonalRecord = \(val) WHERE CreatorID = \(CreatorID) AND PName = \(PName) AND EName = \(EName)"
         var statement : OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE{
-                print("The edit to Repetitions in INCLUDES EXCERCISE has been made")
+                print("The edit to PR in INCLUDES EXCERCISE has been made")
             }
             else{
-                print("The edit to Repetitions in INCLUDES EXCERCISE  has not been made")
+                print("The edit to PR in INCLUDES EXCERCISE  has not been made")
                 
             }
         }
+        
     }
+    
+    
+    func editprogramIncludesExerciseWeight(PName :String, EName: String, CreatorID: Int, val:Int){
+        let query:String = "UPDATE PROGRAM_INCLUDES_EXCERCISE SET Weight = \(val) WHERE CreatorID = \(CreatorID) AND PName = \(PName) AND EName = \(EName)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Weight in INCLUDES EXCERCISE has been made")
+            }
+            else{
+                print("The edit to Weight in INCLUDES EXCERCISE  has not been made")
+                
+            }
+        }
+        
+    }
+    
+    
+    func editprogramIncludesExerciseSets(PName :String, EName: String, CreatorID: Int, val:Int){
+        let query:String = "UPDATE PROGRAM_INCLUDES_EXCERCISE SET Sets = \(val) WHERE CreatorID = \(CreatorID) AND PName = \(PName) AND EName = \(EName)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Sets in INCLUDES EXCERCISE has been made")
+            }
+            else{
+                print("The edit to Sets in INCLUDES EXCERCISE  has not been made")
+                
+            }
+        }
+        
+    }
+    
+    func editprogramIncludesExerciseTime(PName :String, EName: String, CreatorID: Int, val:Int){
+        let query:String = "UPDATE PROGRAM_INCLUDES_EXCERCISE SET Time = \(val) WHERE CreatorID = \(CreatorID) AND PName = \(PName) AND EName = \(EName)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Time in INCLUDES EXCERCISE has been made")
+            }
+            else{
+                print("The edit to Time in INCLUDES EXCERCISE  has not been made")
+                
+            }
+        }
+        
+    }
+    
+    func editprogramIncludesExerciseDistance(PName :String, EName: String, CreatorID: Int, val:Int){
+        let query:String = "UPDATE PROGRAM_INCLUDES_EXCERCISE SET Distance = \(val) WHERE CreatorID = \(CreatorID) AND PName = \(PName) AND EName = \(EName)"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE{
+                print("The edit to Distance in INCLUDES EXCERCISE has been made")
+            }
+            else{
+                print("The edit to Distance in INCLUDES EXCERCISE  has not been made")
+                
+            }
+        }
+        
+    }
+    
+    
     
 
     
