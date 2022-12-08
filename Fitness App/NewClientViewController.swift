@@ -52,6 +52,19 @@ class NewClientViewController: UIViewController {
         if (tEntry1.text!.isAlphanumeric && tEntry2.text!.isAlphanumeric && tEntry3.text!.isAlphanumeric && checkInt(input: tEntry4.text) && checkInt(input: tEntry5.text) && checkInt(input: tEntry6.text) && checkInt(input: tEntry7.text) && checkInt(input: tEntry8.text) && checkInt(input: tEntry9.text)){
             //do other verification
             //do creating new client
+            let db = DBHelper()
+            let DOB = datePicker.date
+            let stringDate = DOB.formatted(date: .numeric, time: .omitted)
+            var newUsr: User = User(ethnicity: tEntry1.text!, countryOfResidence: tEntry2.text!, gender: tEntry3.text!, birthDay: DOB)
+                newUsr.userInDB(db: db)
+            let height = Int(tEntry4.text!) ?? 0
+            let weight = Int(tEntry5.text!) ?? 0
+            let pro = Int(tEntry6.text!) ?? 0
+            let carbs = Int(tEntry7.text!) ?? 0
+            let fat = Int(tEntry8.text!) ?? 0
+            let sugar = Int(tEntry9.text!) ?? 0
+            var newClient: Client = Client(userToClient: newUsr, protein: pro , carbohydrates: carbs, fat: fat, weight: weight, sugar: sugar, height: height)
+            newClient.clientInDB(db: db)
             performSegue(withIdentifier: "unwindToLoginScreen", sender: self)
         }
         

@@ -15,7 +15,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     var entryList = [String]()
     
     override func viewDidLoad() {
-        //let db = DBHelper() // Initialize a database
+            let db = DBHelper() // Initialize a database
         //db.createDefaults() // Load in deafult tables
         // don't know if need this stuff
         super.viewDidLoad()

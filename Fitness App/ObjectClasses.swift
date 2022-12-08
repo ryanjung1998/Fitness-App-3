@@ -32,6 +32,7 @@ class User{
         self.birthDay = birthDay
         self.userID = User.counter
         User.counter += 1 // Increment counter
+        
     }
     // Insert a user into the database
     func userInDB(db:DBHelper){
