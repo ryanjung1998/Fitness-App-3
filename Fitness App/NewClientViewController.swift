@@ -49,11 +49,12 @@ class NewClientViewController: UIViewController {
     
     
     @IBAction func createTapped(_ sender: Any) {
-        if (checkString(input: tEntry1.text) && checkString(input: tEntry2.text) && checkString(input: tEntry3.text) && checkInt(input: tEntry4.text) && checkInt(input: tEntry5.text) && checkInt(input: tEntry6.text) && checkInt(input: tEntry7.text) && checkInt(input: tEntry8.text) && checkInt(input: tEntry9.text)){
+        if (tEntry1.text!.isAlphanumeric && tEntry2.text!.isAlphanumeric && tEntry3.text!.isAlphanumeric && checkInt(input: tEntry4.text) && checkInt(input: tEntry5.text) && checkInt(input: tEntry6.text) && checkInt(input: tEntry7.text) && checkInt(input: tEntry8.text) && checkInt(input: tEntry9.text)){
             //do other verification
             //do creating new client
             performSegue(withIdentifier: "unwindToLoginScreen", sender: self)
         }
+        
         else {
             errorLbl.text = "Invalid Input"
         }

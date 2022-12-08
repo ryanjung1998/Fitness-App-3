@@ -24,7 +24,7 @@ class AddToProgramViewController : UIViewController
     @IBAction func addTapped(_ sender: Any) {
     //verify shit
     //adding to db code
-        if(checkString(input: tEntry1.text) && checkInt(input: tEntry2.text) && checkInt(input: tEntry3.text) && checkInt(input: tEntry4.text) && checkInt(input: tEntry5.text) && checkInt(input: tEntry6.text) && checkDouble(input: tEntry7.text)) {
+        if(tEntry1.text!.isAlphanumeric && checkInt(input: tEntry2.text) && checkInt(input: tEntry3.text) && checkInt(input: tEntry4.text) && checkInt(input: tEntry5.text) && checkInt(input: tEntry6.text) && checkDouble(input: tEntry7.text)) {
             //other verification
             performSegue(withIdentifier: "unwindToExeDet", sender: self)
         }

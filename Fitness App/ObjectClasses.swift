@@ -81,6 +81,31 @@ class Client{
         db.delClient(id: self.clientID)
     }
     
+    func editProtien(db:DBHelper, Protein:Int){
+        db.editClientProtein(usrID: self.clientID, Protien: Protein)
+    }
+    
+    func editCarbs(db:DBHelper, Carbs:Int){
+        db.editClientCarbs(usrID: self.clientID, carbs: Carbs)
+    }
+    
+    func editFat(db:DBHelper, fat:Int){
+        db.editClientFat(usrID: self.clientID, Fat: fat)
+    }
+    
+    func editWeight(db:DBHelper, weightKG:Int){
+        db.editClientWeight(usrID: self.clientID, val: weightKG)
+        
+    }
+    
+    func editSugar(db:DBHelper, sugar:Int){
+        db.editClientSugar(usrID: self.clientID, val: sugar)
+    }
+    
+    func editHeight(db:DBHelper, Height:Int){
+        db.editClientHeight(usrID: self.clientID, val: Height)
+    }
+    
 }
 
 
@@ -180,6 +205,10 @@ class Food{
     func rmFoodInDB(db:DBHelper){
         db.delFood(foodID: self.foodID, creatorID: self.CreatorID)
     }
+    
+    func editPrice(db:DBHelper, price:Int){
+        db.editFoodPrice(foodID: self.foodID, CreatrID: self.CreatorID, Price: price)
+    }
     // Make a food listing query [TODO]
     
     //Export Delete others for database
@@ -255,6 +284,35 @@ class Recipe{
     func rmIncludedFoodInRecipeInDB(db:DBHelper, food: Int){
         db.delIncludedIn(recipeID: self.recipeName, creatorID: self.creatorID, foodID: food)
     }
+    
+    func editPrivacy(db:DBHelper, priv:Bool){
+        db.editRecipePriv(creatorID: self.creatorID, RName: self.recipeName, Priv: priv)
+    }
+    
+    func editInstruction(db:DBHelper,Instruct:String){
+        db.editRecipeInstructions(creatorID: self.creatorID, RName: self.recipeName, Instructions: Instruct )
+    }
+    
+    func editPrepTime(db:DBHelper,Prep:Int){
+        db.editRecipePrepTime(creatorID: self.creatorID, RName: self.recipeName, PT: Prep)
+    }
+    
+    func editTCals(db:DBHelper,TCal:Int){
+        db.editRecipeTotalCals(creatorID: self.creatorID, RName: self.recipeName, Totalcal: TCal)
+    }
+    
+    func editTPro(db:DBHelper,TPro:Int){
+        db.editRecipeTotalProtien(creatorID: self.creatorID, RName: self.recipeName, TotalPro: TPro)
+    }
+    
+    func editTFat(db:DBHelper,TFat:Int){
+        db.editRecipeTotalFat(creatorID: self.creatorID, RName: self.recipeName, Totalfat: TFat)
+    }
+    
+    func editTCarbs(db:DBHelper,TCarbs:Int){
+        db.editRecipeTotalCarbs(creatorID: self.creatorID, RName: self.recipeName, Totalcarbs: TCarbs)
+    }
+    
     //simple edit delete etc
     
     
@@ -282,6 +340,10 @@ class Exercise{
     
     func rmExerciseInDB(db:DBHelper){
         db.delExercise(exName: self.Name, creatorId: self.creatorID)
+    }
+    
+    func editMET(db: DBHelper, met:Int){
+        db.editExerciseMET(name: self.Name, usrID: self.creatorID, MET: met)
     }
 }
 
@@ -345,6 +407,10 @@ class Workout_program{
     func rmExercisesInProgramInDB(db:DBHelper, exercise: String){
         db.delProgramIncludesExercise(pname: self.name, ename: exercise, id: self.userID)
     }
+    
+    func editPrivacy(db:DBHelper, privacy:Bool){
+        db.editWorkoutProgramPriv(usrID: self.userID, name: self.name, priv: privacy)
+    }
 }
 
 class Performed{
@@ -390,4 +456,23 @@ class Journal_Entry{
     func rmJournalInDB(db:DBHelper){
         db.delJournal(userID: self.userID, jdate: self.jDate)
     }
+    
+    
+    func editWeight(db: DBHelper, weight:Int){
+        db.editJournalEntWeight(UsrID: self.userID, JDate: self.jDate, val: weight)
+    }
+    
+    func editCalBurned(db: DBHelper, Burned:Int){
+        db.editJournalEntCalBurned(UsrID: self.userID, JDate: self.jDate, val: Burned)
+    }
+    
+    func editQuality(db: DBHelper, quality:String){
+        db.editJournalEntQuality(UsrID: self.userID, JDate: self.jDate, val: quality)
+    }
+    
+    func editHours(db: DBHelper, Hours:Int){
+        db.editJournalEntHours(UsrID: self.userID, JDate: self.jDate, val: Hours)
+    }
+    
+    
 }

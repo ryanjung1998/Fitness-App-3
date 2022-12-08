@@ -17,7 +17,7 @@ class MealPlanFilterViewController : UIViewController
     @IBOutlet weak var applyButton: UIButton!
     
     @IBAction func applyTapped(_ sender: Any) {
-        if(checkString(input: tEntry1.text) && checkInt(input: tEntry2.text)){
+        if(tEntry1.text!.isAlphanumeric && checkInt(input: tEntry2.text)){
             performSegue(withIdentifier: "unwindToMealPlan", sender: self)
         }
     }

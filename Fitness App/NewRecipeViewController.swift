@@ -21,7 +21,7 @@ class NewRecipeViewController : UIViewController
     
     
     @IBAction func addTapped(_ sender: Any) {
-        if(checkString(input: tEntry1.text) && checkInt(input: tEntry2.text) && checkString(input: tEntry3.text)){
+        if(tEntry1.text!.isAlphanumeric && checkInt(input: tEntry2.text) && tEntry3.text!.isAlphanumeric){
             //other verification
             //adding to db code
             performSegue(withIdentifier: "unwindToRecipes", sender: self)

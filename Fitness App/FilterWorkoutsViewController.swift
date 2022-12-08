@@ -54,7 +54,7 @@ class FilterWorkoutsViewController : UIViewController
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        if (checkString(input: tEntry1.text) && checkInt(input: tEntry2.text)){
+        if (tEntry1.text!.isAlphanumeric && checkInt(input: tEntry2.text)){
             print("Entry 1 good: " + (tEntry1.text ?? "error"))
             print("Entry 2 good: " + (tEntry2.text ?? "error"))
             performSegue(withIdentifier: "unwindToProgram", sender: self)
