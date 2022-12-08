@@ -20,6 +20,7 @@ class ClientGListTableViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initList()
         // Do any additional setup after loading the view.
     }
@@ -27,7 +28,7 @@ class ClientGListTableViewController: UIViewController, UITableViewDataSource, U
     }
     func initList()//Have to connect to database here
     {
-        let querList = db.getFoodsInGroceryList(userID: userID) // [food, quant]
+        let querList = db.getFoodsInGroceryList(userID : userID) // [food, quant]
         var i = 0
         entryList = [] // Food name
         quantList = [] // Quantities

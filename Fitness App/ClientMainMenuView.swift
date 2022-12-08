@@ -73,9 +73,9 @@ class ClientMainMenuViewController : UIViewController
             let dest = segue.destination as? ClientProfileViewController
             dest!.userID = userID
         }
-        else if(segue.identifier == "journalSegue"){
+        else if(segue.identifier == "clientJournalSegue"){
             let dest = segue.destination as? ClientJournalTableViewController
-            dest!.userID = userID
+            dest!.userID = userID 
         }
         else if(segue.identifier == "clientWorkoutProgramsSegue"){
             let dest = segue.destination as? ClientWorkoutTableTest
@@ -85,7 +85,7 @@ class ClientMainMenuViewController : UIViewController
             let dest = segue.destination as? ClientRecipesTableViewController
             dest!.userID = userID
         }
-        else if(segue.identifier == "glistSegue"){
+        else if(segue.identifier == "gListSegue"){
             let dest = segue.destination as? ClientGListTableViewController
             dest!.userID = userID
         }
