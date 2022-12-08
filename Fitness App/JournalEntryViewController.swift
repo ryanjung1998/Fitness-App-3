@@ -37,17 +37,19 @@ class JournalEntryViewController : UIViewController
         // Get the list of journals
         //date, weight, cal, qual, sleep
 
-        dateFormatter.dateFormat = "MM/dd/YY"
+        dateFormatter.dateFormat = "MM/d/YY"
         date.text = dateFormatter.string(from:ddate)
-        let journalList = db.getJournalEntries(userID: self.userID)
+        var journalList = db.getJournalEntries(userID: self.userID)
         var i = 0
         var j = 0
         var entry = [String]()
         while(i<journalList.count){
-            if (journalList[i][j] == date.text){ // Find the list with the date
-                entry = journalList[i]
+            if (journalList[i][j] == dateFormatter.string(from:ddate)){ // Find the list with the date
             }
             i+=1
+        }
+        if (entry.count<1){
+            entry = journalList[0]
         }
         weight.text = entry[1]
         calsBurned.text = entry[2]
