@@ -20,6 +20,7 @@ class ClientGListTableViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initList()
         // Do any additional setup after loading the view.
     }
