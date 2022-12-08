@@ -308,6 +308,10 @@ class Exercise{
     func rmExerciseInDB(db:DBHelper){
         db.delExercise(exName: self.Name, creatorId: self.creatorID)
     }
+    
+    func editMET(db: DBHelper, met:Int){
+        db.editExerciseMET(name: self.Name, usrID: self.creatorID, MET: met)
+    }
 }
 
 class Muscles_Worked{
@@ -370,6 +374,10 @@ class Workout_program{
     func rmExercisesInProgramInDB(db:DBHelper, exercise: String){
         db.delProgramIncludesExercise(pname: self.name, ename: exercise, id: self.userID)
     }
+    
+    func editPrivacy(db:DBHelper, privacy:Bool){
+        db.editWorkoutProgramPriv(usrID: self.userID, name: self.name, priv: privacy)
+    }
 }
 
 class Performed{
@@ -415,4 +423,23 @@ class Journal_Entry{
     func rmJournalInDB(db:DBHelper){
         db.delJournal(userID: self.userID, jdate: self.jDate)
     }
+    
+    
+    func editWeight(db: DBHelper, weight:Int){
+        db.editJournalEntWeight(UsrID: self.userID, JDate: self.jDate, val: weight)
+    }
+    
+    func editCalBurned(db: DBHelper, Burned:Int){
+        db.editJournalEntCalBurned(UsrID: self.userID, JDate: self.jDate, val: Burned)
+    }
+    
+    func editQuality(db: DBHelper, quality:String){
+        db.editJournalEntQuality(UsrID: self.userID, JDate: self.jDate, val: quality)
+    }
+    
+    func editHours(db: DBHelper, Hours:Int){
+        db.editJournalEntHours(UsrID: self.userID, JDate: self.jDate, val: Hours)
+    }
+    
+    
 }
