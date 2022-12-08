@@ -312,14 +312,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Terminal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULa-EK-Nji">
-                                <rect key="frame" x="97.333333333333329" y="41" width="198.66666666666669" height="36"/>
+                                <rect key="frame" x="97.333333333333329" y="59" width="198.66666666666669" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MPr-Gj-aYT">
-                                <rect key="frame" x="39.333333333333343" y="121" width="314.33333333333326" height="300"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="39.333333333333343" y="138" width="314.33333333333326" height="300"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="RCf-Ol-98m"/>
                                 </constraints>
@@ -329,7 +329,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UG0-SC-PJl">
-                                <rect key="frame" x="175.66666666666666" y="87" width="42" height="21"/>
+                                <rect key="frame" x="175.66666666666666" y="97" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -341,14 +341,14 @@
                             <constraint firstItem="6T1-Rz-yc5" firstAttribute="centerY" secondItem="jxh-9k-NLL" secondAttribute="centerY" constant="300" id="0pK-EN-MsD"/>
                             <constraint firstItem="UG0-SC-PJl" firstAttribute="centerX" secondItem="ULa-EK-Nji" secondAttribute="centerX" id="4vs-fR-eef"/>
                             <constraint firstItem="MPr-Gj-aYT" firstAttribute="width" secondItem="2UD-PS-MHa" secondAttribute="width" multiplier="0.8" id="AFd-bv-j71"/>
-                            <constraint firstItem="2UD-PS-MHa" firstAttribute="top" secondItem="ULa-EK-Nji" secondAttribute="top" constant="18" id="EBB-7M-p4a"/>
+                            <constraint firstItem="ULa-EK-Nji" firstAttribute="top" secondItem="2UD-PS-MHa" secondAttribute="top" id="EBB-7M-p4a"/>
                             <constraint firstItem="NXp-Ki-ojy" firstAttribute="centerX" secondItem="6T1-Rz-yc5" secondAttribute="centerX" id="Eji-5N-0WM"/>
-                            <constraint firstItem="UG0-SC-PJl" firstAttribute="top" secondItem="ULa-EK-Nji" secondAttribute="bottom" constant="10" id="J02-a0-5Je"/>
-                            <constraint firstItem="MPr-Gj-aYT" firstAttribute="centerY" secondItem="2UD-PS-MHa" secondAttribute="centerY" constant="-150" id="Kew-nC-pMU"/>
+                            <constraint firstItem="UG0-SC-PJl" firstAttribute="top" secondItem="ULa-EK-Nji" secondAttribute="bottom" constant="2" id="J02-a0-5Je"/>
                             <constraint firstItem="MPr-Gj-aYT" firstAttribute="centerX" secondItem="2UD-PS-MHa" secondAttribute="centerX" id="MwV-5h-qri"/>
                             <constraint firstItem="ULa-EK-Nji" firstAttribute="centerX" secondItem="2UD-PS-MHa" secondAttribute="centerX" id="db2-SQ-xyN"/>
                             <constraint firstItem="6T1-Rz-yc5" firstAttribute="centerX" secondItem="jxh-9k-NLL" secondAttribute="centerX" id="eru-aX-n9G"/>
                             <constraint firstItem="NXp-Ki-ojy" firstAttribute="bottom" secondItem="6T1-Rz-yc5" secondAttribute="top" constant="-150" id="wSj-1k-rgF"/>
+                            <constraint firstItem="MPr-Gj-aYT" firstAttribute="top" secondItem="UG0-SC-PJl" secondAttribute="bottom" constant="20" id="xQz-M4-7kh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gyd-EI-PtD"/>
@@ -763,6 +763,9 @@
                                 <rect key="frame" x="125.33333333333333" y="699.33333333333337" width="142.33333333333337" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Create Account"/>
+                                <connections>
+                                    <action selector="createTapped:" destination="sOc-VM-HQU" eventType="touchUpInside" id="SY7-Dc-3lS"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="as8-QO-VeT">
                                 <rect key="frame" x="122" y="59" width="149" height="36"/>
@@ -797,6 +800,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="Imx-xg-Rhh"/>
                     <connections>
+                        <outlet property="datePicker" destination="woj-wN-ytL" id="l5u-fK-eGO"/>
+                        <outlet property="errorLbl" destination="z2d-oK-Ayh" id="3bZ-UW-SiF"/>
+                        <outlet property="tEntry1" destination="KNY-h6-WQc" id="imN-c2-fGc"/>
+                        <outlet property="tEntry2" destination="jRS-4n-GDs" id="Oun-9C-QEI"/>
+                        <outlet property="tEntry3" destination="eNA-yy-pwd" id="qnl-RJ-cT5"/>
+                        <outlet property="userIDLbl" destination="U4l-SR-pHB" id="rB3-Uo-7jv"/>
                         <segue destination="1l4-Lq-1j2" kind="unwind" identifier="unwindToLoginn" unwindAction="unwind:" id="kwV-a0-H0n"/>
                     </connections>
                 </viewController>
@@ -1469,7 +1478,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urF-vI-iJt">
-                                <rect key="frame" x="14.666666666666664" y="129" width="63.999999999999993" height="21"/>
+                                <rect key="frame" x="14.666666666666657" y="129" width="63.999999999999993" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -4063,7 +4072,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBB-2Q-1pK">
-                                <rect key="frame" x="62.333333333333336" y="134" width="68.333333333333314" height="28"/>
+                                <rect key="frame" x="62.333333333333343" y="134" width="68.333333333333314" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -4824,6 +4833,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

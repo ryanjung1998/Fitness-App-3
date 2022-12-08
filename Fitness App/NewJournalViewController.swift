@@ -70,7 +70,7 @@ class NewJournalViewController : UIViewController
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "unwindToJournal"){
-            let dest = segue.destination as? ClientJournalTableViewController
+//            let dest = segue.destination as? ClientJournalTableViewController
             
         }
     }

@@ -20,7 +20,6 @@ class NewWorkoutViewController : UIViewController
         if(checkString(input: tEntry1.text)){
             //other verification
             //adding to db code
-            print(tEntry1.text)
             performSegue(withIdentifier: "unwindToTable", sender: self)
         }
         else{
@@ -55,7 +54,7 @@ class NewWorkoutViewController : UIViewController
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "unwindToTable"){
-            let dest = segue.destination as? ClientWorkoutTableTest
+//            let dest = segue.destination as? ClientWorkoutTableTest
         }
     }
 }
