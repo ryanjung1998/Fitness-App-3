@@ -27,6 +27,7 @@ class AdminTerminalViewController : UIViewController
     override func viewDidLoad(){
         super.viewDidLoad()
         idLabel.text = "User ID: " + String(userID)
+        terminalField.text = ""
         // Do any additional setup after loading the view.
     }
     

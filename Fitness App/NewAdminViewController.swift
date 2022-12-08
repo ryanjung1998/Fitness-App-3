@@ -44,7 +44,7 @@ class NewAdminViewController: UIViewController {
     
     
     @IBAction func createTapped(_ sender: Any) {
-        if (checkString(input: tEntry1.text) && checkString(input: tEntry2.text) && checkString(input: tEntry3.text)){
+        if (tEntry1.text!.isAlphanumeric && tEntry2.text!.isAlphanumeric && tEntry3.text!.isAlphanumeric){
             //do other verification
             //do creating new client
             performSegue(withIdentifier: "unwindToLoginn", sender: self)

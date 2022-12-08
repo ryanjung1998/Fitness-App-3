@@ -19,7 +19,7 @@ class AddToPlanViewController : UIViewController
     @IBOutlet weak var fNamelbl: UILabel!
     
     @IBAction func addTapped(_ sender: Any) {
-        if(checkString(input: mealPlanEntry.text) && checkInt(input: quantEntry.text)){
+        if(mealPlanEntry.text!.isAlphanumeric && checkInt(input: quantEntry.text)){
             //code for saving changes to db
             performSegue(withIdentifier: "unwindToRecipe", sender: self)
         }

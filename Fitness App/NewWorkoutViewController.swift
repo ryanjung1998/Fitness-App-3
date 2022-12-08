@@ -17,7 +17,7 @@ class NewWorkoutViewController : UIViewController
     @IBOutlet weak var errorLbl: UILabel!
     
     @IBAction func addTapped(_ sender: Any) {
-        if(checkString(input: tEntry1.text)){
+        if(tEntry1.text!.isAlphanumeric){
             //other verification
             //adding to db code
             performSegue(withIdentifier: "unwindToTable", sender: self)

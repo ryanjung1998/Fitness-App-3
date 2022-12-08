@@ -18,7 +18,7 @@ class ExerciseFilterViewController : UIViewController
     @IBOutlet weak var applyButton: UIButton!
     
     @IBAction func applyTapped(_ sender: Any) {
-        if(checkInt(input: tEntry1.text) && checkString(input: tEntry2.text) && checkString(input: tEntry3.text) && checkString(input: tEntry4.text)){
+        if(checkInt(input: tEntry1.text) && tEntry2.text!.isAlphanumeric && tEntry3.text!.isAlphanumeric && tEntry4.text!.isAlphanumeric){
             //other verification
             performSegue(withIdentifier: "unwindToExe", sender: self)
         }

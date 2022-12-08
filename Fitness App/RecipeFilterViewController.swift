@@ -19,7 +19,7 @@ class RecipeFilterViewController : UIViewController
     @IBOutlet weak var applyButton: UIButton!
     
     @IBAction func applyTapped(_ sender: Any) {
-        if(checkString(input: tEntry1.text) && checkInt(input: tEntry2.text) && checkInt(input: tEntry3.text) && checkInt(input: tEntry4.text) && checkInt(input: tEntry5.text)){
+        if(tEntry1.text!.isAlphanumeric && checkInt(input: tEntry2.text) && checkInt(input: tEntry3.text) && checkInt(input: tEntry4.text) && checkInt(input: tEntry5.text)){
             performSegue(withIdentifier: "unwindToRecipeSegue", sender: self)
         }
     }

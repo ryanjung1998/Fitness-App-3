@@ -15,7 +15,7 @@ class FeedbackViewController : UIViewController
     
     @IBOutlet weak var errorLbl: UILabel!
     @IBAction func submitTapped(_ sender: Any) {
-        if(checkString(input: textfield.text)){
+        if(textfield.text!.isAlphanumeric){
             //save feedback to db
             errorLbl.text = ""
         }

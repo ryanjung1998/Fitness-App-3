@@ -22,7 +22,7 @@ class NewJournalViewController : UIViewController
     
     
     @IBAction func addTapped(_ sender: Any) {
-        if(checkString(input: tEntry1.text) && checkInt(input: tEntry2.text) && checkInt(input: tEntry3.text) && checkString(input: tEntry4.text) && checkInt(input: tEntry5.text)){
+        if(tEntry1.text!.isAlphanumeric && checkInt(input: tEntry2.text) && checkInt(input: tEntry3.text) && tEntry4.text!.isAlphanumeric && checkInt(input: tEntry5.text)){
             //other verification
             //adding to db code
             performSegue(withIdentifier: "unwindToJournal", sender: self)
