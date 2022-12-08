@@ -54,7 +54,7 @@ class DBHelper{
     }
     
     // ------------ DEFAULT FUNCTIONS --------------- //
-    func insertDefaults(){
+    /*func insertDefaults(){
         insertAdmin(UserID: 0)
         insertUser(UserID: 1, Birth_date: Date(), Gender: "Male", CountryOfResidence: "Canada", Ethnicity: "Asian")
         insertClient(UserID: 1, Protein: 2, Carbohydrates: 3, Fat: 4, Weight: 5, Sugar: 6, Height: 7, ListID: 8)
@@ -109,7 +109,7 @@ class DBHelper{
             editRecipeInstructions(creatorID: 1, RName: "Keto Recipe", Instructions: "Throw Stuff into a bowl and start Mixing")
             editFoodPrice(foodID: 1, CreatrID: 1, Price: 17)
     //FoodID: 1, Calories: 8, Price: 1, Fat: 0, Carbohydrates: 5, Protein: 8, Sugar: 2, Name: "Quinoa", CreatorID: 1
-    }
+    }*/
 
 
     
