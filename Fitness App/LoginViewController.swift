@@ -29,6 +29,7 @@ class LoginViewController: UIViewController {
         else{errorLbl.text = "Invalid ID"}
     }
     
+    
     @IBAction func clientLoginTap(_ sender: Any) {
         if (checkInt(input: idEntry.text)){
             //other verification
@@ -43,6 +44,16 @@ class LoginViewController: UIViewController {
     
     @IBAction func newAdminTapped(_ sender: Any) {
         performSegue(withIdentifier: "newAdminSegue", sender: self)
+    }
+    
+    func checkInt(input : String?)->Bool{
+        if let inputReal = input {
+            if (Int(inputReal) ?? -1) == -1{
+                print("not an integer input")
+                return false}
+            else{return true}
+        }
+        else{return true}
     }
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
     }
