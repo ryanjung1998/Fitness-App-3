@@ -1483,24 +1483,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ita-uz-Lyp">
-                                <rect key="frame" x="177" y="129" width="39" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PG0-uu-cQX" userLabel="Sets">
-                                <rect key="frame" x="254.66666666666663" y="129" width="34" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MID-AT-X1K" userLabel="Duration">
-                                <rect key="frame" x="314" y="129" width="65.333333333333314" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Skd-Cb-dM3">
                                 <rect key="frame" x="0.0" y="174" width="393" height="500"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1569,24 +1551,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Skd-Cb-dM3" firstAttribute="top" secondItem="i7u-P7-8ZC" secondAttribute="bottom" constant="50" id="5P4-lX-rGd"/>
-                            <constraint firstItem="PG0-uu-cQX" firstAttribute="centerX" secondItem="5ii-kJ-14N" secondAttribute="centerX" constant="75" id="8X9-QO-r3G"/>
                             <constraint firstItem="aA7-XW-BMV" firstAttribute="centerY" secondItem="R9P-Gn-MvK" secondAttribute="centerY" id="E0J-Pw-a7w"/>
-                            <constraint firstItem="ita-uz-Lyp" firstAttribute="centerY" secondItem="urF-vI-iJt" secondAttribute="centerY" id="FA2-Rx-7e6"/>
                             <constraint firstItem="qUA-Au-Vc0" firstAttribute="centerX" secondItem="i7u-P7-8ZC" secondAttribute="centerX" id="FOH-fl-H2O"/>
                             <constraint firstItem="urF-vI-iJt" firstAttribute="top" secondItem="i7u-P7-8ZC" secondAttribute="bottom" constant="5" id="JnS-sU-wmJ"/>
-                            <constraint firstItem="ita-uz-Lyp" firstAttribute="centerX" secondItem="R9P-Gn-MvK" secondAttribute="centerX" id="NMK-g1-BUA"/>
                             <constraint firstItem="i7u-P7-8ZC" firstAttribute="top" secondItem="5ii-kJ-14N" secondAttribute="top" id="Ss4-Fj-7VE"/>
                             <constraint firstItem="qUA-Au-Vc0" firstAttribute="centerY" secondItem="i7u-P7-8ZC" secondAttribute="centerY" id="W5B-lx-qqu"/>
                             <constraint firstItem="Skd-Cb-dM3" firstAttribute="width" secondItem="5ii-kJ-14N" secondAttribute="width" id="Z7W-JQ-PJu"/>
-                            <constraint firstItem="MID-AT-X1K" firstAttribute="centerY" secondItem="urF-vI-iJt" secondAttribute="centerY" id="fPn-De-kJw"/>
-                            <constraint firstItem="ita-uz-Lyp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="urF-vI-iJt" secondAttribute="trailing" constant="8" symbolic="YES" id="fRA-sq-6Il"/>
                             <constraint firstItem="aA7-XW-BMV" firstAttribute="centerX" secondItem="R9P-Gn-MvK" secondAttribute="centerX" id="j8Q-Gh-uTi"/>
                             <constraint firstItem="i7u-P7-8ZC" firstAttribute="leading" secondItem="5ii-kJ-14N" secondAttribute="leading" id="jO8-1F-lQe"/>
                             <constraint firstItem="urF-vI-iJt" firstAttribute="centerX" secondItem="R9P-Gn-MvK" secondAttribute="centerX" constant="-150" id="jki-2q-h9D"/>
                             <constraint firstItem="i7u-P7-8ZC" firstAttribute="width" secondItem="5ii-kJ-14N" secondAttribute="width" id="jlR-E3-ubm"/>
-                            <constraint firstItem="MID-AT-X1K" firstAttribute="centerX" secondItem="5ii-kJ-14N" secondAttribute="centerX" constant="150" id="qnl-As-drf"/>
                             <constraint firstItem="Skd-Cb-dM3" firstAttribute="centerX" secondItem="R9P-Gn-MvK" secondAttribute="centerX" id="ui2-I6-2eN"/>
-                            <constraint firstItem="PG0-uu-cQX" firstAttribute="centerY" secondItem="urF-vI-iJt" secondAttribute="centerY" id="yuN-hu-xbR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9cN-oX-RUf"/>
