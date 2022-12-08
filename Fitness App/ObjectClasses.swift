@@ -26,6 +26,8 @@ class User{
          userID will be a value not in the database
          so we would have to seach the database
          */
+        var db = DBHelper()
+        
         self.ethnicity = ethnicity
         self.countryOfResidence = countryOfResidence
         self.gender = gender

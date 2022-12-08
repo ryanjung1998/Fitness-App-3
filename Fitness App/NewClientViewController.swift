@@ -52,6 +52,8 @@ class NewClientViewController: UIViewController {
         if (tEntry1.text!.isAlphanumeric && tEntry2.text!.isAlphanumeric && tEntry3.text!.isAlphanumeric && checkInt(input: tEntry4.text) && checkInt(input: tEntry5.text) && checkInt(input: tEntry6.text) && checkInt(input: tEntry7.text) && checkInt(input: tEntry8.text) && checkInt(input: tEntry9.text)){
             //do other verification
             //do creating new client
+            let formatter1 = DateFormatter() // Format date as string
+            formatter1.dateStyle = .short    // Formatting
             let db = DBHelper()
             let DOB = datePicker.date
             let stringDate = DOB.formatted(date: .numeric, time: .omitted)

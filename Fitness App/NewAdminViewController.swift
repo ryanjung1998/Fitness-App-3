@@ -15,8 +15,8 @@ class NewAdminViewController: UIViewController {
     @IBOutlet weak var tEntry1: UITextField!
     @IBOutlet weak var tEntry2: UITextField!
     @IBOutlet weak var tEntry3: UITextField!
-
     @IBOutlet weak var datePicker: UIDatePicker!
+    let db = DBHelper()
     
     @IBOutlet weak var errorLbl: UILabel!
     
@@ -47,6 +47,12 @@ class NewAdminViewController: UIViewController {
         if (tEntry1.text!.isAlphanumeric && tEntry2.text!.isAlphanumeric && tEntry3.text!.isAlphanumeric){
             //do other verification
             //do creating new client
+            let DOB = datePicker.date
+            var newUsr = User(ethnicity: tEntry1.text!, countryOfResidence: tEntry2.text!, gender: tEntry3.text!, birthDay: DOB)
+            newUsr.userInDB(db: db)
+            print(newUsr.userID)
+            var newAdmin = Admin(userToAdmin: newUsr)
+            newAdmin.adminInDB(db: db, adminToPromo: newUsr.userID)
             performSegue(withIdentifier: "unwindToLoginn", sender: self)
         }
         else {
