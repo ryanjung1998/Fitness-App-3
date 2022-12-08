@@ -28,7 +28,7 @@ class ClientGListTableViewController: UIViewController, UITableViewDataSource, U
     }
     func initList()//Have to connect to database here
     {
-        let querList = db.getFoodsInGroceryList(userID: userID) // [food, quant]
+        let querList = db.getFoodsInGroceryList(userID : userID) // [food, quant]
         var i = 0
         entryList = [] // Food name
         quantList = [] // Quantities

@@ -85,7 +85,7 @@ class ClientMainMenuViewController : UIViewController
             let dest = segue.destination as? ClientRecipesTableViewController
             dest!.userID = userID
         }
-        else if(segue.identifier == "glistSegue"){
+        else if(segue.identifier == "gListSegue"){
             let dest = segue.destination as? ClientGListTableViewController
             dest!.userID = userID
         }
