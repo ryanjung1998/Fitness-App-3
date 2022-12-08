@@ -284,6 +284,35 @@ class Recipe{
     func rmIncludedFoodInRecipeInDB(db:DBHelper, food: Int){
         db.delIncludedIn(recipeID: self.recipeName, creatorID: self.creatorID, foodID: food)
     }
+    
+    func editPrivacy(db:DBHelper, priv:Bool){
+        db.editRecipePriv(creatorID: self.creatorID, RName: self.recipeName, Priv: priv)
+    }
+    
+    func editInstruction(db:DBHelper,Instruct:String){
+        db.editRecipeInstructions(creatorID: self.creatorID, RName: self.recipeName, Instructions: Instruct )
+    }
+    
+    func editPrepTime(db:DBHelper,Prep:Int){
+        db.editRecipePrepTime(creatorID: self.creatorID, RName: self.recipeName, PT: Prep)
+    }
+    
+    func editTCals(db:DBHelper,TCal:Int){
+        db.editRecipeTotalCals(creatorID: self.creatorID, RName: self.recipeName, Totalcal: TCal)
+    }
+    
+    func editTPro(db:DBHelper,TPro:Int){
+        db.editRecipeTotalProtien(creatorID: self.creatorID, RName: self.recipeName, TotalPro: TPro)
+    }
+    
+    func editTFat(db:DBHelper,TFat:Int){
+        db.editRecipeTotalFat(creatorID: self.creatorID, RName: self.recipeName, Totalfat: TFat)
+    }
+    
+    func editTCarbs(db:DBHelper,TCarbs:Int){
+        db.editRecipeTotalCarbs(creatorID: self.creatorID, RName: self.recipeName, Totalcarbs: TCarbs)
+    }
+    
     //simple edit delete etc
     
     
