@@ -205,6 +205,10 @@ class Food{
     func rmFoodInDB(db:DBHelper){
         db.delFood(foodID: self.foodID, creatorID: self.CreatorID)
     }
+    
+    func editPrice(db:DBHelper, price:Int){
+        db.editFoodPrice(foodID: self.foodID, CreatrID: self.CreatorID, Price: price)
+    }
     // Make a food listing query [TODO]
     
     //Export Delete others for database
