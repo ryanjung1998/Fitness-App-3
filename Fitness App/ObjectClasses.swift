@@ -81,6 +81,31 @@ class Client{
         db.delClient(id: self.clientID)
     }
     
+    func editProtien(db:DBHelper, Protein:Int){
+        db.editClientProtein(usrID: self.clientID, Protien: Protein)
+    }
+    
+    func editCarbs(db:DBHelper, Carbs:Int){
+        db.editClientCarbs(usrID: self.clientID, carbs: Carbs)
+    }
+    
+    func editFat(db:DBHelper, fat:Int){
+        db.editClientFat(usrID: <#T##Int#>, Fat: fat)
+    }
+    
+    func editWeight(db:DBHelper, weightKG:Int){
+        db.editClientWeight(usrID: self.clientID, val: weightKG)
+        
+    }
+    
+    func editSugar(db:DBHelper, sugar:Int){
+        db.editClientSugar(usrID: self.clientID, val: sugar)
+    }
+    
+    func editHeight(db:DBHelper, Height:Int){
+        db.editClientHeight(usrID: self.clientID, val: Height)
+    }
+    
 }
 
 
