@@ -46,17 +46,10 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: "newAdminSegue", sender: self)
     }
     
-    func checkInt(input : String?)->Bool{
-        if let inputReal = input {
-            if (Int(inputReal) ?? -1) == -1{
-                print("not an integer input")
-                return false}
-            else{return true}
-        }
-        else{return true}
-    }
+    
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
     }
+    
     func checkInt(input : String?)->Bool{
         if let inputReal = input {
             if (Int(inputReal) ?? -1) == -1{
