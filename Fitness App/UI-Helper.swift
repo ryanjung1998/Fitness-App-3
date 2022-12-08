@@ -29,6 +29,8 @@ func sampleInsert(db:DBHelper){
     // Make a client
     // First initialize as user
     let jojo = User(ethnicity: "American", countryOfResidence: "USA", gender: "Male", birthDay: formatter1.date(from: "12/08/99")!)
+    jojo.userInDB(db: db)
+
     // Then turn into client
     let Joseph = Client(userToClient: jojo, protein: 130, carbohydrates: 50, fat: 55, weight: 145, sugar: 60, height: 170)
     Joseph.clientInDB(db: db)

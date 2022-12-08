@@ -71,8 +71,14 @@ class LoginViewController: UIViewController {
         print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!") // Print the database path
         // Below initializes the database at first. If you want to re-initialize, then you must comment db.createDefaults() and sampleInsert(db:db)
         let db = DBHelper() // Initialize a database path
-        db.createDefaults() // Load in default tables
-        sampleInsert(db: db) // Load in sample data
+//        db.createDefaults() // Load in default tables
+//        sampleInsert(db: db) // Load in sample datagetRecipesInMealPlan
+        //print(db.getRecipes(userID: 1))
+//        print(db.getWorkoutPrograms(userID: 1))
+//        print(db.getProgramDetails(programName: "Leg day"))
+//        print(db.getExerciseDetails(exerciseName: "Squat", programName: "Leg day"))
+//        print(db.getExercises(userID: 1))
+        print(db.getExerciseDetailsWithEquip(eName: "Squat"))
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }

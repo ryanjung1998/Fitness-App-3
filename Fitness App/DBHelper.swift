@@ -24,7 +24,7 @@ class DBHelper{
             print("Error in creating database.")
             return nil
         } else{
-            print("Database has been created with \(path)")
+//            print("Database has been created with \(path)")
             return db
         }
     }
@@ -1391,4 +1391,296 @@ class DBHelper{
             }
         }
     }
+    
+    // ---------------- QUERIES --------------- //
+
+    func getClientProfile(userID: Int) -> [String]{
+        let query = "SELECT U.Birth_date, U.Gender, U.CountryOfResidence, U.Ethnicity, C.Protein, C.Carbohydrates, C.Fat, C.Weight, C.Sugar, C.Height FROM USER AS U, CLIENT AS C WHERE U.UserID = \(userID) AND U.UserID = C.UserID;" // Should return one client
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<String>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            while sqlite3_step(statement) == SQLITE_ROW {
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // Birthday
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // Gender
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(2)))) // Country
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(3)))) // Ethnicity
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(4)))) // Protein
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(5)))) // Carbohydrates
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(6)))) // Fat
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(7)))) // Weight
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(8)))) // Sugar
+                sShowData.append(String(cString: sqlite3_column_text(statement, Int32(9)))) // Height
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    func getJournalEntries(userID: Int) -> [[String]]{
+        let query = "SELECT * FROM JOURNAL_ENTRY WHERE UserID = \(userID);"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW {
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // Date
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(2)))) // Weight
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(3)))) // Calories
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(4)))) // Workout quality
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(5)))) // Sleep hours
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    func getFoodsInGroceryList(userID: Int) -> [[String]]{ // Return Food name and quantity
+        let query = "SELECT F.Name, O.Quantity FROM ON_GROCERY_LIST AS O, FOOD as F WHERE O.FoodId = F.FoodID AND O.ClientID = \(userID);"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW { // Since we expect one, we will just pull the first that we get
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // Name
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // Quantity
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    func getVisibleMealPlans(userID: Int) -> [[String]]{ // Return meal plan name and creator id
+        let query = "SELECT M.Name, M.UserID FROM MEAL_PLAN AS M WHERE (M.UserID = \(userID) OR M.Privacy = 0);"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW { // Since we expect one, we will just pull the first that we get
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // Name
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // UserID
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+
+    // [TODO] Will have to be called when they click on a meal plan actually
+    func getRecipesInMealPlan(planName: String) -> [[String]]{ // Return recipe name and quantity
+        let query = "SELECT M.RecipeName, M.Servings FROM MEAL_CONSISTS_OF AS M, RECIPE AS R WHERE M.MealName = '\(planName)'"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW { // Since we expect one, we will just pull the first that we get
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // Name
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // Quantity
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    func getRecipes(userID: Int) -> [[String]]{ // Return recipe name and creator id
+        let query = "SELECT R.RecipeName, R.CreatorId FROM RECIPE AS R WHERE (R.CreatorId = \(userID) OR R.Privacy = 0);"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW { // Since we expect one, we will just pull the first that we get
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // Name
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // UserID
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    // [TODO] Will have to be called when they click on a Recipe > Specific Recipe
+    func getDetailsOfRecipe(recipeName: String) -> [[String]]{ // Return id, prep, cal, pro, fat, carb, instructions
+        let query = "SELECT R.CreatorId, R.PrepTime, R.TotalCalories, R.TotalProtein, R.TotalFat, R.TotalCarbs, R.Instructions FROM RECIPE AS R WHERE R.RecipeName = '\(recipeName)'"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW { // Since we expect one, we will just pull the first that we get
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // id
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // prep
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(2)))) // cal
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(3)))) // pro
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(4)))) // fat
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(5)))) // carb
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(6)))) // instr
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    func getWorkoutPrograms(userID: Int) -> [[String]]{ // Return program name
+        let query = "SELECT W.Name FROM WORKOUT_PROGRAM AS W WHERE (W.UserID = \(userID) OR W.Privacy = 0);"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW {
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // Name
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    // [TODO] Will have to be called when they click on a a program's name
+    func getProgramDetails (programName: String) -> [[String]]{ // Return an ex name, r, s, dur
+        let query = "SELECT P.EName, P.Repetitions, P.Sets, P.Time FROM PROGRAM_INCLUDES_EXERCISE AS P WHERE P.PName = '\(programName)'"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW { // Since we expect one, we will just pull the first that we get
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // Name
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // Reps
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(2)))) // Sets
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(3)))) // Duration
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    // [TODO] Will have to be called when they click on an exercise's name
+    func getExerciseDetails(exerciseName: String, programName: String) -> [[String]]{ // Return r, s, pr, weight, dur, dis
+        let query = "SELECT P.Repetitions, P.Sets, P.PersonalRecord, P.Weight, P.Time, P.Distance FROM PROGRAM_INCLUDES_EXERCISE AS P WHERE P.PName = '\(programName)' AND P.EName = '\(exerciseName)'"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW { // Since we expect one, we will just pull the first that we get
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // Reps
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // Sets
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(2)))) // PR
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(3)))) // Weight
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(4)))) // Duration
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(5)))) // Distance
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    func getExercises(userID: Int) -> [[String]]{ // Return program name
+        let query = "SELECT E.Name FROM EXERCISE AS E"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW {
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // Name
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    // [TODO] Will have to be called when they click on an exercise's name to get the details
+    // When getting the bool, we need to convert 1 to Yes and 0 to No
+    func getExerciseDetailsWithEquip(eName: String) -> [[String]]{ // creID, MET, cardio, str, equips
+        let query1 = "SELECT E.Equipment_name FROM EXERCISE_EQUIPMENT AS E WHERE E.Name = '\(eName)'"
+        var statement1 : OpaquePointer? = nil
+        var inner:String
+        inner = ""
+        if sqlite3_prepare_v2(db, query1, -1, &statement1, nil) == SQLITE_OK{
+            while sqlite3_step(statement1) == SQLITE_ROW { // Since we expect one, we will just pull the first that we get
+                inner.append(String(cString: sqlite3_column_text(statement1, Int32(0)))+"\n") // Equipment
+            }
+        }
+        let query = "SELECT E.CreatorID, E.MET, E.CardioFlag, E.StrengthFlag FROM EXERCISE AS E WHERE E.Name = '\(eName)'"
+        var statement : OpaquePointer? = nil
+        var sShowData :Array<Array<String>>
+        sShowData = []
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            var oneEntry:Array<String>
+            while sqlite3_step(statement) == SQLITE_ROW { // Since we expect one, we will just pull the first that we get
+                oneEntry = []
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(0)))) // cID
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(1)))) // MET
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(2)))) // Cardio
+                oneEntry.append(String(cString: sqlite3_column_text(statement, Int32(3)))) // Str
+                oneEntry.append(inner) // Append in the equipment used as a string
+                sShowData.append(oneEntry)
+            }
+        sqlite3_finalize(statement)
+
+        } else{
+            print("Query incorrect syntax")
+        }
+        return sShowData
+    }
+    
+    
+    
 } // End of scope
