@@ -90,7 +90,7 @@ class Client{
     }
     
     func editFat(db:DBHelper, fat:Int){
-        db.editClientFat(usrID: <#T##Int#>, Fat: fat)
+        db.editClientFat(usrID: self.clientID, Fat: fat)
     }
     
     func editWeight(db:DBHelper, weightKG:Int){
