@@ -39,7 +39,7 @@ class JournalEntryViewController : UIViewController
 
         dateFormatter.dateFormat = "MM/dd/YY"
         date.text = dateFormatter.string(from:ddate)
-        let journalList = db.getJournalEntries(userID: userID)
+        let journalList = db.getJournalEntries(userID: self.userID)
         var i = 0
         var j = 0
         var entry = [String]()

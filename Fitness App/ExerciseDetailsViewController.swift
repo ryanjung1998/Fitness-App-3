@@ -34,8 +34,8 @@ class ExerciseDetailsViewController : UIViewController
         Header.text = name
         idEntry.text = String(creatorID)
         metLbl.text = varList[1]
-        cardiolbl.text = (varList[2] == 1)
-        strengthlbl.text = (varList[3] == 1)
+        cardiolbl.text = String((Int(varList[2]) == 1))
+        strengthlbl.text = String((Int(varList[2]) == 1))
         equipLbl.text = varList[4]
         
         // Do any additional setup after loading the view.
