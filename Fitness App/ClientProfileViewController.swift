@@ -11,6 +11,7 @@ import UIKit
 class ClientProfileViewController : UIViewController
 {
     var userID: Int!
+    let db = DBHelper()
     
     @IBOutlet weak var IDnum: UILabel!
     @IBOutlet weak var ethnicityEntry: UITextField!
@@ -48,19 +49,24 @@ class ClientProfileViewController : UIViewController
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        var client = db.getClientProfile(userID: userID)
+        let formatter1 = DateFormatter() // Format date as string
+        formatter1.dateStyle = .short    // Formatting
         IDnum.text = String(userID)
-        ethnicityEntry.text = "default"
-        countryEntry.text = "default"
-        genderEntry.text = "default"
-        heightEntry.text = String(150)
-        weightEntry.text = String(150)
-        bdPicker.date = Date()
-        proteinEntry.text = String(10)
-        carbsEntry.text = String(10)
-        fatEntry.text = String(10)
-        sugarEntry.text = String(10)
+        ethnicityEntry.text = client[3]
+        countryEntry.text = client[2]
+        genderEntry.text = client[1]
+        heightEntry.text = client[9]
+        weightEntry.text = client[7]
+        bdPicker.date = (formatter1.date(from: client[0])!)
+        proteinEntry.text = client[4]
+        carbsEntry.text = client[5]
+        fatEntry.text = client[6]
+        sugarEntry.text = client[8]
         
         //get these values based on userID
     }

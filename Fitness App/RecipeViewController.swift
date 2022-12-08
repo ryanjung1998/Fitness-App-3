@@ -12,6 +12,7 @@ class RecipeViewController: UIViewController {
     var userID : Int!
     var creatorID : Int!
     var recipeName: String!
+    let db = DBHelper()
     
     @IBOutlet weak var rName: UILabel!
     @IBOutlet weak var cID: UILabel!
@@ -34,15 +35,16 @@ class RecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var varList = db.getDetailsOfRecipe(recipeName: recipeName)
         rName.text = recipeName
-        cID.text = "Creator ID: " + String(creatorID)
+        cID.text = "Creator ID: " + varList[0]
         //set other attributes based on database values
-        pTime.text = "Prep Time: " + String(20)
-        tCals.text = "Total Calories: " + String(20)
-        tProt.text = "Total Protein: " + String(20)
-        tFat.text = "Total Fat: " + String(20)
-        tCarbs.text = "Total Carbs: " + String(20)
-        InstructionsView.text = "Line 1\n Line 2\n Line 3"
+        pTime.text = "Prep Time: " + varList[1]
+        tCals.text = "Total Calories: " + varList[2]
+        tProt.text = "Total Protein: " + varList[3]
+        tFat.text = "Total Fat: " + varList[4]
+        tCarbs.text = "Total Carbs: " + varList[5]
+        InstructionsView.text = varList[6]
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "addToMPlanSegue"){

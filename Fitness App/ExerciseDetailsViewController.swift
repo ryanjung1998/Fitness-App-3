@@ -12,6 +12,7 @@ class ExerciseDetailsViewController : UIViewController
     var userID : Int!
     var name : String!
     var creatorID : Int!
+    let db = DBHelper()
 
     @IBOutlet weak var Header: UILabel!
     
@@ -29,12 +30,13 @@ class ExerciseDetailsViewController : UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var varList = db.getExerciseDetailsWithEquip(eName: name)
         Header.text = name
         idEntry.text = String(creatorID)
-        metLbl.text = String(1.1)
-        cardiolbl.text = "Yes"
-        strengthlbl.text = "No"
-        equipLbl.text = "Equipment 1, Equipment 2"
+        metLbl.text = varList[1]
+        cardiolbl.text = (varList[2] == 1)
+        strengthlbl.text = (varList[3] == 1)
+        equipLbl.text = varList[4]
         
         // Do any additional setup after loading the view.
     }

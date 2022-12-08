@@ -17,6 +17,7 @@ class ClientRecipesTableViewController: UIViewController, UITableViewDataSource,
     var filtProt : Int?
     var filtFat : Int?
     var filtCarb : Int?
+    let db = DBHelper()
     
     var entryList = [String]()
     var idList = [Int]()
@@ -39,8 +40,15 @@ class ClientRecipesTableViewController: UIViewController, UITableViewDataSource,
     
     func initList()//Have to connect to database here
     {
-        entryList = ["Recipe","Recipe","Recipe","Recipe","Recipe","Recipe","Recipe","Recipe","Recipe","Recipe"]
-        idList = [1,2,3,4,5,6,7,8,9,10]
+        let querList = db.getRecipes(userID: userID)
+        var i = 0
+        entryList = [] // Food name
+        idList = []
+        while(i<querList.count){
+            entryList.append(querList[i][0])
+            idList.append(Int(querList[i][1])!)
+            i+=1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

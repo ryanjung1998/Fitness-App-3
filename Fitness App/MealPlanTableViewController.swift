@@ -14,6 +14,7 @@ class MealPlanTableViewController: UIViewController, UITableViewDataSource, UITa
     var userID : Int!
     var filtName : String?
     var filtID : Int?
+    let db = DBHelper()
     
     var entryList = [String]()
     var idList = [Int]()
@@ -36,8 +37,15 @@ class MealPlanTableViewController: UIViewController, UITableViewDataSource, UITa
     
     func initList()//Have to connect to database here
     {
-        entryList = ["Plan1", "Plan2", "Plan3", "Plan4", "Plan5", "Plan6", "Plan7",]
-        idList = [1,2,3,4,5,6,7]
+        let querList = db.getVisibleMealPlans(userID: userID) // [food, quant]
+        var i = 0
+        entryList = [] // Food name
+        idList = []
+        while(i<querList.count){
+            entryList.append(querList[i][0])
+            idList.append(Int(querList[i][1])!)
+            i+=1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

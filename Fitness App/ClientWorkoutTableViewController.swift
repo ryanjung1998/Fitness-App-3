@@ -16,6 +16,7 @@ class ClientWorkoutTableTest: UIViewController, UITableViewDataSource, UITableVi
     var creatorIDList = [Int]()
     var filtName : String?
     var filtID : Int?
+    let db = DBHelper()
     //list of program objects
     
     
@@ -33,8 +34,18 @@ class ClientWorkoutTableTest: UIViewController, UITableViewDataSource, UITableVi
     }
     func initList()//Have to connect to database here
     {
-        entryList = ["Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program"]
-        creatorIDList = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        
+        let querList = db.getWorkoutPrograms(userID: userID)
+        var i = 0
+        entryList = [] // Food name
+        creatorIDList = []
+        while(i<querList.count){
+            entryList.append(querList[i][0])
+            creatorIDList.append(Int(querList[i][1])!)
+            i+=1
+        }
+//        entryList = ["Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program","Program"]
+//        creatorIDList = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
