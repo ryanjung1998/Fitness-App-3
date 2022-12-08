@@ -15,7 +15,7 @@ class MealPlanDetailViewController: UIViewController, UITableViewDataSource, UIT
     var creatorID : Int!
     var mpName : String!
     var mpcID : Int!
-    
+    let db = DBHelper()
     
     var filtName : String?
     var filtCals : Int?
@@ -42,9 +42,18 @@ class MealPlanDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     func initList()//Have to connect to database here
     {
-        entryList = ["Recipe 1", "Recipe 2", "Recipe 3", "Recipe 4", "Recipe 5", "Recipe 6", "Recipe 7",]
-        quantList = [1,2,3,4,5,6,7]
-        idList = [1,2,3,4,5,6,7]
+        let querList = db.getRecipesInMealPlan(planName: mpName) // [food, quant]
+        var i = 0
+        entryList = [] // Food name
+        quantList = []
+        idList = []
+
+        while(i<querList.count){
+            entryList.append(querList[i][0])
+            quantList.append(Int(querList[i][1])!)
+            idList.append(Int(querList[i][2])!)
+            i+=1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

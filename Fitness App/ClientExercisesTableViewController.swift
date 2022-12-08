@@ -18,6 +18,7 @@ class ClientExercisesTableViewController: UIViewController, UITableViewDataSourc
     var filtCardio : String?
     var filtStrength : String?
     var filtMuscle : String?
+    let db = DBHelper()
     
     
     //list of program objects
@@ -29,8 +30,17 @@ class ClientExercisesTableViewController: UIViewController, UITableViewDataSourc
     
     func initList()//Have to connect to database here
     {
-        entryList = ["Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise"]
-        creatorIDList = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        var varList = db.getExercises(userID: userID)
+        var i = 0
+        entryList = []
+        creatorIDList = []
+        while(i<varList.count){
+            entryList.append(varList[i][0])
+            creatorIDList.append(0)
+            i+=1
+        }
+//        entryList = ["Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise","Exercise"]
+//        creatorIDList = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     }
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {

@@ -15,7 +15,8 @@ class ClientJournalTableViewController: UIViewController, UITableViewDataSource,
     
     var userID: Int!
     var entryList = [String]()
-    
+    let db = DBHelper()
+
     
     @IBAction func addTapped(_ sender: Any) {
         performSegue(withIdentifier: "newEntrySegue", sender: self)
@@ -27,13 +28,23 @@ class ClientJournalTableViewController: UIViewController, UITableViewDataSource,
         // don't know if need this stuff
         super.viewDidLoad()
         initList()
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
     }
-    func initList()//Have to connect to database here
+    
+    // Gives the dates of the journal
+    func initList()
     {
-        entryList = ["Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry","Journal Entry"]
+        let journalList = db.getJournalEntries(userID: userID)
+        var i = 0
+        var j = 0
+        entryList = [] // Journal names
+        while(i<journalList.count){
+            entryList.append(journalList[i][j])
+            i+=1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

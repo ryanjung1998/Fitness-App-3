@@ -15,6 +15,7 @@ class ClientGListTableViewController: UIViewController, UITableViewDataSource, U
     var userID : Int!
     var entryList = [String]()
     var quantList = [Int]()
+    let db = DBHelper()
     //list of program objects
     
     override func viewDidLoad() {
@@ -26,8 +27,15 @@ class ClientGListTableViewController: UIViewController, UITableViewDataSource, U
     }
     func initList()//Have to connect to database here
     {
-        entryList = ["Food1","Food2","Food3","Food4","Food5","Food6","Food7","Food8","Food9","Food10"]
-        quantList = [1,2,3,4,5,6,7,8,9,10]
+        let querList = db.getFoodsInGroceryList(userID: userID) // [food, quant]
+        var i = 0
+        entryList = [] // Food name
+        quantList = [] // Quantities
+        while(i<querList.count){
+            entryList.append(querList[i][0])
+            quantList.append(Int(querList[i][1])!)
+            i+=1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

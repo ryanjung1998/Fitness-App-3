@@ -19,6 +19,7 @@ class ClientProgramTableViewController: UIViewController, UITableViewDataSource,
     var repsList = [Int]()
     var setsList = [Int]()
     var durList = [Int]()
+    let db = DBHelper()
     
     override func viewDidLoad() {
         //let db = DBHelper() // Initialize a database
@@ -33,10 +34,20 @@ class ClientProgramTableViewController: UIViewController, UITableViewDataSource,
     
     func initList()//Have to connect to database here
     {
-        entryList = ["Exercise 1","Exercise 2","Exercise 3","Exercise 4","Exercise 5","Exercise 6",]
-        repsList = [1,1,1,1,1,1]
-        setsList = [1,1,1,1,1,1]
-        durList = [1,1,1,1,1,1]
+        entryList = []
+        repsList = []
+        setsList = []
+        durList = []
+        var varList = db.getProgramDetails(programName: progName)
+        var i = 0
+        while(i<varList.count){
+            entryList.append(varList[i][0])
+            repsList.append(Int(varList[i][1])!)
+            setsList.append(Int(varList[i][2])!)
+            durList.append(Int(varList[i][3])!)
+            i+=1
+        }
+
     }
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
