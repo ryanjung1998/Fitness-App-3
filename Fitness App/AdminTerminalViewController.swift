@@ -10,6 +10,7 @@ import UIKit
 class AdminTerminalViewController : UIViewController
 {
     var userID: Int! //set this to the uses ID of the signed in user
+    let db = DBHelper()
     
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var terminalField: UITextView!
@@ -17,7 +18,7 @@ class AdminTerminalViewController : UIViewController
 
 
     @IBAction func executeTapped(_ sender: Any) {
-        //execute sql stuff written in the terminal
+        db.adminTerminal(insert: terminalField.text) // For admin terminal
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
