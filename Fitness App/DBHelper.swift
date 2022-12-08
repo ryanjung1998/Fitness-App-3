@@ -52,7 +52,6 @@ class DBHelper{
         delJournal(userID: 1, jdate: formatter1.date(from: jdstring)!)
         delPerformed(id: 1, programName: "Chest Day", perdate: formatter1.date(from: jdstring)!)
     }
-    
     // ------------ DEFAULT FUNCTIONS --------------- //
     /*func insertDefaults(){
         insertAdmin(UserID: 0)

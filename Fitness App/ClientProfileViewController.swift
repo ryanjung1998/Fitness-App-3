@@ -66,6 +66,8 @@ class ClientProfileViewController : UIViewController
     }
     @IBAction func saveChangesTapped(_ sender: Any) {
         if(ethnicityEntry.text!.isAlphanumeric && countryEntry.text!.isAlphanumeric && genderEntry.text!.isAlphanumeric && checkInt(input: proteinEntry.text) && checkInt(input: carbsEntry.text) && checkInt(input: fatEntry.text) && checkInt(input: sugarEntry.text)){
+            //let db = DBHelper()
+            //var
             //save changes
             print("changes accepted")
             

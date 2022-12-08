@@ -14,8 +14,8 @@
             filePath = "Fitness App/DBHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "insertUser(UserID:Birth_date:Gender:CountryOfResidence:Ethnicity:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Fitness App/DBHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "insertUser(UserID:Birth_date:Gender:CountryOfResidence:Ethnicity:)"
             landmarkType = "7">
          </BreakpointContent>
