@@ -111,9 +111,197 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
                   endingLineNumber = "29"
-                  offsetFromSymbolStart = "284">
+                  offsetFromSymbolStart = "288">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E16E2802-8DA6-442A-8A34-38014DCEE8D3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fitness App/ClientJournalTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "initList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9BEB9627-75EB-4258-BFD5-CF3DE5F943DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fitness App/ClientJournalTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "ClientJournalTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "9BEB9627-75EB-4258-BFD5-CF3DE5F943DB - 438b69f5e90cf393"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fitness_App.ClientJournalTableViewController.userID.getter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "Fitness App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fardin/Documents/GitHub/Fitness-App-3/Fitness%20App/ClientJournalTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "9BEB9627-75EB-4258-BFD5-CF3DE5F943DB - d519de86c5cd4f87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fitness_App.ClientJournalTableViewController.userID.setter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "Fitness App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fardin/Documents/GitHub/Fitness-App-3/Fitness%20App/ClientJournalTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "9BEB9627-75EB-4258-BFD5-CF3DE5F943DB - 106b6fc658562e90"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fitness_App.ClientJournalTableViewController.userID.modify : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "Fitness App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fardin/Documents/GitHub/Fitness-App-3/Fitness%20App/ClientJournalTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "9BEB9627-75EB-4258-BFD5-CF3DE5F943DB - 5f666f10d6e88dfc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fitness_App.ClientJournalTableViewController.userID.modify : Swift.Optional&lt;Swift.Int&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Fitness App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fardin/Documents/GitHub/Fitness-App-3/Fitness%20App/ClientJournalTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "9BEB9627-75EB-4258-BFD5-CF3DE5F943DB - 19a5a1dcc6f25212"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fitness_App.ClientJournalTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Fitness_App.ClientJournalTableViewController"
+                  moduleName = "Fitness App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fardin/Documents/GitHub/Fitness-App-3/Fitness%20App/ClientJournalTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "9BEB9627-75EB-4258-BFD5-CF3DE5F943DB - c9e50672ad8a5e2e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fitness_App.ClientJournalTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Fitness_App.ClientJournalTableViewController&gt;"
+                  moduleName = "Fitness App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fardin/Documents/GitHub/Fitness-App-3/Fitness%20App/ClientJournalTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B290EA4-E815-431B-9862-1A2CA937CCA4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fitness App/ClientJournalTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47922623-267B-41A7-8D39-22BDDC797A4D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fitness App/LoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68FD8B18-5648-42AA-82AA-BF8A8F4F4472"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fitness App/LoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4689130F-F837-4DD6-93AC-F3B1DD48ABD4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fitness App/LoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "LoginViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

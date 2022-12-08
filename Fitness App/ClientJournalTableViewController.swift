@@ -39,7 +39,7 @@ class ClientJournalTableViewController: UIViewController, UITableViewDataSource,
     // Gives the dates of the journal
     func initList()
     {
-
+          entryList = ["test","test","test"]
         let journalList = db.getJournalEntries(userID: userID)
         var i = 0
         var j = 0
